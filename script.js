@@ -282,22 +282,23 @@ harga:item.harga,
 subtotal:item.subtotal
 
 });
-
-/* FORMAT STRUK */
-
 struk+=`
 
-<p>
+<div style="margin-bottom:8px;">
+
+<div>
 ${item.nama}
-</p>
+</div>
 
-<p>
-${item.qty} x ${item.harga}
-</p>
+<div>
+${item.qty} x Rp ${item.harga.toLocaleString()}
+</div>
 
-<p>
+<div>
 Rp ${item.subtotal.toLocaleString()}
-</p>
+</div>
+
+</div>
 
 `;
 
@@ -307,8 +308,41 @@ Rp ${item.subtotal.toLocaleString()}
 
 document.getElementById(
 'printContent'
-).innerHTML=`
+).innerHTML=
 
+`
+
+<div>
+
+<p>
+Tanggal :
+${new Date().toLocaleString()}
+</p>
+
+<p>
+Pembeli :
+${nama}
+</p>
+
+<p>
+Pembayaran :
+${pembayaran}
+</p>
+
+<hr>
+
+${struk}
+
+<hr>
+
+<h3>
+TOTAL :
+Rp ${total.toLocaleString()}
+</h3>
+
+</div>
+
+`;
 <p>
 Tanggal :
 ${new Date().toLocaleString()}
