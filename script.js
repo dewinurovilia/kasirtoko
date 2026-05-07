@@ -232,25 +232,23 @@ window.onload=function(){
 renderProduk();
 
 }
-/* TAMBAHKAN di script.js */
-
 async function checkoutKasir(){
 
-const kasir=document
-.getElementById('namaKasir')
+const nama=document
+.getElementById('namaPembeli')
 .value;
 
-const pembeli=document
-.getElementById('namaPembeli')
+const pengiriman=document
+.getElementById('pengiriman')
 .value;
 
 const pembayaran=document
 .getElementById('pembayaran')
 .value;
 
-if(!kasir){
+if(!nama){
 
-alert('Isi nama kasir');
+alert('Isi nama pembeli');
 
 return;
 
@@ -264,9 +262,13 @@ return;
 
 }
 
+/* TOTAL */
+
 let total=0;
 
 let items=[];
+
+let struk='';
 
 cart.forEach(item=>{
 
@@ -281,21 +283,73 @@ subtotal:item.subtotal
 
 });
 
+/* FORMAT STRUK */
+
+struk+=`
+
+<p>
+${item.nama}
+</p>
+
+<p>
+${item.qty} x ${item.harga}
+</p>
+
+<p>
+Rp ${item.subtotal.toLocaleString()}
+</p>
+
+`;
+
 });
+
+/* PRINT CONTENT */
+
+document.getElementById(
+'printContent'
+).innerHTML=`
+
+<p>
+Tanggal :
+${new Date().toLocaleString()}
+</p>
+
+<p>
+Pembeli :
+${nama}
+</p>
+
+<p>
+Pembayaran :
+${pembayaran}
+</p>
+
+<hr>
+
+${struk}
+
+<hr>
+
+<h3>
+TOTAL :
+Rp ${total.toLocaleString()}
+</h3>
+
+`;
 
 /* DATA */
 
 const data={
 
-kasir:kasir,
-pembeli:pembeli,
+nama:nama,
+pengiriman:pengiriman,
 pembayaran:pembayaran,
 total:total,
 items:items
 
 };
 
-/* KIRIM GOOGLE SHEET */
+/* GOOGLE SHEET */
 
 try{
 
@@ -317,8 +371,6 @@ body:JSON.stringify(data)
 
 );
 
-console.log('Rekap berhasil');
-
 }catch(error){
 
 console.log(error);
@@ -328,5 +380,11 @@ console.log(error);
 /* PRINT */
 
 window.print();
+
+/* RESET */
+
+cart=[];
+
+updateCart();
 
 }
