@@ -1,0 +1,194 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasir Toko</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🛒 KASIR</h2>
+
+<button onclick="filterKategori('Semua')">
+Semua
+</button>
+
+<button onclick="filterKategori('Sembako')">
+Sembako
+</button>
+
+<button onclick="filterKategori('Snack')">
+Snack
+</button>
+
+<button onclick="filterKategori('Protein')">
+Protein
+</button>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>KASIR TOKO</h1>
+
+<input
+id="searchInput"
+type="text"
+placeholder="Cari produk..."
+onkeyup="renderProduk()">
+
+<button
+class="cart-btn"
+onclick="toggleCart()">
+
+🛒 Keranjang
+
+<span id="cartCount">
+0
+</span>
+
+</button>
+
+</div>
+
+<div
+id="productList"
+class="product-grid">
+
+</div>
+
+</div>
+
+<!-- CART -->
+
+<div
+class="cart-box"
+id="cartBox">
+
+<div class="cart-header">
+
+<h2>Keranjang</h2>
+
+<button
+class="close-btn"
+onclick="toggleCart()">
+
+✕
+
+</button>
+
+</div>
+
+<input
+type="text"
+id="namaKasir"
+placeholder="Nama Kasir">
+
+<input
+type="text"
+id="namaPembeli"
+placeholder="Nama Pembeli">
+
+<select id="pembayaran">
+
+<option>
+Cash
+</option>
+
+<option>
+Transfer
+</option>
+
+</select>
+
+<div id="cartItems"></div>
+
+<div id="cartTotal"></div>
+
+<button
+class="checkout-btn"
+onclick="window.print()">
+
+🖨 Print Struk
+
+</button>
+
+<button
+class="reset-btn"
+onclick="resetCart()">
+
+Reset
+
+</button>
+
+</div>
+
+<!-- POPUP -->
+
+<div
+class="popup"
+id="popupBox">
+
+<div class="popup-content">
+
+<h2 id="popupNama">
+Produk
+</h2>
+
+<p id="popupHarga">
+Rp 0
+</p>
+
+<div class="popup-qty">
+
+<button onclick="popupKurang()">
+−
+</button>
+
+<input
+type="number"
+id="popupQty"
+value="1"
+min="1">
+
+<button onclick="popupTambah()">
++
+</button>
+
+</div>
+
+<button
+class="popup-btn"
+onclick="confirmAddCart()">
+
+Tambah
+
+</button>
+
+<button
+class="popup-close"
+onclick="closePopup()">
+
+Tutup
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
