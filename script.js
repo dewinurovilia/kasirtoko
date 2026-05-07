@@ -232,3 +232,101 @@ window.onload=function(){
 renderProduk();
 
 }
+/* TAMBAHKAN di script.js */
+
+async function checkoutKasir(){
+
+const kasir=document
+.getElementById('namaKasir')
+.value;
+
+const pembeli=document
+.getElementById('namaPembeli')
+.value;
+
+const pembayaran=document
+.getElementById('pembayaran')
+.value;
+
+if(!kasir){
+
+alert('Isi nama kasir');
+
+return;
+
+}
+
+if(cart.length===0){
+
+alert('Keranjang kosong');
+
+return;
+
+}
+
+let total=0;
+
+let items=[];
+
+cart.forEach(item=>{
+
+total+=item.subtotal;
+
+items.push({
+
+nama:item.nama,
+qty:item.qty,
+harga:item.harga,
+subtotal:item.subtotal
+
+});
+
+});
+
+/* DATA */
+
+const data={
+
+kasir:kasir,
+pembeli:pembeli,
+pembayaran:pembayaran,
+total:total,
+items:items
+
+};
+
+/* KIRIM GOOGLE SHEET */
+
+try{
+
+await fetch(
+
+'https://script.google.com/macros/s/AKfycbzMnG5Hs_lPVBNQ7eWXcn7l2tyrP9Nu-Y3WEQ_HF7gn9T61w24YTHxU5Ds3Q3-KopWlJg/exec',
+
+{
+method:'POST',
+mode:'no-cors',
+
+headers:{
+'Content-Type':'text/plain'
+},
+
+body:JSON.stringify(data)
+
+}
+
+);
+
+console.log('Rekap berhasil');
+
+}catch(error){
+
+console.log(error);
+
+}
+
+/* PRINT */
+
+window.print();
+
+}
