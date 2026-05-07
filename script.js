@@ -1,6 +1,8 @@
-/* script.js */
+/* =========================
+   DATA PRODUK
+========================= */
 
-const produk=[
+const produk = [
 
 {
 id:1,
@@ -26,18 +28,23 @@ harga:28000
 ];
 
 let kategoriAktif='Semua';
-
 let cart=[];
-
 let selectedProduct=null;
+
+/* =========================
+   FILTER KATEGORI
+========================= */
 
 function filterKategori(kat){
 
 kategoriAktif=kat;
-
 renderProduk();
 
 }
+
+/* =========================
+   RENDER PRODUK
+========================= */
 
 function renderProduk(){
 
@@ -67,9 +74,7 @@ filtered.forEach(item=>{
 
 list.innerHTML+=`
 
-<div
-class="produk-row"
-onclick="openPopup(${item.id})">
+<div class="produk-row" onclick="openPopup(${item.id})">
 
 <div class="kategori-badge">
 ${item.kategori}
@@ -97,49 +102,64 @@ Klik untuk transaksi
 
 }
 
+/* =========================
+   POPUP
+========================= */
+
 function openPopup(id){
 
 selectedProduct=
 produk.find(p=>p.id===id);
 
-popupNama.innerHTML=
+document.getElementById('popupNama').innerHTML=
 selectedProduct.nama;
 
-popupHarga.innerHTML=
+document.getElementById('popupHarga').innerHTML=
 'Rp '+selectedProduct.harga.toLocaleString();
 
-popupQty.value=1;
+document.getElementById('popupQty').value=1;
 
-popupBox.classList.add('active');
+document.getElementById('popupBox')
+.classList.add('active');
 
 }
 
 function closePopup(){
 
-popupBox.classList.remove('active');
+document.getElementById('popupBox')
+.classList.remove('active');
 
 }
 
 function popupTambah(){
 
-popupQty.value=
-parseInt(popupQty.value)+1;
+const qty=document.getElementById('popupQty');
+
+qty.value=parseInt(qty.value)+1;
 
 }
 
 function popupKurang(){
 
-if(popupQty.value>1){
+const qty=document.getElementById('popupQty');
 
-popupQty.value--;
+if(qty.value>1){
+
+qty.value--;
 
 }
 
 }
+
+/* =========================
+   TAMBAH KE CART
+========================= */
 
 function confirmAddCart(){
 
-const qty=parseInt(popupQty.value);
+const qty=parseInt(
+document.getElementById('popupQty').value
+);
 
 const existing=cart.find(
 i=>i.id===selectedProduct.id
@@ -170,7 +190,20 @@ closePopup();
 
 }
 
+/* =========================
+   UPDATE CART
+========================= */
+
 function updateCart(){
+
+const cartItems=
+document.getElementById('cartItems');
+
+const cartCount=
+document.getElementById('cartCount');
+
+const cartTotal=
+document.getElementById('cartTotal');
 
 cartItems.innerHTML='';
 
@@ -184,7 +217,9 @@ cartItems.innerHTML+=`
 
 <b>${item.nama}</b><br>
 
-${item.qty} x Rp ${item.harga.toLocaleString()}<br><br>
+${item.qty} x Rp ${item.harga.toLocaleString()}
+
+<br><br>
 
 <b>
 Rp ${item.subtotal.toLocaleString()}
@@ -204,7 +239,7 @@ cartTotal.innerHTML=`
 
 <h2 class="total-text">
 
-TOTAL:
+TOTAL :
 Rp ${total.toLocaleString()}
 
 </h2>
@@ -213,25 +248,28 @@ Rp ${total.toLocaleString()}
 
 }
 
+/* =========================
+   CART
+========================= */
+
 function toggleCart(){
 
-cartBox.classList.toggle('active');
+document.getElementById('cartBox')
+.classList.toggle('active');
 
 }
 
 function resetCart(){
 
 cart=[];
-
 updateCart();
 
 }
 
-window.onload=function(){
+/* =========================
+   CHECKOUT
+========================= */
 
-renderProduk();
-
-}
 async function checkoutKasir(){
 
 const nama=document
@@ -249,7 +287,6 @@ const pembayaran=document
 if(!nama){
 
 alert('Isi nama pembeli');
-
 return;
 
 }
@@ -257,7 +294,6 @@ return;
 if(cart.length===0){
 
 alert('Keranjang kosong');
-
 return;
 
 }
@@ -265,9 +301,7 @@ return;
 /* TOTAL */
 
 let total=0;
-
 let items=[];
-
 let struk='';
 
 cart.forEach(item=>{
@@ -282,13 +316,12 @@ harga:item.harga,
 subtotal:item.subtotal
 
 });
+
 struk+=`
 
 <div style="margin-bottom:8px;">
 
-<div>
-${item.nama}
-</div>
+<div>${item.nama}</div>
 
 <div>
 ${item.qty} x Rp ${item.harga.toLocaleString()}
@@ -343,33 +376,6 @@ Rp ${total.toLocaleString()}
 </div>
 
 `;
-<p>
-Tanggal :
-${new Date().toLocaleString()}
-</p>
-
-<p>
-Pembeli :
-${nama}
-</p>
-
-<p>
-Pembayaran :
-${pembayaran}
-</p>
-
-<hr>
-
-${struk}
-
-<hr>
-
-<h3>
-TOTAL :
-Rp ${total.toLocaleString()}
-</h3>
-
-`;
 
 /* DATA */
 
@@ -418,7 +424,16 @@ window.print();
 /* RESET */
 
 cart=[];
-
 updateCart();
+
+}
+
+/* =========================
+   LOAD
+========================= */
+
+window.onload=function(){
+
+renderProduk();
 
 }
