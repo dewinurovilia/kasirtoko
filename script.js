@@ -510,18 +510,24 @@ cartBox.innerHTML += `
 
 <div class="cart-item">
 
+<div class="cart-row">
+
+<div>
+
 <h4>${item.nama}</h4>
 
 <p>
 ${item.qty} x
-Rp ${Number(item.harga).toLocaleString()}
+Rp ${Number(item.harga).toLocaleString('id-ID')}
 </p>
 
-<b>
-Rp ${subtotal.toLocaleString()}
+</div>
+
+<b class="cart-subtotal">
+Rp ${subtotal.toLocaleString('id-ID')}
 </b>
 
-<br><br>
+</div>
 
 <button
 class="btn-hapus-modern"
