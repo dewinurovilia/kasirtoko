@@ -746,6 +746,9 @@ passwordBox.style.display='block';
 */
 
 }
+
+}
+
 window.cekPasswordStruk = async function(){
 
 const password =
