@@ -1000,16 +1000,23 @@ window.cetakStruk = async function(){
     `);
   });
 
-  printWindow.document.write(`
-      <div class="line"></div>
-      <div class="total">
-        <div class="total">
-        TOTAL : Rp ${total.toLocaleString()}
-        </div>
-        <br>
-        Bayar : Rp ${uangBayarGlobal.toLocaleString()}
-        <br>
-        Kembali : Rp ${kembalianGlobal.toLocaleString()}
+printWindow.document.write(`
+  <div class="item">
+
+    <div style="
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    ">
+
+      <div>
+        ${item.nama}<br>
+        ${item.qty} x Rp ${Number(item.harga).toLocaleString('id-ID')}
+      </div>
+
+      <b>
+        Rp ${subtotal.toLocaleString('id-ID')}
+      </b>
       <div class="line"></div>
       <div class="center">
         TERIMA KASIH<br>
