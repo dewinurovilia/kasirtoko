@@ -746,7 +746,6 @@ passwordBox.style.display='block';
 */
 
 }
-
 window.cekPasswordStruk = async function(){
 
 const password =
@@ -1487,4 +1486,6 @@ document.body.classList.add('dark');
 
 darkBtn.innerHTML = '☀️';
 
+}
+ 
 }
