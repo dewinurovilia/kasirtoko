@@ -1007,6 +1007,7 @@ printWindow.document.write(`
     display:flex;
     justify-content:space-between;
     gap:10px;
+    align-items:flex-start;
     ">
 
       <div>
@@ -1017,14 +1018,40 @@ printWindow.document.write(`
       <b>
         Rp ${subtotal.toLocaleString('id-ID')}
       </b>
-      <div class="line"></div>
-      <div class="center">
-        TERIMA KASIH<br>
-        Sudah Berbelanja Disini
-      </div>
-    </body>
-    </html>
-  `);
+
+    </div>
+
+  </div>
+
+  <div style="
+  border-top:1px dashed #000;
+  margin-top:8px;
+  padding-top:8px;
+  text-align:center;
+  font-size:11px;
+  line-height:1.6;
+  ">
+
+    Kode Belanja :
+    <b>
+    ${Date.now().toString().slice(-6)}
+    </b>
+
+    <br><br>
+
+    ✨ TERIMA KASIH ✨<br>
+
+    Sudah Berbelanja di<br>
+
+    <b>TOKO DEFANA</b>
+
+    <br><br>
+
+    Simpan Struk Ini Sebagai<br>
+    Bukti Pembayaran
+
+  </div>
+`);
 
   printWindow.document.close();
 
