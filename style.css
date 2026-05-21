@@ -2062,3 +2062,26 @@ font-size:13px;
 font-weight:600;
 
 }
+.cart-row{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:12px;
+}
+
+.cart-row h4{
+margin:0 0 4px;
+font-size:15px;
+}
+
+.cart-row p{
+margin:0;
+font-size:13px;
+color:#666;
+}
+
+.cart-subtotal{
+white-space:nowrap;
+font-size:15px;
+color:#16a34a;
+}
