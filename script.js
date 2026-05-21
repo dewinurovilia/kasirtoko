@@ -1050,7 +1050,7 @@ Kembali : Rp ${kembalianGlobal.toLocaleString()}
 <div class="line"></div>
 
 <div style="
-text-align:center;
+text-align:left;
 font-size:11px;
 line-height:1.6;
 ">
@@ -1064,9 +1064,7 @@ ${Date.now().toString().slice(-6)}
 
  TERIMA KASIH <br>
 
-Sudah Berbelanja di<br>
-
-<b>TOKO DEFANA</b>
+Sudah Berbelanja<br>
 
 <br><br>
 
