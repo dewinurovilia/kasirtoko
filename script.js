@@ -994,9 +994,15 @@ Ds. Dukohkidul Kec. Ngasem
 </div>
       </div>
       <div class="line"></div>
+      <div style="
+text-align:left;
+font-size:11px;
+line-height:1.6;
+">
       Nama : ${nama}<br>
       Pengiriman : ${pengiriman}<br>
       Pembayaran : ${pembayaran}<br>
+      Kode Belanja :<b>${Date.now().toString().slice(-6)}</b>
       <div class="line"></div>
   `);
 
@@ -1034,7 +1040,11 @@ Rp ${subtotal.toLocaleString('id-ID')}
 printWindow.document.write(`
 
 <div class="line"></div>
-
+<div style="
+text-align:left;
+font-size:11px;
+line-height:1.6;
+">
 <div class="total">
 TOTAL : Rp ${total.toLocaleString()}
 </div>
@@ -1050,26 +1060,15 @@ Kembali : Rp ${kembalianGlobal.toLocaleString()}
 <div class="line"></div>
 
 <div style="
-text-align:left;
+text-align:center;
 font-size:11px;
 line-height:1.6;
 ">
 
-Kode Belanja :
-<b>
-${Date.now().toString().slice(-6)}
-</b>
-
 <br><br>
-
  TERIMA KASIH <br>
-
 Sudah Berbelanja<br>
-
-<br><br>
-
 Simpan Struk Ini Sebagai Bukti Pembayaran
-
 </div>
 
 </body>
