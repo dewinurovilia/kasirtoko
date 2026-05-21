@@ -738,7 +738,9 @@ pengiriman.value==='Ambil Sendiri'
 ){
 
 passwordBox.style.display='block';
-
+/* password dimatikan sementara */
+/*
+passwordBox.style.display='block';
 }
 
 }
