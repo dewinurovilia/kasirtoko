@@ -989,69 +989,37 @@ window.cetakStruk = async function(){
       <div class="line"></div>
   `);
 
-  cart.forEach(item=>{
-    const subtotal = item.harga * item.qty;
-    printWindow.document.write(`
-      <div class="item">
-        ${item.nama}<br>
-        ${item.qty} x Rp ${Number(item.harga).toLocaleString()}<br>
-        <b>Rp ${subtotal.toLocaleString()}</b>
-      </div>
-    `);
-  });
+cart.forEach(item=>{
+
+const subtotal = item.harga * item.qty;
 
 printWindow.document.write(`
-  <div class="item">
 
-    <div style="
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    align-items:flex-start;
-    ">
+<div class="item">
 
-      <div>
-        ${item.nama}<br>
-        ${item.qty} x Rp ${Number(item.harga).toLocaleString('id-ID')}
-      </div>
+<div style="
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:flex-start;
+">
 
-      <b>
-        Rp ${subtotal.toLocaleString('id-ID')}
-      </b>
+<div>
+${item.nama}<br>
+${item.qty} x Rp ${Number(item.harga).toLocaleString('id-ID')}
+</div>
 
-    </div>
+<b>
+Rp ${subtotal.toLocaleString('id-ID')}
+</b>
 
-  </div>
+</div>
 
-  <div style="
-  border-top:1px dashed #000;
-  margin-top:8px;
-  padding-top:8px;
-  text-align:center;
-  font-size:11px;
-  line-height:1.6;
-  ">
+</div>
 
-    Kode Belanja :
-    <b>
-    ${Date.now().toString().slice(-6)}
-    </b>
-
-    <br><br>
-
-    ✨ TERIMA KASIH ✨<br>
-
-    Sudah Berbelanja di<br>
-
-    <b>TOKO DEFANA</b>
-
-    <br><br>
-
-    Simpan Struk Ini Sebagai<br>
-    Bukti Pembayaran
-
-  </div>
 `);
+
+});
 
   printWindow.document.close();
 
