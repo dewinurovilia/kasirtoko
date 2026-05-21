@@ -978,9 +978,18 @@ window.cetakStruk = async function(){
     </head>
     <body>
       <div class="center">
-        <b>TOKO DEFANA</b><br>
-         <b>Jln.Raya Kalitidu-Ngasem no.33<b>
-         <b>Ds. Dukohkidul Kec. Ngasem<b>
+        <div class="center">
+  <b>TOKO DEFANA</b><br>
+
+  <b>
+  Jln.Raya Kalitidu-Ngasem no.33
+  </b><br>
+
+  <b>
+  Ds. Dukohkidul Kec. Ngasem
+  </b>
+
+</div>
       </div>
       <div class="line"></div>
       Nama : ${nama}<br>
