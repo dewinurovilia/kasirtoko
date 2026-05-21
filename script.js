@@ -737,11 +737,13 @@ if(
 pengiriman.value==='Ambil Sendiri'
 ){
 
-passwordBox.style.display='block';
+btnStruk.style.display='flex';
+
 /* password dimatikan sementara */
+
 /*
 passwordBox.style.display='block';
-}
+*/
 
 }
 
