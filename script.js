@@ -1058,13 +1058,11 @@ Bayar : Rp ${uangBayarGlobal.toLocaleString()}
 Kembali : Rp ${kembalianGlobal.toLocaleString()}
 
 <div class="line"></div>
-
 <div style="
 text-align:center;
 font-size:11px;
 line-height:1.6;
 ">
-
 <br><br>
  TERIMA KASIH <br>
 Sudah Berbelanja<br>
