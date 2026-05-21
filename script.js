@@ -979,8 +979,8 @@ window.cetakStruk = async function(){
     <body>
       <div class="center">
         <b>TOKO DEFANA</b><br>
-        Jln.Raya Kalitidu-Ngasem no.33
-        Ds. Dukohkidul Kec. Ngasem
+         <b>Jln.Raya Kalitidu-Ngasem no.33<b>
+         <b>Ds. Dukohkidul Kec. Ngasem<b>
       </div>
       <div class="line"></div>
       Nama : ${nama}<br>
@@ -1020,7 +1020,53 @@ Rp ${subtotal.toLocaleString('id-ID')}
 `);
 
 });
+printWindow.document.write(`
 
+<div class="line"></div>
+
+<div class="total">
+TOTAL : Rp ${total.toLocaleString()}
+</div>
+
+<br>
+
+Bayar : Rp ${uangBayarGlobal.toLocaleString()}
+
+<br>
+
+Kembali : Rp ${kembalianGlobal.toLocaleString()}
+
+<div class="line"></div>
+
+<div style="
+text-align:center;
+font-size:11px;
+line-height:1.6;
+">
+
+Kode Belanja :
+<b>
+${Date.now().toString().slice(-6)}
+</b>
+
+<br><br>
+
+ TERIMA KASIH <br>
+
+Sudah Berbelanja di<br>
+
+<b>TOKO DEFANA</b>
+
+<br><br>
+
+Simpan Struk Ini Sebagai Bukti Pembayaran
+
+</div>
+
+</body>
+</html>
+
+`);
   printWindow.document.close();
 
   printWindow.focus();
