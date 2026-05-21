@@ -186,55 +186,25 @@ filtered.forEach(item=>{
 
 list.innerHTML += `
 
-<div class="product-card">
+<div class="product-card"
+onclick="openPopup('${item.id}')">
 
-<div class="product-info">
-
-<div class="product-category">
+<div class="product-left">
 ${item.kategori || 'Produk'}
+
+<small>
+stok : ${item.stok || 0}
+</small>
+
 </div>
 
 <div class="product-name">
 ${item.nama}
 </div>
 
-<div class="product-detail">
-Stock : ${item.stok || 0}
-</div>
-
 <div class="product-price">
-Rp ${Number(item.harga).toLocaleString()}
+Rp ${Number(item.harga).toLocaleString('id-ID')}
 </div>
-
-</div>
-
-${Number(item.stok) <= 0
-
-? `
-
-<button
-class="btn-stok-habis"
-disabled>
-
-Habis
-
-</button>
-
-`
-
-: `
-
-<button
-class="buy-btn"
-onclick="openPopup('${item.id}')">
-
-+
-
-</button>
-
-`
-
-}
 
 </div>
 
