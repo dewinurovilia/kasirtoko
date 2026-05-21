@@ -1499,37 +1499,7 @@ background:#1e293b;
 body.dark .bottom-menu{
 background:rgba(15,23,42,.95);
 }
-@media(min-width:769px){
 
-.bottom-menu{
-display:none;
-}
-
-}
-body.dark .search-box input{
-
-background:#1e293b;
-
-color:white;
-
-}
-
-body.dark .search-box input::placeholder{
-color:#cbd5e1;
-}
-body.dark .kategori-list button{
-
-background:
-rgba(255,255,255,0.06);
-
-}
-body.dark .cart-box{
-background:#111827;
-}
-
-body.dark .cart-header h2{
-color:white;
-}
 /* =====================================================
 PREMIUM EXTRA UI
 ===================================================== */
