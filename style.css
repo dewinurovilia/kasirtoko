@@ -2085,3 +2085,58 @@ white-space:nowrap;
 font-size:15px;
 color:#16a34a;
 }
+/* RESPONSIVE MOBILE */
+@media (max-width: 600px){
+
+  body{
+    zoom: 0.92;
+  }
+
+  .product-card{
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .product-name{
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .product-price{
+    font-size: 18px;
+  }
+
+  .product-category{
+    font-size: 14px;
+  }
+
+  .product-stock{
+    font-size: 14px;
+  }
+
+  .search-box{
+    height: 60px;
+    padding: 0 14px;
+  }
+
+  .search-box input{
+    font-size: 18px;
+  }
+
+  .navbar-bottom{
+    height: 70px;
+  }
+
+  .navbar-bottom span{
+    font-size: 13px;
+  }
+
+  .menu-btn,
+  .theme-btn{
+    width: 56px;
+    height: 56px;
+  }
+
+}
