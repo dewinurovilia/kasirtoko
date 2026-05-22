@@ -1739,8 +1739,6 @@ white-space:nowrap;
 font-size:15px;
 color:#16a34a;
 }
-
-}
 /* RESET */
 *{
   margin:0;
@@ -1822,4 +1820,7 @@ color:#16a34a;
   font-weight:700;
   color:#16a34a;
   white-space:nowrap;
+}
+body{
+  font-family:'Poppins',sans-serif;
 }
