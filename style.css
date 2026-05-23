@@ -1765,3 +1765,43 @@ border-radius:18px;
 
     font-size:18px !important;
 }
+.search-row{
+
+display:flex;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.search-row .search-box{
+
+flex:1;
+
+margin-bottom:0;
+
+}
+
+.scan-search-btn{
+
+width:60px;
+
+border:none;
+
+border-radius:14px;
+
+background:
+linear-gradient(
+135deg,
+#16a34a,
+#22c55e
+);
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+
+}
