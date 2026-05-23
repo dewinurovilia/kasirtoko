@@ -1575,30 +1575,53 @@ window.addEventListener("load", ()=>{
 });
 
 /* LOGIN */
-signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-)
-.then((userCredential)=>{
 
-    const user = userCredential.user;
+function loginKasir(){
 
-    localStorage.setItem(
-        "kasirNama",
-        nama
-    );
+    const nama =
+    document.getElementById("loginNama").value;
 
-    loginOverlay.style.display = "none";
+    const email =
+    document.getElementById("loginEmail").value;
 
-    isiNamaKasir(nama);
+    const password =
+    document.getElementById("loginPassword").value;
 
-})
-.catch((error)=>{
+    if(
+        nama == "" ||
+        email == "" ||
+        password == ""
+    ){
+        alert("Lengkapi login");
+        return;
+    }
 
-    alert(error.message);
+    signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    )
+    .then((userCredential)=>{
 
-});
+        const user = userCredential.user;
+
+        localStorage.setItem(
+            "kasirNama",
+            nama
+        );
+
+        loginOverlay.style.display = "none";
+
+        isiNamaKasir(nama);
+
+    })
+    .catch((error)=>{
+
+        alert(error.message);
+
+    });
+
+}
 
 /* ISI NAMA KASIR */
 
@@ -1627,3 +1650,8 @@ function logoutKasir(){
 
     location.reload();
 }
+
+/* GLOBAL BUTTON */
+
+window.loginKasir = loginKasir;
+window.logoutKasir = logoutKasir;
