@@ -1530,76 +1530,134 @@ TAMBAHKAN PALING BAWAH
 
 .cart-item{
 
-    padding:14px !important;
+background:#1e293b;
 
-    border-radius:18px !important;
+border-radius:18px;
 
-    margin-bottom:12px !important;
+padding:12px;
+
+margin-bottom:10px;
+
 }
 
-/* NAMA ITEM */
+/* NAMA PRODUK */
 
 .cart-item h3{
 
-    font-size:18px !important;
+font-size:18px;
 
-    margin-bottom:4px !important;
+color:white;
+
+margin-bottom:4px;
+
+line-height:1.2;
+
 }
 
 /* DETAIL */
 
 .cart-item p{
 
-    font-size:14px !important;
+color:#cbd5e1;
+
+font-size:13px;
+
+margin-bottom:2px;
+
 }
 
 /* SUBTOTAL */
 
 .cart-item .subtotal{
 
-    font-size:20px !important;
+font-size:20px;
 
-    margin-top:6px !important;
+font-weight:700;
+
+color:white;
+
+margin-top:4px;
+
 }
 
 /* BUTTON HAPUS */
 
 .btn-hapus-modern{
 
-    height:38px !important;
+margin-top:8px;
 
-    padding:0 14px !important;
+border:none;
 
-    border-radius:12px !important;
+background:
+linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
 
-    font-size:14px !important;
-}
+color:white;
 
-/* TOTAL BOX */
+height:36px;
 
-.total-box{
+padding:0 14px;
 
-    padding:14px !important;
+border-radius:12px;
 
-    border-radius:18px !important;
+font-size:13px;
+
+font-weight:700;
+
+cursor:pointer;
+
 }
 
 /* TOTAL */
 
 .total-text{
 
-    font-size:22px !important;
+color:white;
+
+font-size:18px;
+
+font-weight:700;
+
 }
 
 /* WARNING */
 
 .whatsapp-info{
 
-    font-size:15px !important;
+background:#fff1f2;
 
-    padding:14px !important;
+color:#dc2626;
 
-    border-radius:16px !important;
+font-size:14px;
+
+font-weight:700;
+
+border-radius:14px;
+
+padding:14px;
+
+text-align:center;
+
+margin-top:10px;
+
+line-height:1.4;
+
+}
+
+/* BUTTON */
+
+.checkout-btn,
+.reset-btn{
+
+height:52px;
+
+font-size:18px;
+
+border-radius:18px;
+
 }
 
 /* BUTTON CETAK */
