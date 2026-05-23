@@ -1447,3 +1447,263 @@ CART MODERN FINAL
 
     margin-top:14px;
 }
+
+/* =========================================
+FIX SIZE FINAL TOKO DEFANA
+TAMBAHKAN PALING BAWAH
+========================================= */
+
+/* CARD PRODUK */
+
+.product-card{
+
+    min-height:92px !important;
+
+    padding:14px 16px !important;
+
+    border-radius:22px !important;
+}
+
+/* NAMA */
+
+.product-name{
+
+    font-size:17px !important;
+
+    line-height:1.2 !important;
+}
+
+/* HARGA */
+
+.product-price{
+
+    font-size:16px !important;
+}
+
+/* KATEGORI */
+
+.product-category{
+
+    font-size:13px !important;
+}
+
+/* STOK */
+
+.product-stock{
+
+    font-size:12px !important;
+}
+
+/* SEARCH */
+
+.search-box input{
+
+    height:52px !important;
+
+    border-radius:18px !important;
+
+    font-size:15px !important;
+}
+
+/* BUTTON CLEAR */
+
+.clear-search{
+
+    width:44px !important;
+    height:44px !important;
+
+    border-radius:14px !important;
+
+    font-size:22px !important;
+}
+
+/* CART */
+
+.cart-box{
+
+    padding:16px !important;
+
+    background:#0f172a !important;
+}
+
+/* ITEM KERANJANG */
+
+.cart-item{
+
+    padding:14px !important;
+
+    border-radius:18px !important;
+
+    margin-bottom:12px !important;
+}
+
+/* NAMA ITEM */
+
+.cart-item h3{
+
+    font-size:18px !important;
+
+    margin-bottom:4px !important;
+}
+
+/* DETAIL */
+
+.cart-item p{
+
+    font-size:14px !important;
+}
+
+/* SUBTOTAL */
+
+.cart-item .subtotal{
+
+    font-size:20px !important;
+
+    margin-top:6px !important;
+}
+
+/* BUTTON HAPUS */
+
+.btn-hapus-modern{
+
+    height:38px !important;
+
+    padding:0 14px !important;
+
+    border-radius:12px !important;
+
+    font-size:14px !important;
+}
+
+/* TOTAL BOX */
+
+.total-box{
+
+    padding:14px !important;
+
+    border-radius:18px !important;
+}
+
+/* TOTAL */
+
+.total-text{
+
+    font-size:22px !important;
+}
+
+/* WARNING */
+
+.whatsapp-info{
+
+    font-size:15px !important;
+
+    padding:14px !important;
+
+    border-radius:16px !important;
+}
+
+/* BUTTON CETAK */
+
+.checkout-btn{
+
+    height:54px !important;
+
+    border-radius:18px !important;
+
+    font-size:18px !important;
+}
+
+/* BUTTON RESET */
+
+.reset-btn{
+
+    height:54px !important;
+
+    border-radius:18px !important;
+
+    font-size:18px !important;
+}
+
+/* POPUP */
+
+.popup-content{
+
+    max-width:300px !important;
+
+    padding:22px 18px !important;
+
+    border-radius:24px !important;
+}
+
+/* TITLE POPUP */
+
+.popup-content h2{
+
+    font-size:20px !important;
+}
+
+/* INPUT POPUP */
+
+.popup-content input{
+
+    height:52px !important;
+
+    border-radius:16px !important;
+
+    font-size:16px !important;
+}
+
+/* PLUS MINUS */
+
+.popup-qty button{
+
+    width:46px !important;
+    height:46px !important;
+
+    border-radius:14px !important;
+
+    font-size:24px !important;
+}
+
+/* INPUT JUMLAH */
+
+.popup-qty input{
+
+    width:76px !important;
+    height:46px !important;
+
+    border-radius:14px !important;
+
+    font-size:18px !important;
+}
+
+/* BUTTON POPUP */
+
+.popup-btn,
+.popup-close{
+
+    height:52px !important;
+
+    border-radius:16px !important;
+
+    font-size:17px !important;
+}
+
+/* MENU BAWAH */
+
+.bottom-menu{
+
+    height:72px !important;
+}
+
+.bottom-menu button{
+
+    font-size:11px !important;
+}
+
+/* ICON MENU */
+
+.bottom-menu span{
+
+    font-size:18px !important;
+}
