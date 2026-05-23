@@ -573,33 +573,55 @@ onValue(
 ref(db,"kategori"),
 (snapshot)=>{
 
-const data =
-snapshot.val();
+const data = snapshot.val();
 
-/* RESET DROPDOWN */
+/* RESET */
 
 select.innerHTML =
 '<option value="">Pilih Kategori</option>';
 
-kategoriList = [];
+/* AMBIL DARI PRODUK LAMA */
+
+kategoriList = [
+...new Set(
+
+produk
+.map(item => item.kategori)
+.filter(k => k)
+
+)
+
+];
+
+/* TAMBAH DARI FIREBASE kategori */
 
 if(data){
 
 Object.values(data).forEach(item=>{
 
+if(!kategoriList.includes(item.nama)){
+
 kategoriList.push(item.nama);
+
+}
+
+});
+
+}
+
+/* TAMPILKAN SEMUA */
+
+kategoriList.forEach(kategori=>{
 
 select.innerHTML += `
 
-<option value="${item.nama}">
-${item.nama}
+<option value="${kategori}">
+${kategori}
 </option>
 
 `;
 
 });
-
-}
 
 });
 
