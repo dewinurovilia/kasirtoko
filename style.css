@@ -952,3 +952,312 @@ RESPONSIVE
         font-size:12px;
     }
 }
+/* =========================================
+FIX FINAL UI TOKO DEFANA
+========================================= */
+
+/* BODY */
+
+body{
+    background:#111827;
+}
+
+/* TOPBAR */
+
+.topbar{
+    background:#111827;
+}
+
+/* SEARCH */
+
+.search-box{
+    position:relative;
+}
+
+.search-box input{
+
+    background:#1e293b !important;
+
+    color:white;
+
+    height:58px;
+
+    border-radius:22px;
+
+    padding-right:70px;
+}
+
+/* CLEAR SEARCH */
+
+.clear-search{
+
+    position:absolute;
+
+    right:26px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:52px;
+    height:52px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:white;
+
+    font-size:26px;
+
+    z-index:10;
+}
+
+/* CARD */
+
+.product-card{
+
+    background:#1e293b;
+
+    border-radius:28px;
+
+    min-height:110px;
+
+    box-shadow:none;
+}
+
+/* NAMA */
+
+.product-name{
+    color:white;
+}
+
+/* KATEGORI */
+
+.product-category,
+.product-stock{
+    color:#cbd5e1;
+}
+
+/* HARGA */
+
+.product-price{
+    color:#16a34a;
+}
+
+/* POPUP */
+
+.popup{
+
+    backdrop-filter:blur(10px);
+
+    background:rgba(0,0,0,.45);
+}
+
+/* POPUP BOX */
+
+.popup-content{
+
+    background:#111827;
+
+    border-radius:30px;
+
+    padding:28px 22px;
+
+    color:white;
+}
+
+/* INPUT POPUP */
+
+.popup-content input{
+
+    background:#1e293b;
+
+    color:white;
+
+    border:none;
+
+    height:60px;
+
+    border-radius:20px;
+}
+
+/* BUTTON PLUS MINUS */
+
+.popup-qty{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+
+    margin:18px 0;
+}
+
+.popup-qty button{
+
+    width:54px;
+    height:54px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:30px;
+
+    font-weight:700;
+}
+
+/* INPUT JUMLAH */
+
+.popup-qty input{
+
+    width:90px;
+    height:54px;
+
+    background:#1e293b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-size:22px;
+}
+
+/* BUTTON */
+
+.popup-btn{
+
+    height:58px;
+
+    border-radius:20px;
+
+    font-size:20px;
+}
+
+.popup-close{
+
+    height:58px;
+
+    border-radius:20px;
+
+    font-size:20px;
+}
+
+/* CART */
+
+.cart-box{
+
+    background:#111827;
+}
+
+/* ITEM CART */
+
+.cart-row{
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+}
+
+/* TOTAL */
+
+.total-text{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:800;
+}
+
+/* BUTTON CHECKOUT */
+
+.checkout-btn{
+
+    height:60px;
+
+    border-radius:22px;
+
+    font-size:22px;
+}
+
+/* RESET */
+
+.reset-btn{
+
+    height:60px;
+
+    border-radius:22px;
+
+    font-size:22px;
+}
+
+/* MENU BAWAH */
+
+.bottom-menu{
+
+    background:#111827;
+
+    border-top:1px solid #1e293b;
+}
+
+.bottom-menu button{
+    color:white;
+}
+
+/* SCROLL SUPER RINGAN */
+
+*{
+    scroll-behavior:smooth;
+}
+
+.product-card,
+.popup-content,
+.cart-row,
+button,
+input{
+    will-change:auto !important;
+    transform:none !important;
+    transition:.15s !important;
+}
+
+/* HILANGKAN EFEK BERAT */
+
+.product-card:hover,
+button:hover{
+    transform:none !important;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:480px){
+
+    .product-card{
+
+        min-height:100px;
+    }
+
+    .product-name{
+
+        font-size:18px;
+    }
+
+    .product-price{
+
+        font-size:18px;
+    }
+}
