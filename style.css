@@ -1391,3 +1391,7 @@ AUTO DARK MODE IKUT TEMA HP
     }
 
 }
+.cart-float,
+#cartFloat{
+    display:none !important;
+}
