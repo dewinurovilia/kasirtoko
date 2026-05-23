@@ -1,38 +1,27 @@
-const CACHE_NAME = 'toko-defana-v2';
+self.addEventListener("install",(event)=>{
 
-const urlsToCache = [
+self.skipWaiting();
 
-'./',
-'./index.html',
-'./style.css',
-'./script.js'
-];
+});
 
-self.addEventListener('install', event => {
+self.addEventListener("activate",(event)=>{
 
 event.waitUntil(
-
-caches.open(CACHE_NAME)
-
-.then(cache => {
-
-return cache.addAll(urlsToCache);
-
-})
-
+clients.claim()
 );
 
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch",(event)=>{
 
 event.respondWith(
 
-caches.match(event.request)
+fetch(event.request)
+.catch(()=>{
 
-.then(response => {
-
-return response || fetch(event.request);
+return caches.match(
+event.request
+);
 
 })
 
