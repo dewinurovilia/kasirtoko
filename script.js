@@ -164,11 +164,10 @@ const cocokSearch =
 
 nama.includes(search)
 ||
-kategori.includes(search);
-
-return cocokKategori && cocokSearch;
-
-});
+kategori.includes(search)
+||
+(item.id || '')
+.includes(search);
 
 if(filtered.length===0){
 
@@ -1659,6 +1658,64 @@ renderProduk();
 html5QrCode.stop();
 
 reader.style.display = "none";
+
+},
+
+(errorMessage)=>{}
+
+);
+
+}
+catch(err){
+
+console.log(err);
+
+alert("Kamera gagal dibuka");
+
+}
+
+}
+window.scanCariProduk = async function(){
+
+const reader =
+document.getElementById("reader");
+
+reader.style.display = "block";
+
+const html5QrCode =
+new Html5Qrcode("reader");
+
+try{
+
+await html5QrCode.start(
+
+{
+facingMode:"environment"
+},
+
+{
+fps:10,
+qrbox:250
+},
+
+(decodedText)=>{
+
+/* ISI INPUT PENCARIAN */
+
+document.getElementById(
+"searchInput"
+).value = decodedText;
+
+/* CARI PRODUK */
+
+renderProduk();
+
+/* STOP CAMERA */
+
+html5QrCode.stop();
+
+reader.style.display =
+"none";
 
 },
 
