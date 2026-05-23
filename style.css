@@ -1309,3 +1309,85 @@ SIDEBAR MODERN PUTIH
 
     cursor:pointer;
 }
+/* =========================================
+AUTO DARK MODE IKUT TEMA HP
+========================================= */
+
+@media (prefers-color-scheme: dark){
+
+    body{
+        background:#0f172a;
+        color:white;
+    }
+
+    .topbar{
+        background:#111827;
+    }
+
+    .product-card{
+        background:#1e293b;
+    }
+
+    .product-name{
+        color:white;
+    }
+
+    .product-category,
+    .product-stock{
+        color:#cbd5e1;
+    }
+
+    .product-price{
+        color:#22c55e;
+    }
+
+    .search-box{
+        background:#1e293b;
+    }
+
+    .search-box input{
+        background:transparent;
+        color:white;
+    }
+
+    .search-box input::placeholder{
+        color:#94a3b8;
+    }
+
+    .bottom-menu{
+        background:#111827;
+        border-top:1px solid #334155;
+    }
+
+    .bottom-menu button{
+        color:white;
+    }
+
+    .sidebar{
+        background:#111827;
+    }
+
+    .sidebar-title{
+        color:white;
+    }
+
+    .kategori-list button{
+        background:#1e293b;
+        color:white;
+    }
+
+    .cart-box{
+        background:#111827;
+    }
+
+    .popup-content{
+        background:#111827;
+        color:white;
+    }
+
+    .popup-content input{
+        background:#1e293b;
+        color:white;
+    }
+
+}
