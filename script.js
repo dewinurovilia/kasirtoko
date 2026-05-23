@@ -1550,4 +1550,80 @@ document.body.classList.add('dark');
 darkBtn.innerHTML = '☀️';
 
 }
- 
+/* =========================================
+LOGIN KASIR
+========================================= */
+
+const loginOverlay =
+document.getElementById("loginOverlay");
+
+/* AUTO LOGIN */
+
+window.addEventListener("load", ()=>{
+
+    const kasir =
+    localStorage.getItem("kasirNama");
+
+    if(kasir){
+
+        loginOverlay.style.display = "none";
+
+        isiNamaKasir(kasir);
+
+    }
+
+});
+
+/* LOGIN */
+signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+)
+.then((userCredential)=>{
+
+    const user = userCredential.user;
+
+    localStorage.setItem(
+        "kasirNama",
+        nama
+    );
+
+    loginOverlay.style.display = "none";
+
+    isiNamaKasir(nama);
+
+})
+.catch((error)=>{
+
+    alert("Login gagal");
+
+});
+
+/* ISI NAMA KASIR */
+
+function isiNamaKasir(nama){
+
+    const namaPemesan =
+    document.getElementById("namaPemesan");
+
+    if(namaPemesan){
+
+        namaPemesan.value = nama;
+    }
+}
+
+/* LOGOUT */
+
+function logoutKasir(){
+
+    localStorage.removeItem(
+        "kasirNama"
+    );
+
+    localStorage.removeItem(
+        "kasirEmail"
+    );
+
+    location.reload();
+}
