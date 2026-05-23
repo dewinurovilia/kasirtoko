@@ -1625,3 +1625,54 @@ function logoutKasir(){
 
 window.loginKasir = loginKasir;
 window.logoutKasir = logoutKasir;
+window.scanCariProduk = async function(){
+
+const reader =
+document.getElementById("reader");
+
+reader.style.display = "block";
+
+const html5QrCode =
+new Html5Qrcode("reader");
+
+try{
+
+await html5QrCode.start(
+
+{
+facingMode:"environment"
+},
+
+{
+fps:10,
+qrbox:250
+},
+
+(decodedText)=>{
+
+document.getElementById(
+"search"
+).value = decodedText;
+
+renderProduk();
+
+html5QrCode.stop();
+
+reader.style.display = "none";
+
+},
+
+(errorMessage)=>{}
+
+);
+
+}
+catch(err){
+
+console.log(err);
+
+alert("Kamera gagal dibuka");
+
+}
+
+}
