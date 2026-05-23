@@ -1141,29 +1141,18 @@ reader.style.display = "block";
 
 try{
 
-const cameras =
-await Html5Qrcode.getCameras();
-
-if(cameras.length === 0){
-
-alert("Kamera tidak ditemukan");
-
-return;
-
-}
-
 const html5QrCode =
 new Html5Qrcode("reader");
 
 await html5QrCode.start(
 
 {
-facingMode: "environment"
+facingMode:"environment"
 },
 
 {
-fps: 10,
-qrbox: 250
+fps:10,
+qrbox:250
 },
 
 (decodedText)=>{
@@ -1180,14 +1169,18 @@ reader.style.display = "none";
 
 },
 
-(errorMessage)=>{}
+(errorMessage)=>{
+
+}
 
 );
+
+}
 catch(err){
 
 console.log(err);
 
-alert("Gagal membuka kamera");
+alert("Kamera gagal dibuka");
 
 }
 
