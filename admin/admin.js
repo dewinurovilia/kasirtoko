@@ -321,7 +321,7 @@ produk.find(p => p.id == id);
 
 if(!item.stok){
 
-item.stock = 0;
+item.stok = 0;
 
 }
 
@@ -402,7 +402,7 @@ document.getElementById(
 ).value = decodedText;
 
 showToast(
-"Barcode berhasil di scan"
+alert("Barcode berhasil di scan");
 );
 
 html5QrCode.stop();
