@@ -430,3 +430,12 @@ console.log(err);
 }
 
 }
+window.cariProdukBarcode = function(barcode){
+
+document.getElementById(
+"barcodeProduk"
+).value = barcode;
+
+showToast("Barcode berhasil di scan");
+
+}
