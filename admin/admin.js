@@ -8,7 +8,13 @@ onAuthStateChanged,
 signOut
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+import {
+getDatabase,
+ref,
+onValue,
+set
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 /* =========================
 FIREBASE CONFIG
 ========================= */
@@ -28,7 +34,7 @@ apiKey: "AIzaSyCvco9APepbM1YRhDLGzE2uxFBVtLL2NLs",
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-
+const db = getDatabase(app);
 /* =========================
 LOGIN ADMIN
 ========================= */
@@ -114,37 +120,23 @@ DATA PRODUK
 
 let produk = [];
 
-/* =========================
-LOAD STORAGE
-========================= */
+onValue(
+ref(db,"produk"),
+(snapshot)=>{
 
-const dataStorage =
-localStorage.getItem("produk");
+const data =
+snapshot.val();
 
-if(dataStorage){
+if(data){
 
-produk = JSON.parse(dataStorage);
-
-}
-
-/* =========================
-LOAD PRODUK JSON
-========================= */
-
-fetch("produk.json")
-.then(res => res.json())
-.then(data => {
-
-if(produk.length === 0){
-
-produk = data;
-
-}
+produk =
+Object.values(data);
 
 renderProduk();
 
-});
+}
 
+});
 /* =========================
 RENDER PRODUK
 ========================= */
