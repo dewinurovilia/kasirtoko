@@ -62,39 +62,6 @@ TOPBAR
     text-overflow:ellipsis;
 }
 
-/* BUTTON */
-
-.menu-toggle,
-#darkModeToggle{
-
-    width:46px;
-    height:46px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #2563eb,
-    #3b82f6
-    );
-
-    color:white;
-
-    font-size:22px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 4px 12px rgba(37,99,235,.25);
-}
-
 /* =========================================
 SEARCH MINI MODERN
 ========================================= */
@@ -394,44 +361,6 @@ POPUP
     padding:24px 20px;
 
     text-align:center;
-}
-
-/* =========================================
-DARK MODE
-========================================= */
-
-body.dark{
-
-    background:#0f172a;
-}
-
-body.dark .topbar,
-body.dark .bottom-menu{
-
-    background:#1e293b;
-}
-
-body.dark .product-card{
-
-    background:#1e293b;
-}
-
-body.dark .product-name{
-
-    color:white;
-}
-
-body.dark .product-category,
-body.dark .product-stock{
-
-    color:#cbd5e1;
-}
-
-body.dark .search-box input{
-
-    background:#1e293b;
-
-    color:white;
 }
 
 /* =========================================
