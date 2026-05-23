@@ -419,7 +419,7 @@ onkeyup="renderProduk()">
 <div class="toast" id="toast">
 <span id="toastText"></span>
 </div>
-
+<script src="https://unpkg.com/html5-qrcode"></script>
 <script type="module">
 
 import { initializeApp }
@@ -659,7 +659,8 @@ return;
 /* BUAT ID PRODUK */
 
 const idProduk =
-'PRD-' + Date.now();
+document.getElementById("barcodeProduk").value
+|| 'PRD-' + Date.now();
 
 const produkBaru = {
 
@@ -694,7 +695,10 @@ showToast(
 );
 
 }
-
+document.getElementById("barcodeProduk").value = "";
+document.getElementById("namaProduk").value = "";
+document.getElementById("hargaProduk").value = "";
+document.getElementById("stokProduk").value = "";
 /* LOAD PRODUK */
 
 function loadProduk(){
@@ -1127,6 +1131,57 @@ toast.classList.remove("show");
 },2000);
 
 }
+window.openCameraScan = async function(){
+
+const reader =
+document.getElementById("reader");
+
+reader.style.display = "block";
+
+const html5QrCode =
+new Html5Qrcode("reader");
+
+try{
+
+await html5QrCode.start(
+
+{ facingMode: "environment" },
+
+{
+fps:10,
+qrbox:250
+},
+
+(decodedText)=>{
+
+document.getElementById(
+"barcodeProduk"
+).value = decodedText;
+
+showToast("Barcode berhasil di scan");
+
+html5QrCode.stop();
+
+reader.style.display = "none";
+
+},
+
+(errorMessage)=>{}
+
+);
+
+}
+catch(err){
+
+alert(
+"Kamera gagal dibuka"
+);
+
+console.log(err);
+
+}
+
+}
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
@@ -1140,6 +1195,5 @@ border-radius:20px;
 margin-top:15px;
 ">
 </div>
-<script src="https://unpkg.com/html5-qrcode"></script>
 </body>
 </html>
