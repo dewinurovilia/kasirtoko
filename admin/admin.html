@@ -1137,20 +1137,42 @@ window.openCameraScan = async function(){
 const reader =
 document.getElementById("reader");
 
+/* TAMPILKAN BOX */
+
 reader.style.display = "block";
+
+try{
+
+/* AMBIL DEVICE */
+
+const cameras =
+await Html5Qrcode.getCameras();
+
+if(cameras.length === 0){
+
+alert("Kamera tidak ditemukan");
+
+return;
+
+}
+
+/* BUAT SCANNER */
 
 const html5QrCode =
 new Html5Qrcode("reader");
 
-try{
+/* START */
 
 await html5QrCode.start(
 
-{ facingMode: "environment" },
+cameras[0].id,
 
 {
 fps:10,
-qrbox:250
+qrbox:{
+width:250,
+height:250
+}
 },
 
 (decodedText)=>{
@@ -1159,11 +1181,14 @@ document.getElementById(
 "barcodeProduk"
 ).value = decodedText;
 
-showToast("Barcode berhasil di scan");
+alert("Barcode berhasil discan");
+
+/* STOP */
 
 html5QrCode.stop();
 
-reader.style.display = "none";
+reader.style.display =
+"none";
 
 },
 
@@ -1174,14 +1199,11 @@ reader.style.display = "none";
 }
 catch(err){
 
-alert(
-"Kamera gagal dibuka"
-);
-
 console.log(err);
 
-}
+alert("Gagal membuka kamera");
 
+}
 }
 </script>
 
