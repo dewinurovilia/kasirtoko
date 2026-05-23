@@ -55,7 +55,7 @@ email,
 password
 );
 
-document.getElementById("loginBox")
+document.getElementById("loginPage")
 .style.display = "none";
 
 document.getElementById("dashboard")
