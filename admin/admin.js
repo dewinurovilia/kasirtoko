@@ -380,51 +380,61 @@ JSON.stringify(produk)
 );
 
 }
-window.startScan = function(){
+window.openCameraScan =
+async function(){
 
 const reader =
 document.getElementById(
 "reader"
 );
 
-reader.style.display = "block";
+reader.style.display =
+"block";
 
-const scanner =
-new Html5QrcodeScanner(
+reader.innerHTML = "";
 
-"reader",
+const html5QrCode =
+new Html5Qrcode("reader");
+
+try{
+
+await html5QrCode.start(
+
+{ facingMode: "environment" },
 
 {
 fps:10,
 qrbox:250
-}
+},
 
+(decodedText)=>{
+
+cariProdukBarcode(
+decodedText
 );
 
-scanner.render(
-
-function(decodedText){
-
-/* MASUKKAN KE INPUT */
-
-document.getElementById(
-"barcodeProduk"
-).value =
-decodedText;
-
-/* TUTUP CAMERA */
-
-scanner.clear();
+html5QrCode.stop();
 
 reader.style.display =
 "none";
 
-showToast(
-"Barcode berhasil discan"
-);
+},
+
+(errorMessage)=>{
 
 }
 
 );
+
+}
+catch(err){
+
+alert(
+"Kamera tidak bisa dibuka"
+);
+
+console.log(err);
+
+}
 
 }
