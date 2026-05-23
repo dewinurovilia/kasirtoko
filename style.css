@@ -1,20 +1,22 @@
 /* =========================================
-TOKO DEFANA CLEAN UI FINAL
+TOKO DEFANA SUPER CLEAN FINAL
+COPY PASTE SEMUA
 ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* RESET */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+
+    -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
-    width:100%;
-    min-height:100%;
-    overflow-x:hidden;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -24,6 +26,8 @@ body{
     background:#edf4ff;
 
     color:#0f172a;
+
+    overflow-x:hidden;
 }
 
 /* =========================================
@@ -48,6 +52,8 @@ TOPBAR
     background:#edf4ff;
 }
 
+/* JUDUL */
+
 .topbar h1{
 
     flex:1;
@@ -62,8 +68,33 @@ TOPBAR
     text-overflow:ellipsis;
 }
 
+/* MENU BUTTON */
+
+.menu-toggle{
+
+    width:54px;
+    height:54px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+    );
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
 /* =========================================
-SEARCH MINI MODERN
+SEARCH
 ========================================= */
 
 .search-box{
@@ -71,30 +102,20 @@ SEARCH MINI MODERN
     width:100%;
 
     padding:10px 14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.search-box form,
-.search-box-container{
-
-    width:100%;
 }
 
 .search-box input{
 
     width:100%;
 
-    height:46px;
+    height:50px;
 
     border:none;
     outline:none;
 
     border-radius:999px;
 
-    background:#ffffff;
+    background:white;
 
     padding:0 18px;
 
@@ -104,28 +125,41 @@ SEARCH MINI MODERN
     0 2px 8px rgba(0,0,0,.05);
 }
 
-/* PLACEHOLDER */
-
 .search-box input::placeholder{
 
     color:#9ca3af;
 }
 
-/* FOCUS */
+/* CLEAR SEARCH */
 
-.search-box input:focus{
+.clear-search{
 
-    box-shadow:
-    0 0 0 3px rgba(37,99,235,.12);
+    position:absolute;
+
+    right:22px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-size:24px;
+
+    cursor:pointer;
 }
 
 /* =========================================
-LIST PRODUK
+PRODUK
 ========================================= */
 
 #productList{
-
-    width:100%;
 
     display:flex;
     flex-direction:column;
@@ -135,7 +169,7 @@ LIST PRODUK
     padding:0 14px 100px;
 }
 
-/* CARD PRODUK */
+/* CARD */
 
 .product-card{
 
@@ -145,9 +179,9 @@ LIST PRODUK
 
     border-radius:24px;
 
-    padding:16px 18px;
+    padding:16px;
 
-    min-height:95px;
+    min-height:92px;
 
     display:flex;
     align-items:center;
@@ -155,51 +189,38 @@ LIST PRODUK
 
     gap:12px;
 
-    overflow:hidden;
-
     box-shadow:
-    0 4px 12px rgba(0,0,0,.05);
+    0 2px 6px rgba(0,0,0,.04);
 }
 
 /* STOK HABIS */
 
 .product-card.habis{
 
-    background:#eef1f5;
+    opacity:.7;
 
-    opacity:.75;
+    background:#eef1f5;
 }
 
-/* KIRI */
+/* LEFT */
 
 .product-left{
 
     width:28%;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
 }
 
-/* TENGAH */
+/* CENTER */
 
 .product-center{
 
     flex:1;
-
-    display:flex;
-    align-items:center;
 }
 
-/* KANAN */
+/* RIGHT */
 
 .product-right{
 
     width:30%;
-
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
 
     text-align:right;
 }
@@ -210,11 +231,9 @@ LIST PRODUK
 
     font-size:14px;
 
-    color:#8b8b8b;
+    color:#777;
 
     margin-bottom:4px;
-
-    line-height:1.2;
 }
 
 /* STOK */
@@ -223,36 +242,29 @@ LIST PRODUK
 
     font-size:13px;
 
+    color:#666;
+
     font-weight:600;
-
-    color:#777;
-}
-
-.product-stock.habis{
-
-    color:#ef4444;
 }
 
 /* NAMA */
 
 .product-name{
 
-    font-size:19px;
+    font-size:20px;
 
     font-weight:700;
 
     line-height:1.2;
 
     color:#0f172a;
-
-    word-break:break-word;
 }
 
 /* HARGA */
 
 .product-price{
 
-    font-size:19px;
+    font-size:20px;
 
     font-weight:800;
 
@@ -318,6 +330,162 @@ BOTTOM MENU
 }
 
 /* =========================================
+SIDEBAR
+========================================= */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:82%;
+    max-width:320px;
+
+    height:100vh;
+
+    background:white;
+
+    z-index:999999;
+
+    padding:22px 18px;
+
+    overflow-y:auto;
+
+    transform:translateX(-100%);
+
+    transition:.18s ease;
+
+    border-top-right-radius:30px;
+    border-bottom-right-radius:30px;
+
+    box-shadow:
+    0 2px 10px rgba(0,0,0,.08);
+}
+
+/* ACTIVE */
+
+.sidebar.active{
+
+    transform:translateX(0);
+}
+
+/* OVERLAY */
+
+.sidebar-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.2);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.15s;
+
+    z-index:999998;
+}
+
+.sidebar-overlay.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+/* TITLE */
+
+.sidebar-title{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+}
+
+/* KATEGORI */
+
+.kategori-list{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+/* BUTTON */
+
+.kategori-list button{
+
+    width:100%;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    background:#f1f5f9;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    text-align:left;
+
+    cursor:pointer;
+}
+
+/* ACTIVE */
+
+.kategori-list button.active{
+
+    background:
+    linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+    );
+
+    color:white;
+}
+
+/* LOGOUT */
+
+.logout-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+/* =========================================
 POPUP
 ========================================= */
 
@@ -327,7 +495,7 @@ POPUP
 
     inset:0;
 
-    background:rgba(0,0,0,.5);
+    background:rgba(0,0,0,.35);
 
     display:flex;
     align-items:center;
@@ -338,7 +506,7 @@ POPUP
     opacity:0;
     pointer-events:none;
 
-    transition:.2s;
+    transition:.15s;
 
     z-index:999999;
 }
@@ -346,8 +514,11 @@ POPUP
 .popup.active{
 
     opacity:1;
+
     pointer-events:auto;
 }
+
+/* BOX */
 
 .popup-content{
 
@@ -356,662 +527,237 @@ POPUP
 
     background:white;
 
-    border-radius:28px;
+    border-radius:24px;
 
-    padding:24px 20px;
+    padding:22px 18px;
 
     text-align:center;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.08);
+}
+
+/* TITLE */
+
+.popup-content h2{
+
+    font-size:24px;
+
+    margin-bottom:14px;
+}
+
+/* INPUT */
+
+.popup-content input{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+    outline:none;
+
+    border-radius:16px;
+
+    background:#f1f5f9;
+
+    padding:0 14px;
+
+    font-size:16px;
+
+    margin-bottom:14px;
+}
+
+/* BUTTON */
+
+.popup-btn,
+.popup-close{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:16px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+/* MASUK */
+
+.popup-btn{
+
+    background:
+    linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+    );
+}
+
+/* BATAL */
+
+.popup-close{
+
+    margin-top:10px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+    );
 }
 
 /* =========================================
-RESPONSIVE
-========================================= */
-
-@media(max-width:480px){
-
-    .product-card{
-
-        padding:15px 16px;
-
-        min-height:88px;
-    }
-
-    .product-left{
-
-        width:30%;
-    }
-
-    .product-right{
-
-        width:32%;
-    }
-
-    .product-name{
-
-        font-size:17px;
-    }
-
-    .product-price{
-
-        font-size:17px;
-    }
-
-    .product-category{
-
-        font-size:13px;
-    }
-
-    .product-stock{
-
-        font-size:12px;
-    }
-}
-/* =====================================================
 CART BOX
-===================================================== */
-
+========================================= */
 
 .cart-box{
 
-position:fixed;
+    position:fixed;
 
-top:0;
-right:-100%;
+    top:0;
+    right:-100%;
 
-width:390px;
-max-width:100%;
+    width:390px;
+    max-width:100%;
 
-height:100vh;
+    height:100vh;
 
-background:white;
+    background:white;
 
-padding:20px;
-padding-bottom:140px;
+    padding:18px;
 
-overflow-y:auto;
-overflow-x:hidden;
+    padding-bottom:120px;
 
--webkit-overflow-scrolling:touch;
+    overflow-y:auto;
 
-touch-action:pan-y;
+    z-index:999999;
 
-z-index:999999;
+    transition:.18s ease;
 
-box-shadow:
--10px 0 30px rgba(0,0,0,.12);
-
+    box-shadow:
+    -2px 0 10px rgba(0,0,0,.08);
 }
+
 .cart-box.active{
-right:0;
+
+    right:0;
 }
 
-.cart-box::before{
-
-content:'';
-
-display:block;
-
-width:70px;
-height:7px;
-
-background:#d1d5db;
-
-border-radius:999px;
-
-margin:0 auto 18px;
-
-}
+/* HEADER */
 
 .cart-header{
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    align-items:center;
+    justify-content:space-between;
 
-align-items:center;
-
-margin-bottom:18px;
-
+    margin-bottom:18px;
 }
 
-.cart-header h2{
-
-font-size:32px;
-
-font-weight:700;
-
-}
+/* CLOSE */
 
 .close-btn{
 
-width:42px;
-height:42px;
+    width:42px;
+    height:42px;
 
-border:none;
+    border:none;
 
-border-radius:14px;
+    border-radius:14px;
 
-background:#ef4444;
+    background:#ef4444;
 
-color:white;
+    color:white;
 
-font-size:18px;
+    font-size:18px;
 
-cursor:pointer;
-
+    cursor:pointer;
 }
 
-/* =====================================================
-FORM
-===================================================== */
+/* FORM */
 
 .cart-box input,
 .cart-box select{
 
-width:100%;
+    width:100%;
 
-padding:15px 16px;
+    height:52px;
 
-border:2px solid #e2e8f0;
+    border:none;
+    outline:none;
 
-border-radius:18px;
+    border-radius:16px;
 
-background:#f8fafc;
+    background:#f1f5f9;
 
-font-size:14px;
+    padding:0 14px;
 
-margin-bottom:14px;
+    font-size:15px;
 
-outline:none;
-
-
+    margin-bottom:12px;
 }
 
-.cart-box input:focus,
-.cart-box select:focus{
-
-border-color:#2563eb;
-
-background:white;
-
-box-shadow:
-0 0 0 4px rgba(37,99,235,.12);
-
-}
-
-/* =====================================================
-QR
-===================================================== */
-
-#qrBox{
-
-display:none;
-
-text-align:center;
-
-margin:18px 0;
-
-padding:16px;
-
-background:#f8fafc;
-
-border-radius:20px;
-
-border:1px solid #e2e8f0;
-
-}
-
-.qr-title{
-
-margin-bottom:12px;
-
-font-size:16px;
-
-font-weight:700;
-
-}
-
-#qrBox img{
-
-width:100%;
-max-width:220px;
-
-border-radius:18px;
-
-background:white;
-
-padding:8px;
-
-box-shadow:
-0 5px 18px rgba(0,0,0,.06);
-
-}
-
-/* =====================================================
-BUTTON
-===================================================== */
+/* BUTTON */
 
 .checkout-btn,
-.reset-btn,
-.mini-cart-btn{
+.reset-btn{
 
-width:100%;
+    width:100%;
 
-padding:15px;
+    height:54px;
 
-border:none;
+    border:none;
 
-border-radius:18px;
+    border-radius:16px;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    color:white;
 
-gap:10px;
+    font-size:16px;
 
-font-size:15px;
+    font-weight:700;
 
-font-weight:700;
+    cursor:pointer;
 
-cursor:pointer;
-
-margin-top:12px;
-
-
+    margin-top:10px;
 }
+
+/* CHECKOUT */
 
 .checkout-btn{
 
-background:
-linear-gradient(
-135deg,
-#22c55e,
-#16a34a
-);
-
-color:white;
-
-box-shadow:
-0 10px 25px rgba(34,197,94,.22);
-
+    background:
+    linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+    );
 }
+
+/* RESET */
 
 .reset-btn{
 
-background:
-linear-gradient(
-135deg,
-#ef4444,
-#dc2626
-);
-
-color:white;
-
-box-shadow:
-0 10px 25px rgba(239,68,68,.22);
-
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+    );
 }
 
-.mini-cart-btn{
-
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#3b82f6
-);
-
-color:white;
-
-box-shadow:
-0 10px 25px rgba(37,99,235,.22);
-
-}
-
-
-/* =====================================================
-POPUP PREMIUM
-===================================================== */
-
-.popup{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(15,23,42,.55);
-
-backdrop-filter:blur(14px);
-
-display:flex;
-
-align-items:center;
-justify-content:center;
-
-opacity:0;
-
-pointer-events:none;
-
-transition:.25s;
-
-z-index:99999;
-
-padding:20px;
-
-}
-
-.popup.active{
-
-opacity:1;
-
-pointer-events:auto;
-
-}
-
-.popup-content{
-
-width:100%;
-max-width:330px;
-
-background:
-rgba(255,255,255,.97);
-
-backdrop-filter:blur(14px);
-
-padding:26px 22px;
-
-border-radius:32px;
-
-text-align:center;
-
-animation:popupShow .25s ease;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.18);
-
-}
-
-@keyframes popupShow{
-
-from{
-transform:scale(.88);
-opacity:0;
-}
-
-to{
-transform:scale(1);
-opacity:1;
-}
-
-}
-
-.popup-content h2{
-
-font-size:30px;
-font-weight:700;
-
-line-height:1.3;
-
-color:#0f172a;
-
-margin-bottom:14px;
-
-}
-
-.popup-content p{
-
-font-size:46px;
-font-weight:800;
-
-color:#16a34a;
-
-margin-bottom:24px;
-
-}
-
-/* QTY */
-
-.popup-qty{
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-gap:14px;
-
-margin-bottom:24px;
-
-}
-
-.popup-qty button{
-
-width:56px;
-height:56px;
-
-border:none;
-
-border-radius:20px;
-
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#3b82f6
-);
-
-color:white;
-
-font-size:30px;
-
-font-weight:700;
-
-cursor:pointer;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-transition:.25s;
-
-box-shadow:
-0 12px 24px rgba(37,99,235,.25);
-
-}
-.popup-qty input{
-
-width:90px;
-height:56px;
-
-border:none;
-
-background:#f1f5f9;
-
-border-radius:20px;
-
-text-align:center;
-
-font-size:24px;
-
-font-weight:700;
-
-color:#0f172a;
-
-outline:none;
-
-}
-
-/* ACTION */
-
-.popup-actions{
-
-display:flex;
-
-gap:12px;
-
-margin-top:10px;
-
-}
-
-.popup-actions button{
-
-flex:1;
-
-}
-
-.popup-btn{
-
-padding:15px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#3b82f6
-);
-
-color:white;
-
-font-size:15px;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:.25s;
-
-box-shadow:
-0 12px 24px rgba(37,99,235,.22);
-
-}
-
-.popup-close{
-
-padding:15px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#ef4444,
-#dc2626
-);
-
-color:white;
-
-font-size:15px;
-
-font-weight:700;
-
-cursor:pointer;
-
-transition:.25s;
-
-box-shadow:
-0 12px 24px rgba(239,68,68,.22);
-
-}
-
-/* POPUP */
-
-.popup-content{
-
-max-width:300px;
-
-padding:24px 18px;
-
-border-radius:28px;
-
-}
-
-.popup-content h2{
-
-font-size:26px;
-
-}
-
-.popup-content p{
-
-font-size:40px;
-
-}
-
-.popup-qty button{
-
-width:50px;
-height:50px;
-
-font-size:26px;
-
-}
-
-.popup-qty input{
-
-width:80px;
-height:50px;
-
-font-size:22px;
-
-}
-
-/* =====================================================
-SEARCH WRAPPER
-===================================================== */
-
-.search-box{
-padding:6px 16px;
-width:100%;
-position:relative;
-}
-.search-box input{
-
-width:100%;
-
-height:50px;
-
-font-size:17px;
-
-padding:0 55px 0 18px;
-
-border:none;
-
-border-radius:18px;
-
-background:white;
-
-outline:none;
-
-}
-
-/* TOMBOL CLEAR */
-
-.clear-search{
-
-width:38px;
-height:38px;
-
-font-size:20px;
-
-right:22px;
-
-}
-.admin-link,
-.admin-btn,
-.loading-box,
-#loadingBox{
-    display:none !important;
-}
-body{
-    overflow-x:hidden;
-}
 /* =========================================
-LOGIN KASIR
+LOGIN
 ========================================= */
 
 .login-overlay{
@@ -1021,9 +767,7 @@ LOGIN KASIR
     inset:0;
 
     background:
-    rgba(15,23,42,.65);
-
-    backdrop-filter:blur(8px);
+    rgba(15,23,42,.55);
 
     display:flex;
     align-items:center;
@@ -1041,21 +785,18 @@ LOGIN KASIR
 
     border-radius:28px;
 
-    padding:26px 22px;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.2);
+    padding:24px 20px;
 }
 
 .login-box h2{
 
-    font-size:26px;
+    text-align:center;
+
+    font-size:28px;
 
     font-weight:800;
 
     margin-bottom:18px;
-
-    text-align:center;
 }
 
 .login-box input{
@@ -1067,11 +808,11 @@ LOGIN KASIR
     border:none;
     outline:none;
 
-    background:#f1f5f9;
-
     border-radius:16px;
 
-    padding:0 16px;
+    background:#f1f5f9;
+
+    padding:0 14px;
 
     font-size:15px;
 
@@ -1098,219 +839,28 @@ LOGIN KASIR
     color:white;
 
     font-size:16px;
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-/* LOGOUT */
-
-/* =========================
-SIDEBAR MODERN PUTIH
-========================= */
-
-.sidebar{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:82%;
-    max-width:320px;
-
-    height:100vh;
-
-    background:#ffffff;
-
-    z-index:999999;
-
-    padding:22px 18px;
-
-    overflow-y:auto;
-
-    transform:translateX(-100%);
-
-    transition:.25s ease;
-
-    border-top-right-radius:34px;
-    border-bottom-right-radius:34px;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.12);
-}
-
-/* ACTIVE */
-
-.sidebar.active{
-
-    transform:translateX(0);
-}
-
-/* OVERLAY */
-
-.sidebar-overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.35);
-
-    backdrop-filter:blur(3px);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.25s;
-
-    z-index:999998;
-}
-
-.sidebar-overlay.active{
-
-    opacity:1;
-
-    pointer-events:auto;
-}
-
-/* HEADER */
-
-.sidebar-header{
-
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:24px;
-}
-
-/* JUDUL */
-
-.sidebar-title{
-
-    font-size:32px;
-
-    font-weight:800;
-
-    color:#111827;
-}
-
-/* TOMBOL CLOSE */
-
-.sidebar-close{
-
-    width:46px;
-    height:46px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:#ef4444;
-
-    color:white;
-
-    font-size:24px;
 
     font-weight:700;
 
     cursor:pointer;
-
-    box-shadow:
-    0 6px 18px rgba(239,68,68,.25);
 }
 
-/* LIST KATEGORI */
-
-.kategori-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-}
-
-/* BUTTON */
-
-.kategori-list button{
-
-    width:100%;
-
-    border:none;
-
-    padding:18px;
-
-    border-radius:20px;
-
-    background:#f1f5f9;
-
-    color:#111827;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    text-align:left;
-
-    transition:.2s;
-}
-
-/* ACTIVE */
-
-.kategori-list button.active{
-
-    background:
-    linear-gradient(
-    135deg,
-    #22c55e,
-    #16a34a
-    );
-
-    color:white;
-}
-
-/* HOVER */
-
-.kategori-list button:hover{
-
-    transform:scale(.98);
-}
-
-/* LOGOUT */
-
-.logout-btn{
-
-    width:100%;
-
-    margin-top:24px;
-
-    border:none;
-
-    padding:18px;
-
-    border-radius:20px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ef4444,
-    #dc2626
-    );
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
 /* =========================================
-AUTO DARK MODE IKUT TEMA HP
+HAPUS YANG TIDAK DIPERLUKAN
+========================================= */
+
+.cart-float,
+#cartFloat,
+.admin-link,
+.admin-btn,
+.loading-box,
+#loadingBox,
+#darkModeToggle{
+    display:none !important;
+}
+
+/* =========================================
+AUTO DARK MODE
 ========================================= */
 
 @media (prefers-color-scheme: dark){
@@ -1337,21 +887,9 @@ AUTO DARK MODE IKUT TEMA HP
         color:#cbd5e1;
     }
 
-    .product-price{
-        color:#22c55e;
-    }
-
-    .search-box{
-        background:#1e293b;
-    }
-
     .search-box input{
-        background:transparent;
+        background:#1e293b;
         color:white;
-    }
-
-    .search-box input::placeholder{
-        color:#94a3b8;
     }
 
     .bottom-menu{
@@ -1376,22 +914,41 @@ AUTO DARK MODE IKUT TEMA HP
         color:white;
     }
 
-    .cart-box{
-        background:#111827;
-    }
-
-    .popup-content{
+    .popup-content,
+    .cart-box,
+    .login-box{
         background:#111827;
         color:white;
     }
 
-    .popup-content input{
+    .popup-content input,
+    .cart-box input,
+    .cart-box select,
+    .login-box input{
         background:#1e293b;
         color:white;
     }
-
 }
-.cart-float,
-#cartFloat{
-    display:none !important;
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media(max-width:480px){
+
+    .product-name{
+        font-size:17px;
+    }
+
+    .product-price{
+        font-size:17px;
+    }
+
+    .product-category{
+        font-size:13px;
+    }
+
+    .product-stock{
+        font-size:12px;
+    }
 }
