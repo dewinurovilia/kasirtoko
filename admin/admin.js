@@ -82,7 +82,7 @@ onAuthStateChanged(auth, (user)=>{
 
 if(user){
 
-document.getElementById("loginBox")
+document.getElementById("loginPage")
 .style.display = "none";
 
 document.getElementById("dashboard")
@@ -92,7 +92,7 @@ renderProduk();
 
 }else{
 
-document.getElementById("loginBox")
+document.getElementById("loginPage")
 .style.display = "block";
 
 document.getElementById("dashboard")
