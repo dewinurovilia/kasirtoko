@@ -605,25 +605,6 @@ ${item.nama}
 
 }
 
-/* RESET DROPDOWN */
-
-select.innerHTML =
-'<option value="">Pilih Kategori</option>';
-
-/* TAMPILKAN KATEGORI */
-
-kategoriList.forEach((kategori)=>{
-
-select.innerHTML += `
-<option value="${kategori}">
-${kategori}
-</option>
-`;
-
-});
-
-}
-
 /* =========================
 TAMBAH KATEGORI BARU
 ========================= */
@@ -668,18 +649,6 @@ input.value = "";
 showToast(
 "Kategori berhasil ditambahkan"
 );
-
-}
-
-loadKategori();
-
-document.getElementById(
-"kategoriProduk"
-).value = kategori;
-
-input.value = "";
-
-showToast("Kategori ditambahkan");
 
 }
 /* TAMBAH PRODUK */
@@ -749,6 +718,7 @@ document.getElementById("barcodeProduk").value = "";
 document.getElementById("namaProduk").value = "";
 document.getElementById("hargaProduk").value = "";
 document.getElementById("stokProduk").value = "";
+}
 /* LOAD PRODUK */
 
 function loadProduk(){
