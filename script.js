@@ -1596,7 +1596,7 @@ signInWithEmailAndPassword(
 })
 .catch((error)=>{
 
-    alert("Login gagal");
+    alert(error.message);
 
 });
 
