@@ -144,7 +144,7 @@ RENDER PRODUK
 function renderProduk(){
 
 const searchInput =
-document.getElementById("searchProduk");
+document.getElementById("search");
 
 if(!searchInput) return;
 
@@ -184,7 +184,7 @@ STOCK MENIPIS
 const stockSedikit =
 hasil.filter(item =>
 
-Number(item.stock || 0)
+Number(item.stok || 0)
 <= BATAS_STOCK
 
 );
@@ -192,7 +192,7 @@ Number(item.stock || 0)
 const stockNormal =
 hasil.filter(item =>
 
-Number(item.stock || 0)
+Number(item.stok || 0)
 > BATAS_STOCK
 
 );
@@ -231,7 +231,7 @@ list.innerHTML += `
 <h3>${item.nama}</h3>
 
 <p>
-⚠️ Stock : ${item.stock || 0}
+⚠️ Stock : ${item.stok || 0}
 </p>
 
 </div>
@@ -277,7 +277,7 @@ list.innerHTML += `
 <h3>${item.nama}</h3>
 
 <p>
-Stock : ${item.stock || 0}
+Stock : ${item.stok || 0}
 </p>
 
 </div>
@@ -319,13 +319,13 @@ window.tambahStock = function(id){
 const item =
 produk.find(p => p.id == id);
 
-if(!item.stock){
+if(!item.stok){
 
 item.stock = 0;
 
 }
 
-item.stock++;
+item.stoclk++;
 
 renderProduk();
 
@@ -342,13 +342,13 @@ window.kurangStock = function(id){
 const item =
 produk.find(p => p.id == id);
 
-if(!item.stock){
+if(!item.stok){
 
-item.stock = 0;
+item.stok = 0;
 
 }
 
-if(item.stock > 0){
+if(item.stok > 0){
 
 item.stock--;
 
