@@ -325,7 +325,7 @@ item.stock = 0;
 
 }
 
-item.stoclk++;
+item.stok++;
 
 renderProduk();
 
@@ -350,7 +350,7 @@ item.stok = 0;
 
 if(item.stok > 0){
 
-item.stock--;
+item.stok--;
 
 }
 
@@ -372,16 +372,12 @@ JSON.stringify(produk)
 );
 
 }
-window.openCameraScan =
-async function(){
+window.openCameraScan = async function(){
 
 const reader =
-document.getElementById(
-"reader"
-);
+document.getElementById("reader");
 
-reader.style.display =
-"block";
+reader.style.display = "block";
 
 reader.innerHTML = "";
 
@@ -401,20 +397,21 @@ qrbox:250
 
 (decodedText)=>{
 
-cariProdukBarcode(
-decodedText
+document.getElementById(
+"barcodeProduk"
+).value = decodedText;
+
+showToast(
+"Barcode berhasil di scan"
 );
 
 html5QrCode.stop();
 
-reader.style.display =
-"none";
+reader.style.display = "none";
 
 },
 
-(errorMessage)=>{
-
-}
+(errorMessage)=>{}
 
 );
 
@@ -422,20 +419,11 @@ reader.style.display =
 catch(err){
 
 alert(
-"Kamera tidak bisa dibuka"
+"Izin kamera ditolak atau browser tidak support"
 );
 
 console.log(err);
 
 }
-
-}
-window.cariProdukBarcode = function(barcode){
-
-document.getElementById(
-"barcodeProduk"
-).value = barcode;
-
-showToast("Barcode berhasil di scan");
 
 }
