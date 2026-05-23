@@ -15,13 +15,13 @@ FIREBASE CONFIG
 
 const firebaseConfig = {
 
-apiKey: "API_KEY",
-authDomain: "PROJECT.firebaseapp.com",
-databaseURL: "https://PROJECT-default-rtdb.firebaseio.com",
-projectId: "PROJECT",
-storageBucket: "PROJECT.appspot.com",
-messagingSenderId: "XXXXX",
-appId: "XXXXX"
+apiKey: "AIzaSyCvco9APepbM1YRhDLGzE2uxFBVtLL2NLs",
+  authDomain: "fauz2327-b8dfa.firebaseapp.com",
+  databaseURL: "https://fauz2327-b8dfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "fauz2327-b8dfa",
+  storageBucket: "fauz2327-b8dfa.firebasestorage.app",
+  messagingSenderId: "625104866445",
+  appId: "1:625104866445:web:129165fbc539edb36466c4",
 
 };
 
