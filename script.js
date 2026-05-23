@@ -1458,6 +1458,15 @@ kembalianGlobal.toLocaleString()
 }
 window.formatInputUang = function(input){
 
+let angka =
+input.value.replace(/\D/g,'');
+
+input.value =
+Number(angka)
+.toLocaleString('id-ID');
+
+}
+
 /* HAPUS SEMUA SELAIN ANGKA */
 
 let angka =
