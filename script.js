@@ -169,17 +169,13 @@ kategori.includes(search)
 (item.id || '')
 .includes(search);
 
-if(filtered.length===0){
+/* RETURN */
 
-list.innerHTML = `
-<p style="padding:20px;">
-Produk tidak ditemukan
-</p>
-`;
+return cocokKategori
+&&
+cocokSearch;
 
-return;
-
-}
+});
 
 filtered.forEach(item=>{
 
@@ -1466,19 +1462,6 @@ Number(angka)
 .toLocaleString('id-ID');
 
 }
-
-/* HAPUS SEMUA SELAIN ANGKA */
-
-let angka =
-input.value.replace(/\D/g,'');
-
-/* FORMAT RIBUAN */
-
-input.value =
-Number(angka)
-.toLocaleString('id-ID');
-
-}
 let currentSlide = 0;
 
 const slides =
@@ -1659,7 +1642,7 @@ qrbox:250
 (decodedText)=>{
 
 document.getElementById(
-"search"
+"searchInput"
 ).value = decodedText;
 
 renderProduk();
@@ -1667,64 +1650,6 @@ renderProduk();
 html5QrCode.stop();
 
 reader.style.display = "none";
-
-},
-
-(errorMessage)=>{}
-
-);
-
-}
-catch(err){
-
-console.log(err);
-
-alert("Kamera gagal dibuka");
-
-}
-
-}
-window.scanCariProduk = async function(){
-
-const reader =
-document.getElementById("reader");
-
-reader.style.display = "block";
-
-const html5QrCode =
-new Html5Qrcode("reader");
-
-try{
-
-await html5QrCode.start(
-
-{
-facingMode:"environment"
-},
-
-{
-fps:10,
-qrbox:250
-},
-
-(decodedText)=>{
-
-/* ISI INPUT PENCARIAN */
-
-document.getElementById(
-"searchInput"
-).value = decodedText;
-
-/* CARI PRODUK */
-
-renderProduk();
-
-/* STOP CAMERA */
-
-html5QrCode.stop();
-
-reader.style.display =
-"none";
 
 },
 
