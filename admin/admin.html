@@ -1137,13 +1137,9 @@ window.openCameraScan = async function(){
 const reader =
 document.getElementById("reader");
 
-/* TAMPILKAN BOX */
-
 reader.style.display = "block";
 
 try{
-
-/* AMBIL DEVICE */
 
 const cameras =
 await Html5Qrcode.getCameras();
@@ -1156,12 +1152,8 @@ return;
 
 }
 
-/* BUAT SCANNER */
-
 const html5QrCode =
 new Html5Qrcode("reader");
-
-/* START */
 
 await html5QrCode.start(
 
@@ -1169,10 +1161,8 @@ cameras[0].id,
 
 {
 fps:10,
-qrbox:{
-width:250,
-height:250
-}
+qrbox:250,
+aspectRatio:1
 },
 
 (decodedText)=>{
@@ -1183,12 +1173,9 @@ document.getElementById(
 
 alert("Barcode berhasil discan");
 
-/* STOP */
-
 html5QrCode.stop();
 
-reader.style.display =
-"none";
+reader.style.display = "none";
 
 },
 
@@ -1204,6 +1191,7 @@ console.log(err);
 alert("Gagal membuka kamera");
 
 }
+
 }
 </script>
 
