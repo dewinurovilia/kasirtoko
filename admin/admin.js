@@ -380,3 +380,51 @@ JSON.stringify(produk)
 );
 
 }
+window.startScan = function(){
+
+const reader =
+document.getElementById(
+"reader"
+);
+
+reader.style.display = "block";
+
+const scanner =
+new Html5QrcodeScanner(
+
+"reader",
+
+{
+fps:10,
+qrbox:250
+}
+
+);
+
+scanner.render(
+
+function(decodedText){
+
+/* MASUKKAN KE INPUT */
+
+document.getElementById(
+"barcodeProduk"
+).value =
+decodedText;
+
+/* TUTUP CAMERA */
+
+scanner.clear();
+
+reader.style.display =
+"none";
+
+showToast(
+"Barcode berhasil discan"
+);
+
+}
+
+);
+
+}
