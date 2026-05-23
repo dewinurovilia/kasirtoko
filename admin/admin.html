@@ -569,18 +569,41 @@ document.getElementById("kategoriProduk");
 
 if(!select) return;
 
-/* AMBIL SEMUA KATEGORI DARI PRODUK */
+onValue(
+ref(db,"kategori"),
+(snapshot)=>{
 
-kategoriList = [
-...new Set(
+const data =
+snapshot.val();
 
-produk
-.map(item => item.kategori)
-.filter(k => k)
+/* RESET DROPDOWN */
 
-)
+select.innerHTML =
+'<option value="">Pilih Kategori</option>';
 
-];
+kategoriList = [];
+
+if(data){
+
+Object.values(data).forEach(item=>{
+
+kategoriList.push(item.nama);
+
+select.innerHTML += `
+
+<option value="${item.nama}">
+${item.nama}
+</option>
+
+`;
+
+});
+
+}
+
+});
+
+}
 
 /* RESET DROPDOWN */
 
@@ -605,7 +628,7 @@ ${kategori}
 TAMBAH KATEGORI BARU
 ========================= */
 
-window.tambahKategori = function(){
+window.tambahKategori = async function(){
 
 const input =
 document.getElementById("kategoriBaru");
@@ -613,13 +636,38 @@ document.getElementById("kategoriBaru");
 const kategori =
 input.value.trim();
 
-if(!kategori) return;
+if(!kategori){
+
+showToast("Isi kategori dulu");
+
+return;
+
+}
 
 /* CEK DUPLIKAT */
 
-if(!kategoriList.includes(kategori)){
+if(kategoriList.includes(kategori)){
 
-kategoriList.push(kategori);
+showToast("Kategori sudah ada");
+
+return;
+
+}
+
+/* SIMPAN KE FIREBASE */
+
+await push(
+ref(db,"kategori"),
+{
+nama:kategori
+}
+);
+
+input.value = "";
+
+showToast(
+"Kategori berhasil ditambahkan"
+);
 
 }
 
