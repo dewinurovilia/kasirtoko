@@ -337,7 +337,22 @@ Logout
 </div>
 
 <div class="produk-form">
+<div class="barcode-row">
 
+<input
+type="text"
+id="barcodeProduk"
+placeholder="Scan Barcode Produk">
+
+<button
+type="button"
+onclick="startScan()">
+
+📷
+
+</button>
+
+</div>
 <input
 type="text"
 id="namaProduk"
@@ -1115,5 +1130,16 @@ toast.classList.remove("show");
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<div
+id="reader"
+style="
+display:none;
+background:white;
+padding:15px;
+border-radius:20px;
+margin-top:15px;
+">
+</div>
+<script src="https://unpkg.com/html5-qrcode"></script>
 </body>
 </html>
