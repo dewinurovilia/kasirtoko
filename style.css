@@ -1111,3 +1111,12 @@ font-size:20px;
 right:22px;
 
 }
+.admin-link,
+.admin-btn,
+.loading-box,
+#loadingBox{
+    display:none !important;
+}
+body{
+    overflow-x:hidden;
+}
