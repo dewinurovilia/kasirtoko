@@ -351,45 +351,6 @@ BOTTOM MENU
 }
 
 /* =========================================
-SIDEBAR
-========================================= */
-
-.sidebar{
-
-    position:fixed;
-
-    top:0;
-    left:-100%;
-
-    width:280px;
-    height:100vh;
-
-    padding:20px;
-
-    background:#111827;
-
-    z-index:99999;
-
-    transition:.25s;
-
-    overflow-y:auto;
-}
-
-.sidebar.active{
-
-    left:0;
-}
-
-.sidebar h2{
-
-    color:white;
-
-    font-size:28px;
-
-    margin-bottom:20px;
-}
-
-/* =========================================
 POPUP
 ========================================= */
 
@@ -1238,6 +1199,210 @@ LOGIN KASIR
     );
 
     color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+/* =========================
+SIDEBAR MODERN PUTIH
+========================= */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:82%;
+    max-width:320px;
+
+    height:100vh;
+
+    background:#ffffff;
+
+    z-index:999999;
+
+    padding:22px 18px;
+
+    overflow-y:auto;
+
+    transform:translateX(-100%);
+
+    transition:.25s ease;
+
+    border-top-right-radius:34px;
+    border-bottom-right-radius:34px;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.12);
+}
+
+/* ACTIVE */
+
+.sidebar.active{
+
+    transform:translateX(0);
+}
+
+/* OVERLAY */
+
+.sidebar-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(3px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.25s;
+
+    z-index:999998;
+}
+
+.sidebar-overlay.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+/* HEADER */
+
+.sidebar-header{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:24px;
+}
+
+/* JUDUL */
+
+.sidebar-title{
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:#111827;
+}
+
+/* TOMBOL CLOSE */
+
+.sidebar-close{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 6px 18px rgba(239,68,68,.25);
+}
+
+/* LIST KATEGORI */
+
+.kategori-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+}
+
+/* BUTTON */
+
+.kategori-list button{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:#f1f5f9;
+
+    color:#111827;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    text-align:left;
+
+    transition:.2s;
+}
+
+/* ACTIVE */
+
+.kategori-list button.active{
+
+    background:
+    linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+    );
+
+    color:white;
+}
+
+/* HOVER */
+
+.kategori-list button:hover{
+
+    transform:scale(.98);
+}
+
+/* LOGOUT */
+
+.logout-btn{
+
+    width:100%;
+
+    margin-top:24px;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+    );
+
+    color:white;
+
+    font-size:17px;
 
     font-weight:700;
 
