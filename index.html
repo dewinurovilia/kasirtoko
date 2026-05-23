@@ -200,7 +200,7 @@ onclick="toggleCart()">
 <input
 type="text"
 id="namaPemesan"
-placeholder="👤 Nama Pemesan">
+placeholder="👤 Nama kasir">
 
 <select
 id="pengiriman"
@@ -974,3 +974,45 @@ window.location.href =
 }
 
 </script>
+<!-- =========================================
+LOGIN POPUP
+========================================= -->
+
+<div class="login-overlay" id="loginOverlay">
+
+    <div class="login-box">
+
+        <h2>Login Kasir</h2>
+
+        <input
+        type="text"
+        id="loginNama"
+        placeholder="Nama Kasir">
+
+        <input
+        type="email"
+        id="loginEmail"
+        placeholder="Email">
+
+        <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password">
+
+        <button onclick="loginKasir()">
+            Masuk
+        </button>
+
+    </div>
+
+</div>
+
+<!-- TOMBOL LOGOUT -->
+
+<button
+class="logout-btn"
+onclick="logoutKasir()">
+
+    Logout
+
+</button>
