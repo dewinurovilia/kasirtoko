@@ -1157,12 +1157,13 @@ new Html5Qrcode("reader");
 
 await html5QrCode.start(
 
-cameras[cameras.length - 1].id
+{
+facingMode: "environment"
+},
 
 {
-fps:10,
-qrbox:250,
-aspectRatio:1
+fps: 10,
+qrbox: 250
 },
 
 (decodedText)=>{
@@ -1182,8 +1183,6 @@ reader.style.display = "none";
 (errorMessage)=>{}
 
 );
-
-}
 catch(err){
 
 console.log(err);
