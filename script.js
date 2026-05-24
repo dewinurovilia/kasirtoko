@@ -1,3 +1,18 @@
+const firebaseConfig = {
+
+  apiKey: "AIzaSyAvbER9UML8e-FfwEsgnPvWdOVR2TE1zFY",
+  authDomain: "rekap-pesanan.firebaseapp.com",
+  databaseURL: "https://rekap-pesanan-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "rekap-pesanan",
+  storageBucket: "rekap-pesanan.firebasestorage.app",
+  messagingSenderId: "394281706606",
+  appId: "1:394281706606:web:b7f1de991819396f40b27f",
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
 /* =========================
 FIREBASE IMPORT
 ========================= */
@@ -1665,5 +1680,75 @@ console.log(err);
 alert("Kamera gagal dibuka");
 
 }
+
+}
+let semuaPesanan = {};
+
+db.ref("pesanan").on("value", (snapshot) => {
+
+    semuaPesanan = snapshot.val();
+
+    const select =
+    document.getElementById("daftarPesanan");
+
+    select.innerHTML = "";
+
+    for (let id in semuaPesanan) {
+
+        const item = semuaPesanan[id];
+
+        select.innerHTML += `
+            <option value="${id}">
+                ${item.waktu} - ${item.nama}
+            </option>
+        `;
+    }
+
+});
+document
+.getElementById("daftarPesanan")
+.addEventListener("change", function () {
+
+    const id = this.value;
+
+    const item = semuaPesanan[id];
+
+    let html = `
+        <h3>${item.nama}</h3>
+
+        <p>${item.pembayaran}</p>
+
+        <p>${item.pengiriman}</p>
+
+        <hr>
+    `;
+
+    item.produk.forEach(p => {
+
+        html += `
+            <p>
+                ${p.nama}
+                x ${p.qty}
+                = Rp ${p.harga * p.qty}
+            </p>
+        `;
+    });
+
+    html += `
+        <hr>
+
+        <h2>Total:
+        Rp ${item.total}
+        </h2>
+    `;
+
+    document
+    .getElementById("detailPesanan")
+    .innerHTML = html;
+
+});
+function cetakStruk(){
+
+    window.print();
 
 }
