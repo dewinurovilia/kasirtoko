@@ -97,7 +97,11 @@ rel="stylesheet">
     }
   </style>
 </head>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script src="script.js"></script>
 <body>
 
 <!-- =========================
@@ -157,6 +161,15 @@ onclick="scanCariProduk()">
 
 📷
 
+</button>
+<h2>Pesanan Online</h2>
+
+<select id="daftarPesanan"></select>
+
+<div id="detailPesanan"></div>
+
+<button onclick="cetakStruk()">
+Cetak Struk
 </button>
 </div>
 <!-- READER KAMERA -->
