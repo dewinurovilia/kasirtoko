@@ -1667,6 +1667,10 @@ alert("Kamera gagal dibuka");
 }
 
 }
+/* =========================
+PESANAN ONLINE REALTIME
+========================= */
+
 let semuaPesanan = {};
 
 const pesananRef =
@@ -1684,27 +1688,39 @@ onValue(pesananRef, (snapshot) => {
 
     if(!select) return;
 
-    select.innerHTML = "";
+    select.innerHTML = `
+      <option value="">
+      Pilih Pesanan
+      </option>
+    `;
 
-    for (let id in semuaPesanan) {
+    for(let id in semuaPesanan){
 
         const item =
         semuaPesanan[id];
 
         select.innerHTML += `
-            <option value="${id}">
-                ${item.waktu} - ${item.nama}
-            </option>
+        <option value="${id}">
+        ${item.waktu} - ${item.nama}
+        </option>
         `;
     }
 
 });
 
+/* =========================
+TAMPIL DETAIL PESANAN
+========================= */
+
 document
 .getElementById("daftarPesanan")
-?.addEventListener("change", function () {
+?.addEventListener("change", function(){
 
-    const id = this.value;
+    tampilkanPesanan(this.value);
+
+});
+
+function tampilkanPesanan(id){
 
     const item =
     semuaPesanan[id];
@@ -1712,74 +1728,131 @@ document
     if(!item) return;
 
     let html = `
-        <h3>${item.nama}</h3>
 
-        <p>${item.pembayaran}</p>
+    <div id="areaCetak">
 
-        <p>${item.pengiriman}</p>
+    <h2>TOKO DEFANA</h2>
 
-        <hr>
+    <hr>
+
+    <p>
+    Nama : ${item.nama}
+    </p>
+
+    <p>
+    Pembayaran :
+    ${item.pembayaran}
+    </p>
+
+    <p>
+    Pengiriman :
+    ${item.pengiriman}
+    </p>
+
+    <hr>
+
     `;
 
     item.produk.forEach(p => {
 
         html += `
-            <p>
-                ${p.nama}
-                x ${p.qty}
-                = Rp ${p.harga * p.qty}
-            </p>
+        <p>
+
+        ${p.nama}
+        x ${p.qty}
+
+        =
+        Rp ${(p.harga * p.qty)
+        .toLocaleString('id-ID')}
+
+        </p>
         `;
+
     });
 
     html += `
-        <hr>
 
-        <h2>
-        Total :
-        Rp ${item.total}
-        </h2>
+    <hr>
+
+    <h3>
+    Total :
+    Rp ${item.total
+    .toLocaleString('id-ID')}
+    </h3>
+
+    </div>
+
+    <button onclick="cetakStruk()">
+    🖨 Cetak Struk
+    </button>
+
     `;
 
     document
     .getElementById("detailPesanan")
     .innerHTML = html;
 
-});
+}
 
-function cetakStruk(){
+/* =========================
+CETAK STRUK
+========================= */
+
+window.cetakStruk = function(){
 
     const isi =
     document.getElementById(
-      "detailPesanan"
-    ).innerHTML;
+      "areaCetak"
+    );
+
+    if(!isi){
+
+        alert(
+        "Data struk belum ada"
+        );
+
+        return;
+    }
 
     const win =
-    window.open('', '', 'width=400,height=700');
+    window.open(
+      '',
+      '',
+      'width=400,height=700'
+    );
 
     win.document.write(`
-        <html>
-        <head>
-        <title>Struk</title>
 
-        <style>
-        body{
-          font-family:monospace;
-          padding:15px;
-        }
-        </style>
+    <html>
 
-        </head>
+    <head>
 
-        <body>
+    <title>Struk</title>
 
-        ${isi}
+    <style>
 
-        </body>
-        </html>
+    body{
+        font-family:monospace;
+        padding:15px;
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    ${isi.innerHTML}
+
+    </body>
+
+    </html>
+
     `);
 
     win.document.close();
+
+    win.focus();
 
     win.print();
 
