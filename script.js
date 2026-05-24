@@ -1749,6 +1749,38 @@ document
 
 function cetakStruk(){
 
-    window.print();
+    const isi =
+    document.getElementById(
+      "detailPesanan"
+    ).innerHTML;
+
+    const win =
+    window.open('', '', 'width=400,height=700');
+
+    win.document.write(`
+        <html>
+        <head>
+        <title>Struk</title>
+
+        <style>
+        body{
+          font-family:monospace;
+          padding:15px;
+        }
+        </style>
+
+        </head>
+
+        <body>
+
+        ${isi}
+
+        </body>
+        </html>
+    `);
+
+    win.document.close();
+
+    win.print();
 
 }
