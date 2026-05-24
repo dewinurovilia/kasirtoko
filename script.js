@@ -1669,18 +1669,27 @@ alert("Kamera gagal dibuka");
 }
 let semuaPesanan = {};
 
-db.ref("pesanan").on("value", (snapshot) => {
+const pesananRef =
+ref(firebaseDB, "pesanan");
 
-    semuaPesanan = snapshot.val();
+onValue(pesananRef, (snapshot) => {
+
+    semuaPesanan =
+    snapshot.val() || {};
 
     const select =
-    document.getElementById("daftarPesanan");
+    document.getElementById(
+      "daftarPesanan"
+    );
+
+    if(!select) return;
 
     select.innerHTML = "";
 
     for (let id in semuaPesanan) {
 
-        const item = semuaPesanan[id];
+        const item =
+        semuaPesanan[id];
 
         select.innerHTML += `
             <option value="${id}">
@@ -1690,13 +1699,17 @@ db.ref("pesanan").on("value", (snapshot) => {
     }
 
 });
+
 document
 .getElementById("daftarPesanan")
-.addEventListener("change", function () {
+?.addEventListener("change", function () {
 
     const id = this.value;
 
-    const item = semuaPesanan[id];
+    const item =
+    semuaPesanan[id];
+
+    if(!item) return;
 
     let html = `
         <h3>${item.nama}</h3>
@@ -1722,7 +1735,8 @@ document
     html += `
         <hr>
 
-        <h2>Total:
+        <h2>
+        Total :
         Rp ${item.total}
         </h2>
     `;
@@ -1732,6 +1746,7 @@ document
     .innerHTML = html;
 
 });
+
 function cetakStruk(){
 
     window.print();
