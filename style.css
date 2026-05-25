@@ -1730,9 +1730,24 @@ border-radius:18px;
     width:76px !important;
     height:46px !important;
 
+    border:none !important;
+
     border-radius:14px !important;
 
-    font-size:18px !important;
+    background:#1f2b46 !important;
+
+    color:#ffffff !important;
+
+    -webkit-text-fill-color:#ffffff !important;
+
+    text-align:center !important;
+
+    font-size:22px !important;
+
+    font-weight:bold !important;
+
+    opacity:1 !important;
+
 }
 
 /* BUTTON POPUP */
