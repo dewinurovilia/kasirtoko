@@ -58,7 +58,34 @@ onValue(pesananRef, (snapshot)=>{
 
     const data = snapshot.val();
 
-    console.log(data);
+    if(!data) return;
+
+    const select =
+    document.getElementById(
+        "dropdownPesanan"
+    );
+
+    if(!select) return;
+
+    select.innerHTML =
+    '<option value="">Pilih Pesanan</option>';
+
+    Object.entries(data).forEach(
+    ([id,pesanan])=>{
+
+        select.innerHTML += `
+
+            <option value="${id}">
+
+                ${pesanan.nama}
+                -
+                ${pesanan.tanggal || pesanan.waktu}
+
+            </option>
+
+        `;
+
+    });
 
 });
 /* =========================
