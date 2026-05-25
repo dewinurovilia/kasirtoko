@@ -1824,45 +1824,175 @@ window.printRekap = function(index){
         `;
     });
 
-    const win =
-    window.open('','','width=400,height=600');
+   const win =
+window.open(
+'',
+'',
+'width=300,height=700'
+);
 
-    win.document.write(`
+win.document.write(`
 
-        <html>
+<!DOCTYPE html>
 
-        <body style="font-family:Arial">
+<html>
 
-            <h2>TOKO DEFANA</h2>
+<head>
 
-            <hr>
+<title>Struk</title>
 
-            <p>${data.nama}</p>
+<style>
 
-            <p>${data.tanggal}</p>
+body{
 
-            <hr>
+    font-family: monospace;
+    width:58mm;
+    margin:0;
+    padding:8px;
+    font-size:11px;
+    color:#000;
 
-            ${rincian}
+}
 
-            <hr>
+.center{
 
-            <h3>
-            Total :
-            Rp ${data.total.toLocaleString()}
-            </h3>
+    text-align:center;
 
-        </body>
+}
 
-        </html>
+.line{
 
-    `);
+    border-top:1px dashed #000;
+    margin:6px 0;
 
-    win.document.close();
+}
+
+.row{
+
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+
+}
+
+.item{
+
+    margin-bottom:7px;
+
+}
+
+.total{
+
+    font-size:14px;
+    font-weight:bold;
+
+}
+
+.small{
+
+    font-size:10px;
+
+}
+
+@media print{
+
+    body{
+
+        width:58mm;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="center">
+
+    <b style="font-size:15px;">
+
+    TOKO DEFANA
+
+    </b>
+
+    <div class="small">
+
+    Jln.Raya Kalitidu-Ngasem no.33
+
+    </div>
+
+    <div class="small">
+
+    Dukohkidul - Ngasem
+
+    </div>
+
+</div>
+
+<div class="line"></div>
+
+<div class="small">
+
+Nama :
+${data.nama}
+
+<br>
+
+Tanggal :
+${data.tanggal || data.waktu}
+
+</div>
+
+<div class="line"></div>
+
+${rincian}
+
+<div class="line"></div>
+
+<div class="row total">
+
+    <span>TOTAL</span>
+
+    <span>
+
+    Rp ${Number(
+        data.total
+    ).toLocaleString('id-ID')}
+
+    </span>
+
+</div>
+
+<div class="line"></div>
+
+<div class="center small">
+
+    Terima kasih 🙏
+
+    <br>
+
+    Sudah berbelanja
+
+</div>
+
+</body>
+
+</html>
+
+`);
+
+win.document.close();
+
+win.focus();
+
+setTimeout(()=>{
 
     win.print();
 
-}
+},500);
 // ==========================
 // LOAD REKAP SAAT HALAMAN DIBUKA
 // ==========================
