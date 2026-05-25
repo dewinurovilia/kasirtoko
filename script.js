@@ -861,6 +861,11 @@ pesan += 'Nama : ' + nama + '%0A';
 
   await kirimRekap(nama, pengiriman, pembayaran, total, items);
 
+simpanPesanan(
+    nama,
+    items,
+    total
+);
   await kurangiStockCheckout();
 
   cart = [];
@@ -926,10 +931,15 @@ window.cetakStruk = async function(){
     });
   });
 
-  await kirimRekap(nama, pengiriman, pembayaran, total, items);
+ await kirimRekap(nama, pengiriman, pembayaran, total, items);
 
-  await kurangiStockCheckout();
+simpanPesanan(
+    nama,
+    items,
+    total
+);
 
+await kurangiStockCheckout();
   hideLoading();
 
   // Membuka jendela print baru
@@ -1665,5 +1675,162 @@ console.log(err);
 alert("Kamera gagal dibuka");
 
 }
+
+}
+// ==========================
+// REKAP KASIR
+// ==========================
+
+function simpanPesanan(nama, items, totalBelanja){
+
+    const rekap =
+    JSON.parse(
+        localStorage.getItem("rekapPesanan")
+    ) || [];
+
+    rekap.push({
+
+        nama : nama,
+
+        tanggal :
+        new Date().toLocaleString(),
+
+        produk : items,
+
+        total : totalBelanja
+
+    });
+
+    localStorage.setItem(
+        "rekapPesanan",
+        JSON.stringify(rekap)
+    );
+
+    tampilkanRekap();
+}
+
+
+
+// ==========================
+// TAMPILKAN REKAP
+// ==========================
+
+function tampilkanRekap(){
+
+    const rekapElement =
+    document.getElementById("rekap");
+
+    if(!rekapElement) return;
+
+    const rekap =
+    JSON.parse(
+        localStorage.getItem("rekapPesanan")
+    ) || [];
+
+    rekapElement.innerHTML = `
+
+        <div class="rekap-box">
+
+            <h2>Rekap Pesanan</h2>
+
+            <hr>
+
+            ${rekap.map((item,index)=>`
+
+                <div class="item-rekap">
+
+                    <h3>${item.nama}</h3>
+
+                    <p>${item.tanggal}</p>
+
+                    <button
+                    onclick="printRekap(${index})">
+
+                    🖨 Cetak
+
+                    </button>
+
+                </div>
+
+                <hr>
+
+            `).join('')}
+
+        </div>
+
+    `;
+}
+
+
+
+// ==========================
+// PRINT REKAP
+// ==========================
+
+window.printRekap = function(index){
+
+    const rekap =
+    JSON.parse(
+        localStorage.getItem("rekapPesanan")
+    ) || [];
+
+    const data = rekap[index];
+
+    let rincian = '';
+
+    data.produk.forEach(item=>{
+
+        rincian += `
+
+            <div>
+
+                ${item.nama}
+                (${item.qty})
+
+                = Rp
+                ${item.subtotal.toLocaleString()}
+
+            </div>
+
+        `;
+    });
+
+    const win =
+    window.open('','','width=400,height=600');
+
+    win.document.write(`
+
+        <html>
+
+        <body style="font-family:Arial">
+
+            <h2>TOKO DEFANA</h2>
+
+            <hr>
+
+            <p>${data.nama}</p>
+
+            <p>${data.tanggal}</p>
+
+            <hr>
+
+            ${rincian}
+
+            <hr>
+
+            <h3>
+            Total :
+            Rp ${data.total.toLocaleString()}
+            </h3>
+
+        </body>
+
+        </html>
+
+    `);
+
+    win.document.close();
+
+    win.print();
 
 }
