@@ -1831,3 +1831,23 @@ height:100% !important;
 object-fit:cover;
 
 }
+.rekap-box{
+    background:#1f2a44;
+    padding:20px;
+    border-radius:20px;
+    color:white;
+}
+
+.item-rekap{
+    padding:10px 0;
+}
+
+.btn-cetak{
+    margin-top:10px;
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    background:#2ecc71;
+    color:white;
+    cursor:pointer;
+}
