@@ -122,7 +122,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB, "produk");
+ref(firebaseDB)
 
 onValue(produkRef,(snapshot)=>{
 
@@ -1219,7 +1219,7 @@ async function kurangiStockCheckout(){
     const stokBaru = Math.max(stokSekarang - itemCart.qty, 0);
 
     await set(
-      ref(firebaseDB,'produk/' + produk[indexProduk].id + '/stok'),
+      ref(firebaseDB,produk[indexProduk].id + '/stok'),
       stokBaru
     );
 
