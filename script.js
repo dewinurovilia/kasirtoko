@@ -933,10 +933,16 @@ window.cetakStruk = async function(){
 
  await kirimRekap(nama, pengiriman, pembayaran, total, items);
 
+console.log("REKAP DISIMPAN");
+
 simpanPesanan(
     nama,
     items,
     total
+);
+
+console.log(
+localStorage.getItem("rekapPesanan")
 );
 
 await kurangiStockCheckout();
@@ -1834,3 +1840,12 @@ window.printRekap = function(index){
     win.print();
 
 }
+// ==========================
+// LOAD REKAP SAAT HALAMAN DIBUKA
+// ==========================
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+    tampilkanRekap();
+
+});
