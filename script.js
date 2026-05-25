@@ -47,7 +47,20 @@ const firebaseDB =
 getDatabase(app);
 
 const auth = getAuth(app);
+// ==========================
+// TERIMA PESANAN REALTIME
+// ==========================
 
+const pesananRef =
+ref(firebaseDB, "pesanan");
+
+onValue(pesananRef, (snapshot)=>{
+
+    const data = snapshot.val();
+
+    console.log(data);
+
+});
 /* =========================
 TOKO DEFANA FULL SCRIPT
 ========================= */
