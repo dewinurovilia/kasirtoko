@@ -1915,7 +1915,10 @@ window.pilihRekap = async function(){
 
     let rincian = '';
 
-    data.items.forEach(item=>{
+    const daftarProduk =
+data.items || data.produk || [];
+
+daftarProduk.forEach(item=>{
 
         rincian += `
 
@@ -1987,7 +1990,39 @@ window.pilihRekap = async function(){
 // ==========================
 // LOAD HALAMAN
 // ==========================
+// ==========================
+// RESET PESANAN HARIAN
+// ==========================
 
+function cekResetPesanan(){
+
+    const hariIni =
+    new Date().toLocaleDateString();
+
+    const terakhir =
+    localStorage.getItem(
+        "tanggalResetPesanan"
+    );
+
+    if(terakhir !== hariIni){
+
+        set(
+            ref(firebaseDB, "pesanan"),
+            null
+        );
+
+        localStorage.setItem(
+            "tanggalResetPesanan",
+            hariIni
+        );
+
+        console.log(
+            "Pesanan direset"
+        );
+
+    }
+
+}
 document.addEventListener(
 'DOMContentLoaded',
 ()=>{
