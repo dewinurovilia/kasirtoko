@@ -1858,3 +1858,40 @@ background:#1e293b !important;
 caret-color:white !important;
 
 }
+#popupQty{
+
+all:unset !important;
+
+width:76px !important;
+height:46px !important;
+
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+
+background:#1e293b !important;
+
+color:#ffffff !important;
+
+-webkit-text-fill-color:#ffffff !important;
+
+font-size:22px !important;
+
+font-weight:700 !important;
+
+text-align:center !important;
+
+border-radius:14px !important;
+
+border:none !important;
+
+opacity:1 !important;
+
+caret-color:#ffffff !important;
+
+}
+#popupQty::-webkit-inner-spin-button,
+#popupQty::-webkit-outer-spin-button{
+-webkit-appearance:none;
+margin:0;
+}
