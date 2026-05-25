@@ -1124,6 +1124,14 @@ body{
 
     color:white;
 
+    -webkit-text-fill-color:white;
+
+    caret-color:white;
+
+    opacity:1;
+
+    font-weight:bold;
+
     border:none;
 
     border-radius:18px;
@@ -1132,7 +1140,6 @@ body{
 
     font-size:22px;
 }
-
 /* BUTTON */
 
 .popup-btn{
