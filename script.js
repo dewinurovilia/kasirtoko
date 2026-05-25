@@ -136,7 +136,15 @@ return;
 
 }
 
-produk = Object.values(data);
+produk = Object.entries(data).map(
+([id,item])=>({
+
+id:id,
+
+...item
+
+})
+);
 
 renderKategori();
 
