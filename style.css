@@ -1842,3 +1842,6 @@ object-fit:cover;
     caret-color:#ffffff !important;
 
 }
+.popup-qty input::placeholder{
+    color:#ffffff !important;
+}
