@@ -1120,17 +1120,11 @@ body{
     width:90px;
     height:54px;
 
-    background:#1e293b;
+    background:#1e293b !important;
 
-    color:white;
+    color:#ffffff !important;
 
-    -webkit-text-fill-color:white;
-
-    caret-color:white;
-
-    opacity:1;
-
-    font-weight:bold;
+    -webkit-text-fill-color:#ffffff !important;
 
     border:none;
 
@@ -1139,6 +1133,30 @@ body{
     text-align:center;
 
     font-size:22px;
+
+    font-weight:bold;
+
+    outline:none;
+
+    opacity:1 !important;
+
+    caret-color:#ffffff;
+
+}
+.popup-qty input::-webkit-outer-spin-button,
+.popup-qty input::-webkit-inner-spin-button{
+
+    -webkit-appearance:none;
+
+    margin:0;
+
+}
+.popup-qty input[type=number]{
+
+    appearance:textfield;
+
+    -moz-appearance:textfield;
+
 }
 /* BUTTON */
 
