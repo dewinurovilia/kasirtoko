@@ -1724,7 +1724,7 @@ document.getElementById(
 ).value = 1;
 
 document.getElementById(
-"popupProduk"
+"popupBox"
 ).classList.add("active");
 
 }
