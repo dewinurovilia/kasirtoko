@@ -50,14 +50,17 @@ function simpanPesanan(nama, keranjang, totalBelanja) {
 // ==========================
 // TAMPILKAN REKAP
 // ==========================
-
 function tampilkanRekap() {
 
     cekResetHarian();
 
+    const rekapElement = document.getElementById("rekap");
+
+    if (!rekapElement) return;
+
     const rekap = JSON.parse(localStorage.getItem("rekapPesanan")) || [];
 
-    document.getElementById("rekap").innerHTML = `
+    rekapElement.innerHTML = `
 
         <div class="rekap-box">
 
@@ -73,7 +76,7 @@ function tampilkanRekap() {
 
                     <p>${item.tanggal}</p>
 
-                    <button onclick="cetakStruk(${index})" class="btn-cetak">
+                    <button onclick="cetakStruk(${index})">
                         🖨 Cetak Struk
                     </button>
 
@@ -86,9 +89,6 @@ function tampilkanRekap() {
         </div>
     `;
 }
-
-
-
 // ==========================
 // CETAK STRUK
 // ==========================
