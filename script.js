@@ -1993,6 +1993,7 @@ setTimeout(()=>{
     win.print();
 
 },500);
+}
 // ==========================
 // LOAD REKAP SAAT HALAMAN DIBUKA
 // ==========================
