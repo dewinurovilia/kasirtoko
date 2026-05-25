@@ -1872,15 +1872,126 @@ document.addEventListener("DOMContentLoaded", ()=>{
     tampilkanRekap();
 
 });
-window.pilihRekap = function(){
+window.pilihRekap = async function(){
 
-    const index =
+    const id =
     document.getElementById(
         "dropdownPesanan"
     ).value;
 
-    if(index === "") return;
+    if(id === ""){
 
-    printRekap(index);
+        showToast(
+            "Pilih pesanan dulu"
+        );
+
+        return;
+    }
+
+    const snapshot =
+    await new Promise(resolve=>{
+
+        onValue(
+
+            ref(
+                firebaseDB,
+                "pesanan/" + id
+            ),
+
+            resolve,
+
+            {
+                onlyOnce:true
+            }
+
+        );
+
+    });
+
+    const data =
+    snapshot.val();
+
+    if(!data) return;
+
+    let rincian = '';
+
+    data.items.forEach(item=>{
+
+        rincian += `
+
+            <div>
+
+                ${item.nama}
+                (${item.qty})
+
+                = Rp
+                ${Number(
+                    item.subtotal ||
+                    item.harga * item.qty
+                ).toLocaleString()}
+
+            </div>
+
+        `;
+    });
+
+    const win =
+    window.open(
+        '',
+        '',
+        'width=400,height=600'
+    );
+
+    win.document.write(`
+
+        <html>
+
+        <body style="font-family:Arial">
+
+            <h2>TOKO DEFANA</h2>
+
+            <hr>
+
+            <p>${data.nama}</p>
+
+            <p>
+            ${data.tanggal || data.waktu}
+            </p>
+
+            <hr>
+
+            ${rincian}
+
+            <hr>
+
+            <h3>
+
+            Total :
+            Rp ${Number(
+                data.total
+            ).toLocaleString()}
+
+            </h3>
+
+        </body>
+
+        </html>
+
+    `);
+
+    win.document.close();
+
+    win.print();
 
 }
+// ==========================
+// LOAD HALAMAN
+// ==========================
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+    cekResetPesanan();
+
+});
