@@ -122,7 +122,7 @@ LOAD PRODUK FIREBASE
 function loadProduk(){
 
 const produkRef =
-ref(firebaseDB);
+ref(firebaseDB, "produk");
 
 onValue(produkRef,(snapshot)=>{
 
@@ -1211,7 +1211,7 @@ async function kurangiStockCheckout(){
     const stokBaru = Math.max(stokSekarang - itemCart.qty, 0);
 
     await set(
-      ref(firebaseDB, indexProduk + '/stok'),
+      ref(firebaseDB,'produk/' + produk[indexProduk].id + '/stok'),
       stokBaru
     );
 
@@ -1795,23 +1795,97 @@ function tampilkanRekap(){
 // ==========================
 // PRINT REKAP
 // ==========================
-// ==========================
-// PRINT REKAP
-// ==========================
 
-window.printRekap = function(data){
+window.pilihRekap = async function(){
+
+const id =
+document.getElementById(
+"dropdownPesanan"
+).value;
+
+if(id === ""){
+
+showToast(
+"Pilih pesanan dulu"
+);
+
+return;
+
+}
+
+const snapshot =
+await new Promise(resolve=>{
+
+onValue(
+
+ref(
+firebaseDB,
+"pesanan/" + id
+),
+
+resolve,
+
+{
+onlyOnce:true
+}
+
+);
+
+});
+
+const data =
+snapshot.val();
+
+if(!data) return;
 
 const daftarProduk =
 data.items || data.produk || [];
 
-const win =
-window.open(
-'',
-'',
-'width=320,height=700'
-);
+let rincian = '';
 
-win.document.write(`
+daftarProduk.forEach(item=>{
+
+const subtotal =
+
+item.subtotal ||
+(item.harga * item.qty);
+
+rincian += `
+
+<div class="item">
+
+<div>
+
+${item.nama}
+
+</div>
+
+<div class="row small">
+
+<span>
+
+${item.qty} x
+Rp ${Number(item.harga)
+.toLocaleString('id-ID')}
+
+</span>
+
+<b>
+
+Rp ${Number(subtotal)
+.toLocaleString('id-ID')}
+
+</b>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+const isi = `
 
 <!DOCTYPE html>
 
@@ -1829,12 +1903,23 @@ padding:0;
 box-sizing:border-box;
 }
 
+html,body{
+
+margin:0 auto;
+background:#fff;
+
+}
+
 body{
-font-family: monospace;
-width:58mm;
+
+max-width:58mm;
+
 padding:10px;
+
+font-family:monospace;
 font-size:11px;
 color:#000;
+
 }
 
 .center{
@@ -1842,32 +1927,47 @@ text-align:center;
 }
 
 .title{
-font-size:16px;
+
+font-size:18px;
 font-weight:bold;
+
+margin-bottom:4px;
+
 }
 
 .small{
+
 font-size:10px;
+
 }
 
 .line{
+
 border-top:1px dashed #000;
+
 margin:8px 0;
+
 }
 
 .item{
+
 margin-bottom:8px;
+
 }
 
 .row{
+
 display:flex;
 justify-content:space-between;
 gap:10px;
+
 }
 
 .total{
+
 font-size:14px;
 font-weight:bold;
+
 }
 
 </style>
@@ -1879,15 +1979,21 @@ font-weight:bold;
 <div class="center">
 
 <div class="title">
+
 TOKO DEFANA
+
 </div>
 
 <div class="small">
+
 Jln.Raya Kalitidu-Ngasem no.33
+
 </div>
 
 <div class="small">
+
 Dukohkidul - Ngasem
+
 </div>
 
 </div>
@@ -1908,44 +2014,7 @@ ${data.tanggal || data.waktu}
 
 <div class="line"></div>
 
-`);
-
-daftarProduk.forEach(item=>{
-
-const subtotal =
-item.subtotal ||
-(item.harga * item.qty);
-
-win.document.write(`
-
-<div class="item">
-
-<div>
-${item.nama}
-</div>
-
-<div class="row small">
-
-<span>
-${item.qty} x
-Rp ${Number(item.harga)
-.toLocaleString('id-ID')}
-</span>
-
-<b>
-Rp ${Number(subtotal)
-.toLocaleString('id-ID')}
-</b>
-
-</div>
-
-</div>
-
-`);
-
-});
-
-win.document.write(`
+${rincian}
 
 <div class="line"></div>
 
@@ -1954,8 +2023,10 @@ win.document.write(`
 <span>TOTAL</span>
 
 <span>
+
 Rp ${Number(data.total)
 .toLocaleString('id-ID')}
+
 </span>
 
 </div>
@@ -1964,7 +2035,12 @@ Rp ${Number(data.total)
 
 <div class="center small">
 
-Terima kasih 🙏
+🙏 Terima kasih 🙏
+
+<br>
+
+Simpan struk ini
+sebagai bukti pembayaran
 
 </div>
 
@@ -1972,7 +2048,16 @@ Terima kasih 🙏
 
 </html>
 
-`);
+`;
+
+const win =
+window.open(
+'',
+'',
+'width=320,height=700'
+);
+
+win.document.write(isi);
 
 win.document.close();
 
