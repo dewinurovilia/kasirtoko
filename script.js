@@ -1795,6 +1795,15 @@ function tampilkanRekap(){
 // ==========================
 // PRINT REKAP
 // ==========================
+// ==========================
+// PRINT REKAP
+// ==========================
+
+window.printRekap = function(data){
+
+const daftarProduk =
+data.items || data.produk || [];
+
 const win =
 window.open(
 '',
@@ -1821,67 +1830,44 @@ box-sizing:border-box;
 }
 
 body{
-
-    font-family: monospace;
-    width:58mm;
-    padding:10px;
-    font-size:11px;
-    color:#000;
-
+font-family: monospace;
+width:58mm;
+padding:10px;
+font-size:11px;
+color:#000;
 }
 
 .center{
-    text-align:center;
+text-align:center;
 }
 
 .title{
-
-    font-size:16px;
-    font-weight:bold;
-
+font-size:16px;
+font-weight:bold;
 }
 
 .small{
-
-    font-size:10px;
-
+font-size:10px;
 }
 
 .line{
-
-    border-top:1px dashed #000;
-    margin:8px 0;
-
+border-top:1px dashed #000;
+margin:8px 0;
 }
 
 .item{
-
-    margin-bottom:8px;
-
+margin-bottom:8px;
 }
 
 .row{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:10px;
-
+display:flex;
+justify-content:space-between;
+gap:10px;
 }
 
 .total{
-
-    font-size:14px;
-    font-weight:bold;
-
-}
-
-@media print{
-
-    body{
-        width:58mm;
-    }
-
+font-size:14px;
+font-weight:bold;
 }
 
 </style>
@@ -1893,21 +1879,15 @@ body{
 <div class="center">
 
 <div class="title">
-
 TOKO DEFANA
-
 </div>
 
 <div class="small">
-
 Jln.Raya Kalitidu-Ngasem no.33
-
 </div>
 
 <div class="small">
-
 Dukohkidul - Ngasem
-
 </div>
 
 </div>
@@ -1947,18 +1927,14 @@ ${item.nama}
 <div class="row small">
 
 <span>
-
 ${item.qty} x
 Rp ${Number(item.harga)
 .toLocaleString('id-ID')}
-
 </span>
 
 <b>
-
 Rp ${Number(subtotal)
 .toLocaleString('id-ID')}
-
 </b>
 
 </div>
@@ -1978,10 +1954,8 @@ win.document.write(`
 <span>TOTAL</span>
 
 <span>
-
 Rp ${Number(data.total)
 .toLocaleString('id-ID')}
-
 </span>
 
 </div>
@@ -1991,11 +1965,6 @@ Rp ${Number(data.total)
 <div class="center small">
 
 Terima kasih 🙏
-
-<br>
-
-Simpan struk ini
-sebagai bukti pembayaran
 
 </div>
 
@@ -2011,9 +1980,11 @@ win.focus();
 
 setTimeout(()=>{
 
-    win.print();
+win.print();
 
 },500);
+
+}
 // ==========================
 // LOAD REKAP SAAT HALAMAN DIBUKA
 // ==========================
