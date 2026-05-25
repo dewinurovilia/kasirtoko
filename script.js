@@ -1711,6 +1711,24 @@ document.getElementById(
 
 renderProduk();
 
+const produk = products.find(
+p => p.barcode == decodedText
+);
+
+if(produk){
+
+selectedProduct = produk;
+
+document.getElementById(
+"popupQty"
+).value = 1;
+
+document.getElementById(
+"popupProduk"
+).classList.add("active");
+
+}
+
 html5QrCode.stop();
 
 reader.style.display = "none";
