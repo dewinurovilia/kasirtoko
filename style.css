@@ -1845,3 +1845,16 @@ object-fit:cover;
 .popup-qty input::placeholder{
     color:#ffffff !important;
 }
+#popupQty{
+
+color:white !important;
+
+-webkit-text-fill-color:white !important;
+
+opacity:1 !important;
+
+background:#1e293b !important;
+
+caret-color:white !important;
+
+}
