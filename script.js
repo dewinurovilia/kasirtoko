@@ -1795,40 +1795,11 @@ function tampilkanRekap(){
 // ==========================
 // PRINT REKAP
 // ==========================
-
-window.printRekap = function(index){
-
-    const rekap =
-    JSON.parse(
-        localStorage.getItem("rekapPesanan")
-    ) || [];
-
-    const data = rekap[index];
-
-    let rincian = '';
-
-    data.produk.forEach(item=>{
-
-        rincian += `
-
-            <div>
-
-                ${item.nama}
-                (${item.qty})
-
-                = Rp
-                ${item.subtotal.toLocaleString()}
-
-            </div>
-
-        `;
-    });
-
-   const win =
+const win =
 window.open(
 '',
 '',
-'width=300,height=700'
+'width=320,height=700'
 );
 
 win.document.write(`
@@ -1843,47 +1814,29 @@ win.document.write(`
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
 
     font-family: monospace;
     width:58mm;
-    margin:0;
-    padding:8px;
+    padding:10px;
     font-size:11px;
     color:#000;
 
 }
 
 .center{
-
     text-align:center;
-
 }
 
-.line{
+.title{
 
-    border-top:1px dashed #000;
-    margin:6px 0;
-
-}
-
-.row{
-
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-
-}
-
-.item{
-
-    margin-bottom:7px;
-
-}
-
-.total{
-
-    font-size:14px;
+    font-size:16px;
     font-weight:bold;
 
 }
@@ -1894,12 +1847,39 @@ body{
 
 }
 
+.line{
+
+    border-top:1px dashed #000;
+    margin:8px 0;
+
+}
+
+.item{
+
+    margin-bottom:8px;
+
+}
+
+.row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+
+}
+
+.total{
+
+    font-size:14px;
+    font-weight:bold;
+
+}
+
 @media print{
 
     body{
-
         width:58mm;
-
     }
 
 }
@@ -1912,23 +1892,23 @@ body{
 
 <div class="center">
 
-    <b style="font-size:15px;">
+<div class="title">
 
-    TOKO DEFANA
+TOKO DEFANA
 
-    </b>
+</div>
 
-    <div class="small">
+<div class="small">
 
-    Jln.Raya Kalitidu-Ngasem no.33
+Jln.Raya Kalitidu-Ngasem no.33
 
-    </div>
+</div>
 
-    <div class="small">
+<div class="small">
 
-    Dukohkidul - Ngasem
+Dukohkidul - Ngasem
 
-    </div>
+</div>
 
 </div>
 
@@ -1948,21 +1928,61 @@ ${data.tanggal || data.waktu}
 
 <div class="line"></div>
 
-${rincian}
+`);
+
+daftarProduk.forEach(item=>{
+
+const subtotal =
+item.subtotal ||
+(item.harga * item.qty);
+
+win.document.write(`
+
+<div class="item">
+
+<div>
+${item.nama}
+</div>
+
+<div class="row small">
+
+<span>
+
+${item.qty} x
+Rp ${Number(item.harga)
+.toLocaleString('id-ID')}
+
+</span>
+
+<b>
+
+Rp ${Number(subtotal)
+.toLocaleString('id-ID')}
+
+</b>
+
+</div>
+
+</div>
+
+`);
+
+});
+
+win.document.write(`
 
 <div class="line"></div>
 
 <div class="row total">
 
-    <span>TOTAL</span>
+<span>TOTAL</span>
 
-    <span>
+<span>
 
-    Rp ${Number(
-        data.total
-    ).toLocaleString('id-ID')}
+Rp ${Number(data.total)
+.toLocaleString('id-ID')}
 
-    </span>
+</span>
 
 </div>
 
@@ -1970,11 +1990,12 @@ ${rincian}
 
 <div class="center small">
 
-    Terima kasih 🙏
+Terima kasih 🙏
 
-    <br>
+<br>
 
-    Sudah berbelanja
+Simpan struk ini
+sebagai bukti pembayaran
 
 </div>
 
