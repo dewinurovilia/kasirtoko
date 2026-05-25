@@ -1831,3 +1831,14 @@ height:100% !important;
 object-fit:cover;
 
 }
+.popup-qty input{
+
+    color:#ffffff !important;
+
+    -webkit-text-fill-color:#ffffff !important;
+
+    opacity:1 !important;
+
+    caret-color:#ffffff !important;
+
+}
