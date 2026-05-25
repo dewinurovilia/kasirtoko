@@ -1723,52 +1723,35 @@ function simpanPesanan(nama, items, totalBelanja){
 
 function tampilkanRekap(){
 
-    const rekapElement =
-    document.getElementById("rekap");
+    const select =
+    document.getElementById("dropdownPesanan");
 
-    if(!rekapElement) return;
+    if(!select) return;
 
     const rekap =
     JSON.parse(
         localStorage.getItem("rekapPesanan")
     ) || [];
 
-    rekapElement.innerHTML = `
+    select.innerHTML =
+    '<option value="">Pilih Pesanan</option>';
 
-        <div class="rekap-box">
+    rekap.forEach((item,index)=>{
 
-            <h2>Rekap Pesanan</h2>
+        select.innerHTML += `
 
-            <hr>
+            <option value="${index}">
 
-            ${rekap.map((item,index)=>`
+                ${item.nama}
+                -
+                ${item.tanggal}
 
-                <div class="item-rekap">
+            </option>
 
-                    <h3>${item.nama}</h3>
+        `;
+    });
 
-                    <p>${item.tanggal}</p>
-
-                    <button
-                    onclick="printRekap(${index})">
-
-                    🖨 Cetak
-
-                    </button>
-
-                </div>
-
-                <hr>
-
-            `).join('')}
-
-        </div>
-
-    `;
 }
-
-
-
 // ==========================
 // PRINT REKAP
 // ==========================
@@ -1849,3 +1832,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
     tampilkanRekap();
 
 });
+window.pilihRekap = function(){
+
+    const index =
+    document.getElementById(
+        "dropdownPesanan"
+    ).value;
+
+    if(index === "") return;
+
+    printRekap(index);
+
+}
