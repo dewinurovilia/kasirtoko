@@ -723,7 +723,13 @@ produk.push(produkBaru);
 
 /* SIMPAN FIREBASE */
 
-await set(ref(db), produk);
+await set(
+ref(
+db,
+'produk/' + idProduk
+),
+produkBaru
+);
 
 /* REFRESH */
 
@@ -745,7 +751,9 @@ document.getElementById("stokProduk").value = "";
 
 function loadProduk(){
 
-onValue(ref(db), (snapshot)=>{
+onValue(
+ref(db,"produk"),
+(snapshot)=>{
 
 const data = snapshot.val();
 
@@ -1011,7 +1019,12 @@ const stokBaru =
 Number(item.stok || 0) + 1;
 
 set(
-ref(db, index + '/stok'),
+ref(
+db,
+'produk/' +
+item.id +
+'/stok'
+),
 stokBaru
 ).then(()=>{
 
@@ -1038,7 +1051,12 @@ Number(item.stok || 0) - 1,
 );
 
 set(
-ref(db, index + '/stok'),
+ref(
+db,
+'produk/' +
+item.id +
+'/stok'
+),
 stokBaru
 ).then(()=>{
 
@@ -1125,7 +1143,16 @@ kategori: kategoriBaru
 
 /* SIMPAN FIREBASE */
 
-await set(ref(db), produk);
+await set(
+
+ref(
+db,
+'produk/' + item.id
+),
+
+produk[index]
+
+);
 
 /* REFRESH */
 
