@@ -1463,7 +1463,7 @@ Object.entries(data).forEach(
 ([id,item])=>{
 
 const tanggal =
-item.waktu.split(",")[0];
+item.tanggal || '-';
 
 if(!grupHari[tanggal]){
 
