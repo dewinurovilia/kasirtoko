@@ -1800,6 +1800,14 @@ items,
 totalBelanja
 ){
 
+const sekarang = new Date();
+
+const tanggal =
+sekarang.toLocaleDateString('id-ID');
+
+const jam =
+sekarang.toLocaleTimeString('id-ID');
+
 const dataPesanan = {
 
 nama:nama,
@@ -1808,7 +1816,11 @@ produk:items,
 
 total:totalBelanja,
 
-waktu:new Date().toLocaleString('id-ID'),
+tanggal:tanggal,
+
+jam:jam,
+
+waktu:tanggal + ' ' + jam,
 
 status:"Belum Dicetak"
 
