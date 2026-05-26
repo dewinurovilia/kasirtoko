@@ -1531,13 +1531,46 @@ ${item.pembayaran}
 ${item.pengiriman}
 </p>
 
+${
+item.lokasi &&
+item.lokasi !== '-'
+?
+
+`
+
 <a
 href="${item.lokasi}"
-target="_blank">
+target="_blank"
+style="
+display:inline-block;
+margin-top:10px;
+color:#2563eb;
+font-weight:bold;
+text-decoration:none;
+">
 
-📍 Lokasi
+📍 Lihat Lokasi
 
 </a>
+
+`
+
+:
+
+`
+
+<p style="
+margin-top:10px;
+color:#64748b;
+">
+
+📍 Lokasi tidak tersedia
+
+</p>
+
+`
+
+}
 
 </div>
 
