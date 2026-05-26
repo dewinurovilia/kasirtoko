@@ -162,6 +162,7 @@ produk = Object.entries(data).map(
 ([key,item])=>({
 
 firebaseKey:key,
+id:item.id || key,
 ...item
 
 })
@@ -1752,13 +1753,13 @@ document.getElementById(
 
 renderProduk();
 
-const produk = products.find(
+const produkDipilih = produk.find(
 p => p.barcode == decodedText
 );
 
-if(produk){
+if(produkDipilih){
 
-selectedProduct = produk;
+selectedProduct = produkDipilih;
 
 document.getElementById(
 "popupQty"
