@@ -820,6 +820,8 @@ renderProduk();
 
 /* RENDER PRODUK */
 
+/* RENDER PRODUK */
+
 window.renderProduk = function(){
 
 const search =
@@ -840,7 +842,6 @@ const totalSemuaProduk = produk.reduce(
 (total, item)=>{
 
 return total +
-
 (
 Number(item.harga || 0) *
 Number(item.stok || 0)
@@ -1029,7 +1030,10 @@ cursor:pointer;
 </div>
 
 `;
+
 });
+
+}
 
 /* STOCK NORMAL */
 
@@ -1157,7 +1161,12 @@ cursor:pointer;
 </div>
 
 `;
+
 });
+
+}
+
+}
   
 /* TAMBAH STOCK */
 
