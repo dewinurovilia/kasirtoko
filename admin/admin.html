@@ -423,7 +423,7 @@ Simpan Produk
 </div>
 
 </div>
-
+</div>
 <!-- SEARCH -->
 <div
 id="tabProduk"
@@ -506,7 +506,28 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const auth = getAuth(app);
+/* FIREBASE PESANAN */
 
+const firebaseConfigPesanan = {
+
+  apiKey: "AIzaSyCvco9APepbM1YRhDLGzE2uxFBVtLL2NLs",
+  authDomain: "fauz2327-b8dfa.firebaseapp.com",
+  databaseURL: "https://fauz2327-b8dfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "fauz2327-b8dfa",
+  storageBucket: "fauz2327-b8dfa.firebasestorage.app",
+  messagingSenderId: "625104866445",
+  appId: "1:625104866445:web:129165fbc539edb36466c4",
+
+};
+
+const appPesanan =
+initializeApp(
+firebaseConfigPesanan,
+"pesananApp"
+);
+
+const dbPesanan =
+getDatabase(appPesanan);
 let produk = [];
 
 /* FORMAT RUPIAH */
@@ -587,6 +608,8 @@ document
 loadProduk();
 
 loadKategori();
+
+loadRekapRealtime();
 
 }
 
@@ -1282,6 +1305,240 @@ setTimeout(()=>{
 toast.classList.remove("show");
 
 },2000);
+
+}
+/* =========================
+TAB MENU
+========================= */
+
+window.openTab = function(id,btn){
+
+document
+.querySelectorAll('.tab-content')
+.forEach(tab=>{
+
+tab.classList.remove('active');
+
+});
+
+document
+.querySelectorAll('.tab-btn')
+.forEach(tab=>{
+
+tab.classList.remove('active');
+
+});
+
+document
+.getElementById(id)
+.classList.add('active');
+
+btn.classList.add('active');
+
+};
+/* =========================
+REKAP REALTIME
+========================= */
+
+function loadRekapRealtime(){
+
+onValue(
+ref(dbPesanan,"rekap"),
+(snapshot)=>{
+
+const data = snapshot.val();
+
+const list =
+document.getElementById(
+"listRekap"
+);
+
+if(!list) return;
+
+list.innerHTML = "";
+
+if(!data){
+
+list.innerHTML =
+"<h3>Belum ada transaksi</h3>";
+
+return;
+
+}
+
+const grupHari = {};
+
+Object.entries(data).forEach(
+([id,item])=>{
+
+const tanggal =
+item.waktu.split(",")[0];
+
+if(!grupHari[tanggal]){
+
+grupHari[tanggal] = [];
+
+}
+
+grupHari[tanggal].push({
+
+id:id,
+...item
+
+});
+
+});
+
+Object.entries(grupHari)
+.reverse()
+.forEach(([tanggal,items])=>{
+
+let totalHari = 0;
+
+items.forEach(item=>{
+
+totalHari +=
+Number(item.total || 0);
+
+});
+
+list.innerHTML += `
+
+<div class="finance-box">
+
+<h2>
+📅 ${tanggal}
+</h2>
+
+<h1 style="
+color:#16a34a;
+margin:15px 0;
+">
+
+${rupiah(totalHari)}
+
+</h1>
+
+<div id="hari-${tanggal}">
+</div>
+
+</div>
+
+`;
+
+const box =
+document.getElementById(
+`hari-${tanggal}`
+);
+
+items.reverse().forEach(item=>{
+
+let rincian = '';
+
+(item.produk || [])
+.forEach(produk=>{
+
+rincian += `
+
+<div style="
+margin-bottom:10px;
+">
+
+${produk.nama}
+
+<br>
+
+${produk.qty} x
+${rupiah(produk.harga)}
+
+</div>
+
+`;
+
+});
+
+box.innerHTML += `
+
+<div
+class="card"
+style="
+margin-bottom:15px;
+cursor:pointer;
+"
+onclick="toggleDetail('${item.id}')">
+
+<h3>
+${item.nama}
+</h3>
+
+<p>
+${item.waktu}
+</p>
+
+<h2 style="
+color:#16a34a;
+margin:10px 0;
+">
+
+${rupiah(item.total)}
+
+</h2>
+
+<div
+id="detail-${item.id}"
+style="
+display:none;
+margin-top:15px;
+">
+
+${rincian}
+
+<p>
+${item.pembayaran}
+</p>
+
+<p>
+${item.pengiriman}
+</p>
+
+<a
+href="${item.lokasi}"
+target="_blank">
+
+📍 Lokasi
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+});
+
+}
+
+window.toggleDetail = function(id){
+
+const detail =
+document.getElementById(
+'detail-' + id
+);
+
+if(detail.style.display === 'block'){
+
+detail.style.display = 'none';
+
+}else{
+
+detail.style.display = 'block';
+
+}
 
 }
 window.openCameraScan = async function(){
