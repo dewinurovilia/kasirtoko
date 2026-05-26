@@ -7,6 +7,66 @@
 <title>DASHBOARD TOKO DEFANA</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#f1f5f9;
+}
+
+/* LOGIN */
+
+.login-page{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f172a;
+padding:20px;
+}
+
+.login-box{
+background:white;
+padding:35px;
+width:100%;
+max-width:380px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.login-box h1{
+margin-bottom:25px;
+color:#111827;
+}
+
+.login-box input{
+width:100%;
+padding:15px;
+border-radius:14px;
+border:1px solid #ddd;
+margin-bottom:15px;
+font-size:15px;
+outline:none;
+}
+
+.login-box button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
 /* DASHBOARD */
 
 .dashboard{
@@ -222,51 +282,6 @@ transform:translateY(0);
 </head>
 
 <body>
-
-<!-- LOGIN -->
-
-<div class="login-page" id="loginPage">
-
-<div class="login-box">
-
-<h1>🔒 Login Admin</h1>
-
-<input
-type="email"
-id="email"
-placeholder="Email Admin">
-
-<input
-type="password"
-id="password"
-placeholder="Password">
-
-<button onclick="loginAdmin()">
-Masuk Dashboard
-</button>
-
-</div>
-
-</div>
-
-<!-- DASHBOARD -->
-
-<div class="dashboard" id="dashboard">
-
-<div class="topbar">
-
-<h1>DASHBOARD TOKO DEFANA</h1>
-
-<button
-class="logout-btn"
-onclick="logoutAdmin()">
-Logout
-</button>
-
-</div>
-
-<div class="container">
-
 <!-- TAMBAH PRODUK -->
 
 <div class="finance-box">
