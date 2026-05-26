@@ -929,51 +929,110 @@ const index = produk.indexOf(item);
 
 gridSedikit.innerHTML += `
 
-<div class="card stok-tipis">
+<div style="
+background:#fef2f2;
+padding:12px 15px;
+border-bottom:1px solid #fecaca;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+border-radius:12px;
+margin-bottom:10px;
+">
 
-<h2>${item.nama}</h2>
+<div style="
+flex:2;
+font-weight:bold;
+font-size:14px;
+color:#dc2626;
+">
 
-<div class="harga">
+${item.nama}
+
+</div>
+
+<div style="
+flex:1;
+font-weight:bold;
+text-align:center;
+font-size:14px;
+">
+
 ${rupiah(item.harga)}
+
 </div>
 
-<div class="stock">
-⚠️ Stock : <b>${item.stok || 0}</b>
+<div style="
+width:70px;
+text-align:center;
+font-weight:bold;
+font-size:14px;
+color:#dc2626;
+">
+
+${item.stok}
+
 </div>
 
-<div class="btn-group">
+<div style="
+display:flex;
+gap:5px;
+">
 
 <button
 class="tambah"
-onclick="tambahStock(${index})">
+onclick="tambahStock(${index})"
+style="
+width:32px;
+height:32px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+">
 
-+ Tambah
++
 
 </button>
 
 <button
 class="kurangi"
-onclick="kurangiStock(${index})">
+onclick="kurangiStock(${index})"
+style="
+width:32px;
+height:32px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+">
 
-- Kurangi
+-
 
 </button>
 
 <button
-class="edit-btn"
-onclick="editProduk(${index})">
+onclick="editProduk(${index})"
+style="
+background:#2563eb;
+color:white;
+border:none;
+width:32px;
+height:32px;
+border-radius:8px;
+cursor:pointer;
+">
 
-✏️ Edit
+✏️
 
 </button>
 
 </div>
 
+</div>
+
 `;
-
-});
-
-}
 
 /* STOCK NORMAL */
 
@@ -998,52 +1057,109 @@ const index = produk.indexOf(item);
 
 gridNormal.innerHTML += `
 
-<div class="card">
+<div style="
+background:white;
+padding:12px 15px;
+border-bottom:1px solid #e2e8f0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+border-radius:12px;
+margin-bottom:10px;
+">
 
-<h2>${item.nama}</h2>
+<div style="
+flex:2;
+font-weight:bold;
+font-size:14px;
+">
 
-<div class="harga">
+${item.nama}
+
+</div>
+
+<div style="
+flex:1;
+color:#16a34a;
+font-weight:bold;
+text-align:center;
+font-size:14px;
+">
+
 ${rupiah(item.harga)}
+
 </div>
 
-<div class="stock">
-📦 Stock : <b>${item.stok || 0}</b>
+<div style="
+width:70px;
+text-align:center;
+font-weight:bold;
+font-size:14px;
+">
+
+${item.stok}
+
 </div>
 
-<div class="btn-group">
+<div style="
+display:flex;
+gap:5px;
+">
 
 <button
 class="tambah"
-onclick="tambahStock(${index})">
+onclick="tambahStock(${index})"
+style="
+width:32px;
+height:32px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+">
 
-+ Tambah
++
 
 </button>
 
 <button
 class="kurangi"
-onclick="kurangiStock(${index})">
+onclick="kurangiStock(${index})"
+style="
+width:32px;
+height:32px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+">
 
-- Kurangi
+-
 
 </button>
 
 <button
-class="edit-btn"
-onclick="editProduk(${index})">
+onclick="editProduk(${index})"
+style="
+background:#2563eb;
+color:white;
+border:none;
+width:32px;
+height:32px;
+border-radius:8px;
+cursor:pointer;
+">
 
-✏️ Edit
+✏️
 
 </button>
 
 </div>
+
+</div>
+
 `;
-
-});
-
-}
-
-}
 
 /* TAMBAH STOCK */
 
