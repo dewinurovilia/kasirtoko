@@ -792,6 +792,44 @@ document
 
 list.innerHTML = "";
 
+/* TOTAL SEMUA PRODUK */
+
+const totalSemuaProduk = produk.reduce(
+(total, item)=>{
+
+return total +
+
+(
+Number(item.harga || 0) *
+Number(item.stok || 0)
+);
+
+},
+0
+);
+
+list.innerHTML += `
+
+<div class="finance-box">
+
+<div class="finance-title">
+💰 Total Semua Produk
+</div>
+
+<h1 style="
+font-size:35px;
+color:#16a34a;
+margin-top:10px;
+">
+
+${rupiah(totalSemuaProduk)}
+
+</h1>
+
+</div>
+
+`;
+
 const BATAS_STOK = 3;
 
 const hasil =
