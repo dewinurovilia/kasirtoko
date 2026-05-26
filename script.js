@@ -930,7 +930,7 @@ pesan += 'Nama : ' + nama + '%0A';
 
   await kirimRekap(nama, pengiriman, pembayaran, total, items);
 
-simpanPesanan(
+await simpanPesanan(
     nama,
     items,
     total
