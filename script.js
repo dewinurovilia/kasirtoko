@@ -1002,7 +1002,7 @@ window.cetakStruk = async function(){
 
 console.log("REKAP DISIMPAN");
 
-simpanPesanan(
+await simpanPesanan(
     nama,
     items,
     total
