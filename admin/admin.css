@@ -460,3 +460,31 @@ object-fit:cover;
 border-radius:20px;
 
 }
+.tab-menu{
+display:flex;
+gap:10px;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+.tab-btn{
+padding:14px 18px;
+border:none;
+border-radius:14px;
+background:#e2e8f0;
+font-weight:bold;
+cursor:pointer;
+}
+
+.tab-btn.active{
+background:#2563eb;
+color:white;
+}
+
+.tab-content{
+display:none;
+}
+
+.tab-content.active{
+display:block;
+}
