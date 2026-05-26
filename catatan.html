@@ -296,16 +296,38 @@ appId:
 
 
 // INIT FIREBASE
+import {
+
+getAuth,
+onAuthStateChanged
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 const app =
 initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.replace(
+"https://dewinurovilia.github.io/kasirtoko/index.html"
+);
+
+}
+
+});
 
 const db =
 getDatabase(app);
 
 const hutangRef =
 ref(db,"dataHutang");
-
-
 
 // TANGGAL OTOMATIS
 document.getElementById("tanggal").value =
