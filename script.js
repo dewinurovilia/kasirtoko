@@ -934,6 +934,12 @@ await simpanPesanan(
     items,
     total
 );
+
+ /* TUNGGU FIREBASE */
+await new Promise(resolve =>
+setTimeout(resolve,500)
+);
+ 
   await kurangiStockCheckout();
 
   cart = [];
