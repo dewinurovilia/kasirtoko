@@ -514,8 +514,6 @@ showDashboard();
 
 }else{
 
-}else{
-
 document
 .getElementById("loginPage")
 .style.display = "flex";
@@ -552,14 +550,9 @@ window.logoutAdmin = async function(){
 
 await signOut(auth);
 
-showToast("Logout berhasil");
-
-setTimeout(()=>{
-
-window.location.href =
-"https://dewinurovilia.github.io/kasirtoko/index.html";
-
-},1000);
+window.location.replace(
+"https://dewinurovilia.github.io/kasirtoko/index.html"
+);
 
 }
 
