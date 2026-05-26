@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Rekap Pesanan</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#f1f5f9;
+padding:20px;
+}
+
+.title{
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px;
+color:#111827;
+}
+
+.list{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.nama{
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.tanggal{
+font-size:14px;
+color:#64748b;
+margin-bottom:15px;
+}
+
+.total{
+font-size:18px;
+font-weight:bold;
+color:#16a34a;
+margin-bottom:15px;
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.kosong{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 class="title">
+📋 Rekap Pesanan
+</h1>
+
+<div id="rekapList" class="list"></div>
+
+<script type="module">
+
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getDatabase,
+ref,
+onValue
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCvco9APepbM1YRhDLGzE2uxFBVtLL2NLs",
+authDomain: "fauz2327-b8dfa.firebaseapp.com",
+databaseURL: "https://fauz2327-b8dfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "fauz2327-b8dfa",
+storageBucket: "fauz2327-b8dfa.appspot.com",
+messagingSenderId: "625104866445",
+appId: "1:625104866445:web:129165fbc539edb36466c4"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getDatabase(app);
+
+const list =
+document.getElementById("rekapList");
+
+onValue(ref(db,"pesanan"),(snapshot)=>{
+
+const data = snapshot.val();
+
+list.innerHTML = "";
+
+if(!data){
+
+list.innerHTML = `
+
+<div class="kosong">
+Belum ada pesanan
+</div>
+
+`;
+
+return;
+
+}
+
+Object.entries(data)
+.reverse()
+.forEach(([id,pesanan])=>{
+
+list.innerHTML += `
+
+<div class="card">
+
+<div class="nama">
+${pesanan.nama}
+</div>
+
+<div class="tanggal">
+${pesanan.tanggal || pesanan.waktu}
+</div>
+
+<div class="total">
+Rp ${Number(pesanan.total)
+.toLocaleString("id-ID")}
+</div>
+
+<button
+class="btn"
+onclick="cetakStruk('${id}')">
+
+🖨 Cetak Struk
+
+</button>
+
+</div>
+
+`;
+
+});
+
+});
+
+window.cetakStruk = function(id){
+
+onValue(
+
+ref(db,"pesanan/" + id),
+
+(snapshot)=>{
+
+const data = snapshot.val();
+
+if(!data) return;
+
+const daftarProduk =
+data.items || data.produk || [];
+
+let rincian = '';
+
+daftarProduk.forEach(item=>{
+
+const subtotal =
+
+item.subtotal ||
+(item.harga * item.qty);
+
+rincian += `
+
+<div style="
+margin-bottom:8px;
+">
+
+${item.nama}
+
+<br>
+
+${item.qty} x
+Rp ${Number(item.harga)
+.toLocaleString('id-ID')}
+
+=
+Rp ${Number(subtotal)
+.toLocaleString('id-ID')}
+
+</div>
+
+`;
+
+});
+
+const isi = `
+
+<html>
+
+<body style="
+font-family:monospace;
+width:58mm;
+padding:10px;
+font-size:11px;
+">
+
+<center>
+
+<h3>
+TOKO DEFANA
+</h3>
+
+<div>
+Jln.Raya Kalitidu-Ngasem no.33
+</div>
+
+<div>
+Ds. Dukohkidul Kec. Ngasem
+</div>
+
+</center>
+
+<hr>
+
+Nama :
+${data.nama}
+
+<br>
+
+Tanggal :
+${data.tanggal || data.waktu}
+
+<hr>
+
+${rincian}
+
+<hr>
+
+<h3>
+
+TOTAL :
+Rp ${Number(data.total)
+.toLocaleString('id-ID')}
+
+</h3>
+
+<center>
+
+Terima kasih
+sudah berbelanja
+
+</center>
+
+</body>
+
+</html>
+
+`;
+
+const win =
+window.open(
+'',
+'',
+'width=400,height=700'
+);
+
+win.document.write(isi);
+
+win.document.close();
+
+win.print();
+
+},
+{
+onlyOnce:true
+}
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
