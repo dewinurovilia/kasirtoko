@@ -353,7 +353,9 @@ onclick="openTab('tabRekap',this)">
 
 </div>
 <!-- TAMBAH PRODUK -->
-
+<div
+id="tabTambah"
+class="tab-content active">
 <div class="finance-box">
 
 <div class="finance-title">
@@ -423,7 +425,9 @@ Simpan Produk
 </div>
 
 <!-- SEARCH -->
-
+<div
+id="tabProduk"
+class="tab-content">
 <input
 type="text"
 id="search"
@@ -438,7 +442,23 @@ onkeyup="renderProduk()">
 </div>
 
 </div>
+<!-- TAB REKAP -->
 
+<div
+id="tabRekap"
+class="tab-content">
+
+<div class="finance-box">
+
+<div class="finance-title">
+📊 Rekap Transaksi
+</div>
+
+<div id="listRekap"></div>
+
+</div>
+
+</div>
 <!-- TOAST -->
 
 <div class="toast" id="toast">
