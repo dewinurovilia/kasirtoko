@@ -12,8 +12,10 @@ import {
 getDatabase,
 ref,
 set,
+push,
 onValue
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 import {
 getAuth,
@@ -1786,21 +1788,44 @@ produk:items,
 
 total:totalBelanja,
 
-waktu:new Date().toLocaleString(),
+waktu:new Date().toLocaleString('id-ID'),
 
 status:"Belum Dicetak"
 
 };
 
+try{
+
+const idPesanan =
+Date.now().toString();
+
 await set(
 
 ref(
 dbPesanan,
-"pesanan/" + Date.now()
+"pesanan/" + idPesanan
 ),
 
 dataPesanan
 
 );
+
+console.log(
+"Pesanan berhasil masuk Firebase"
+);
+
+}
+catch(error){
+
+console.log(
+"ERROR FIREBASE:",
+error
+);
+
+alert(
+"Gagal simpan pesanan"
+);
+
+}
 
 }
