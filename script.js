@@ -853,7 +853,58 @@ console.log(error);
 }
 
 }
+/* =========================
+LOKASI USER
+========================= */
 
+let lokasiUser = "-";
+
+async function ambilLokasiUser(){
+
+return new Promise((resolve)=>{
+
+if(!navigator.geolocation){
+
+resolve(false);
+
+return;
+
+}
+
+navigator.geolocation.getCurrentPosition(
+
+(position)=>{
+
+const lat =
+position.coords.latitude;
+
+const lng =
+position.coords.longitude;
+
+lokasiUser =
+
+'https://maps.google.com/?q=' +
+lat + ',' + lng;
+
+resolve(true);
+
+},
+
+(error)=>{
+
+console.log(error);
+
+lokasiUser = "-";
+
+resolve(false);
+
+}
+
+);
+
+});
+
+}
 /* =========================
 CHECKOUT WHATSAPP
 ========================= */
@@ -1789,7 +1840,9 @@ total:totalBelanja,
 
 waktu:new Date().toLocaleString(),
 
-status:"Belum Dicetak"
+status:"Belum Dicetak",
+
+lokasi: lokasiUser
 
 };
 
