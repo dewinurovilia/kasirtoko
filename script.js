@@ -938,8 +938,6 @@ window.checkoutWA = async function(){
   }
 const izinLokasi =
 await ambilLokasiUser();
-
-if(!izinLokasi) return;
   let pesan = '🛒 PESANAN TOKO DEFANA%0A%0A';
   pesan += '📍 Lokasi Pembeli%0A';
   pesan +=
