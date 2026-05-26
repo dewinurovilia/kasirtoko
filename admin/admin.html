@@ -800,9 +800,15 @@ return;
 
 }
 
-produk = Array.isArray(data)
-? data
-: Object.values(data);
+produk = Object.entries(data).map(
+([key,item])=>({
+
+firebaseKey:key,
+id:item.id || key,
+...item
+
+})
+);
 
 /* LOAD DROPDOWN KATEGORI */
 
@@ -815,8 +821,6 @@ renderProduk();
 });
 
 }
-
-/* RENDER PRODUK */
 
 /* RENDER PRODUK */
 
@@ -1306,7 +1310,7 @@ await set(
 
 ref(
 db,
-'produk/' + item.id
+'produk/' + item.firebaseKey
 ),
 
 produk[index]
