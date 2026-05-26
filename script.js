@@ -1773,30 +1773,35 @@ alert("Kamera gagal dibuka");
 // REKAP KASIR
 // ==========================
 
-function simpanPesanan(nama, items, totalBelanja){
+async function simpanPesanan(
+nama,
+items,
+totalBelanja
+){
 
-    const rekap =
-    JSON.parse(
-        localStorage.getItem("rekapPesanan")
-    ) || [];
+const dataPesanan = {
 
-    rekap.push({
+nama:nama,
 
-        nama : nama,
+produk:items,
 
-        tanggal :
-        new Date().toLocaleString(),
+total:totalBelanja,
 
-        produk : items,
+waktu:new Date().toLocaleString(),
 
-        total : totalBelanja
+status:"Belum Dicetak"
 
-    });
+};
 
-    localStorage.setItem(
-        "rekapPesanan",
-        JSON.stringify(rekap)
-    );
+await set(
 
-    tampilkanRekap();
+ref(
+dbPesanan,
+"pesanan/" + Date.now()
+),
+
+dataPesanan
+
+);
+
 }
