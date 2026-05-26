@@ -159,10 +159,9 @@ return;
 }
 
 produk = Object.entries(data).map(
-([id,item])=>({
+([key,item])=>({
 
-id:id,
-
+firebaseKey:key,
 ...item
 
 })
@@ -1231,25 +1230,40 @@ async function kurangiStockCheckout(){
 
     const itemCart = cart[i];
 
-    const indexProduk = produk.findIndex(p => p.id == itemCart.id);
+    const indexProduk =
+    produk.findIndex(
+      p => p.id == itemCart.id
+    );
 
     if(indexProduk === -1) continue;
 
-    const stokSekarang = Number(produk[indexProduk].stok || 0);
+    const stokSekarang =
+    Number(
+      produk[indexProduk].stok || 0
+    );
 
-    const stokBaru = Math.max(stokSekarang - itemCart.qty, 0);
+    const stokBaru =
+    Math.max(
+      stokSekarang - itemCart.qty,
+      0
+    );
 
     await set(
-      ref(firebaseDB,'produk/' +produk[indexProduk].id +'/stok'),
+      ref(
+        firebaseDB,
+        'produk/' +
+        produk[indexProduk].firebaseKey +
+        '/stok'
+      ),
       stokBaru
     );
 
-    produk[indexProduk].stok = stokBaru;
+    produk[indexProduk].stok =
+    stokBaru;
 
   }
 
 }
-
 /* =========================
 RESET CART
 ========================= */
