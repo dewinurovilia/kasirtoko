@@ -313,7 +313,7 @@ onclick="kurangStock('${item.id}')">
 TAMBAH STOCK
 ========================= */
 
-window.tambahStock = function(id){
+window.tambahStock = async function(id){
 
 const item =
 produk.find(p => p.id == id);
@@ -326,9 +326,18 @@ item.stok = 0;
 
 item.stok++;
 
-renderProduk();
+await set(
 
-simpanStorage();
+ref(
+db,
+'produk/' + id
+),
+
+item
+
+);
+
+renderProduk();
 
 };
 
@@ -336,7 +345,7 @@ simpanStorage();
 KURANG STOCK
 ========================= */
 
-window.kurangStock = function(id){
+window.kurangStock = async function(id){
 
 const item =
 produk.find(p => p.id == id);
@@ -353,21 +362,17 @@ item.stok--;
 
 }
 
-renderProduk();
+await set(
 
-simpanStorage();
+ref(
+db,
+'produk/' + id
+),
 
-};
+item
 
-/* =========================
-SIMPAN STORAGE
-========================= */
-
-function simpanStorage(){
-
-localStorage.setItem(
-"produk",
-JSON.stringify(produk)
 );
 
-}
+renderProduk();
+
+};
