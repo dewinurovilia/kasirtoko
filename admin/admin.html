@@ -549,37 +549,6 @@ Number(angka || 0)
 
 }
 
-/* LOGIN */
-
-window.loginAdmin = async function(){
-
-const email =
-document.getElementById("email").value;
-
-const password =
-document.getElementById("password").value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-showToast("Login berhasil");
-
-}
-catch(error){
-
-showToast("Email atau password salah");
-
-console.log(error);
-
-}
-
-}
-
 /* AUTO LOGIN */
 
 onAuthStateChanged(auth, (user)=>{
