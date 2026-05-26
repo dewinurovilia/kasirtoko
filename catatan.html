@@ -312,7 +312,11 @@ getAuth(app);
 
 onAuthStateChanged(auth,(user)=>{
 
-if(!user){
+if(user){
+
+document.body.style.display = "block";
+
+}else{
 
 window.location.replace(
 "https://dewinurovilia.github.io/kasirtoko/index.html"
