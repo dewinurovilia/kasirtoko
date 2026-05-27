@@ -842,7 +842,11 @@ const namaKasir =
 document.getElementById(
 'namaPemesan'
 ).value || '-';
-
+const pembayaran =
+document.getElementById(
+'pembayaran'
+).value || 'Tunai';
+  
 /* KODE BELANJA */
 
 const kode =
@@ -1097,6 +1101,11 @@ ${jam}
 
 Kasir :
 ${namaKasir}
+
+<br>
+
+Pembayaran :
+${pembayaran}
 
 <br>
 
