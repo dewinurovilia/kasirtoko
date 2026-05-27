@@ -962,6 +962,51 @@ Rp ${subtotal
 
 });
 
+/* =========================
+SIMPAN REKAP
+========================= */
+
+const items = [];
+
+cart.forEach(item=>{
+
+items.push({
+
+nama:item.nama,
+
+qty:item.qty,
+
+harga:item.harga,
+
+subtotal:
+item.harga * item.qty
+
+});
+
+});
+
+/* FIREBASE */
+
+simpanPesanan(
+
+namaKasir,
+items,
+total
+
+);
+
+/* GOOGLE SHEET */
+
+kirimRekap(
+
+namaKasir,
+'Ambil Sendiri',
+'Tunai',
+total,
+items
+
+);
+  
 /* BUKA WINDOW PRINT */
 
 const printWindow =
