@@ -478,7 +478,8 @@ getDatabase,
 ref,
 onValue,
 set,
-push
+push,
+remove
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -734,6 +735,20 @@ return;
 const idProduk =
 document.getElementById("barcodeProduk").value
 || 'PRD-' + Date.now();
+
+/* CEK BARCODE SUDAH ADA */
+
+const barcodeSudahAda = produk.some(item =>
+item.id === idProduk
+);
+
+if(barcodeSudahAda){
+
+showToast('Barcode sudah digunakan');
+
+return;
+
+}
 
 const produkBaru = {
 
@@ -1240,6 +1255,15 @@ const item = produk[index];
 
 if(!item) return;
 
+/* EDIT BARCODE */
+
+const barcodeBaru = prompt(
+'Edit Barcode Produk',
+item.id
+);
+
+if(barcodeBaru === null) return;
+
 /* EDIT NAMA */
 
 const namaBaru = prompt(
@@ -1257,6 +1281,15 @@ item.harga
 );
 
 if(hargaBaru === null) return;
+
+/* EDIT STOK */
+
+const stokBaru = prompt(
+'Edit Stok Produk',
+item.stok
+);
+
+if(stokBaru === null) return;
 
 /* PILIH KATEGORI */
 
@@ -1276,11 +1309,30 @@ if(pilih === null) return;
 const kategoriBaru =
 kategoriList[Number(pilih) - 1];
 
+/* CEK BARCODE DUPLIKAT */
+
+const barcodeDipakai = produk.some(p =>
+
+p.id === barcodeBaru &&
+p.firebaseKey !== item.firebaseKey
+
+);
+
+if(barcodeDipakai){
+
+showToast('Barcode sudah dipakai produk lain');
+
+return;
+
+}
+
 /* VALIDASI */
 
 if(
+barcodeBaru.trim() === '' ||
 namaBaru.trim() === '' ||
 Number(hargaBaru) <= 0 ||
+Number(stokBaru) < 0 ||
 !kategoriBaru
 ){
 
@@ -1290,32 +1342,43 @@ return;
 
 }
 
-/* UPDATE */
+/* DATA BARU */
 
-produk[index] = {
+const produkBaru = {
 
 ...item,
 
+id: barcodeBaru,
 nama: namaBaru,
-
 harga: Number(hargaBaru),
-
+stok: Number(stokBaru),
 kategori: kategoriBaru
 
 };
 
-/* SIMPAN FIREBASE */
+/* HAPUS DATA LAMA */
+
+if(barcodeBaru !== item.firebaseKey){
+
+await remove(
+ref(db,'produk/' + item.firebaseKey)
+);
+
+}
+
+/* SIMPAN DATA BARU */
 
 await set(
-
-ref(
-db,
-'produk/' + item.firebaseKey
-),
-
-produk[index]
-
+ref(db,'produk/' + barcodeBaru),
+produkBaru
 );
+
+/* UPDATE ARRAY */
+
+produk[index] = {
+firebaseKey: barcodeBaru,
+...produkBaru
+};
 
 /* REFRESH */
 
@@ -1328,6 +1391,7 @@ showToast(
 );
 
 }
+
 /* =========================
 DOWNLOAD REKAP EXCEL
 ========================= */
