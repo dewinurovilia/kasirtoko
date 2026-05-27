@@ -1553,6 +1553,8 @@ showToast(
 kembalianGlobal.toLocaleString()
 );
 
+}
+
 window.formatInputUang = function(input){
 
 let angka =
