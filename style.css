@@ -1895,3 +1895,344 @@ caret-color:#ffffff !important;
 -webkit-appearance:none;
 margin:0;
 }
+/* =========================================
+HP COMPACT MODE FINAL
+TARUH PALING BAWAH
+========================================= */
+
+@media(max-width:480px){
+
+/* TOPBAR */
+
+.topbar{
+
+padding:10px 12px;
+
+}
+
+.topbar h1{
+
+font-size:17px;
+
+}
+
+/* MENU BUTTON */
+
+.menu-toggle{
+
+width:46px;
+height:46px;
+
+font-size:22px;
+
+border-radius:14px;
+
+}
+
+/* SEARCH */
+
+.search-box{
+
+padding:8px 12px;
+
+}
+
+.search-box input{
+
+height:46px !important;
+
+font-size:14px !important;
+
+padding:0 14px !important;
+
+border-radius:14px !important;
+
+}
+
+/* BUTTON SCAN */
+
+.scan-search-btn{
+
+width:48px !important;
+
+height:46px !important;
+
+font-size:18px !important;
+
+border-radius:14px !important;
+
+}
+
+/* PRODUK */
+
+#productList{
+
+gap:10px;
+
+padding:0 12px 90px;
+
+}
+
+/* CARD */
+
+.product-card{
+
+min-height:78px !important;
+
+padding:12px !important;
+
+border-radius:18px !important;
+
+gap:10px !important;
+
+}
+
+/* LEFT */
+
+.product-left{
+
+width:24% !important;
+
+}
+
+/* KATEGORI */
+
+.product-category{
+
+font-size:11px !important;
+
+}
+
+/* STOK */
+
+.product-stock{
+
+font-size:10px !important;
+
+}
+
+/* NAMA */
+
+.product-name{
+
+font-size:15px !important;
+
+line-height:1.2 !important;
+
+}
+
+/* HARGA */
+
+.product-price{
+
+font-size:14px !important;
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:78%;
+
+padding:18px 14px;
+
+}
+
+/* BUTTON KATEGORI */
+
+.kategori-list button{
+
+padding:12px;
+
+font-size:14px;
+
+border-radius:14px;
+
+}
+
+/* CART */
+
+.cart-box{
+
+padding:14px !important;
+
+}
+
+/* ITEM CART */
+
+.cart-item{
+
+padding:10px !important;
+
+border-radius:14px !important;
+
+margin-bottom:8px !important;
+
+}
+
+/* NAMA CART */
+
+.cart-item h3{
+
+font-size:15px !important;
+
+}
+
+/* DETAIL */
+
+.cart-item p{
+
+font-size:11px !important;
+
+}
+
+/* SUBTOTAL */
+
+.cart-item .subtotal{
+
+font-size:16px !important;
+
+}
+
+/* BUTTON HAPUS */
+
+.btn-hapus-modern{
+
+height:32px !important;
+
+font-size:11px !important;
+
+padding:0 10px !important;
+
+border-radius:10px !important;
+
+}
+
+/* TOTAL */
+
+.total-text{
+
+font-size:16px !important;
+
+}
+
+/* BUTTON */
+
+.checkout-btn,
+.reset-btn{
+
+height:46px !important;
+
+font-size:15px !important;
+
+border-radius:14px !important;
+
+}
+
+/* POPUP */
+
+.popup-content{
+
+max-width:280px !important;
+
+padding:18px 14px !important;
+
+border-radius:20px !important;
+
+}
+
+/* TITLE */
+
+.popup-content h2{
+
+font-size:18px !important;
+
+}
+
+/* INPUT */
+
+.popup-content input{
+
+height:46px !important;
+
+font-size:14px !important;
+
+border-radius:14px !important;
+
+}
+
+/* QTY */
+
+.popup-qty{
+
+gap:8px !important;
+
+}
+
+/* BUTTON QTY */
+
+.popup-qty button{
+
+width:40px !important;
+height:40px !important;
+
+font-size:20px !important;
+
+border-radius:12px !important;
+
+}
+
+/* INPUT QTY */
+
+#popupQty{
+
+width:64px !important;
+height:40px !important;
+
+font-size:16px !important;
+
+border-radius:12px !important;
+
+}
+
+/* BUTTON POPUP */
+
+.popup-btn,
+.popup-close{
+
+height:46px !important;
+
+font-size:15px !important;
+
+border-radius:14px !important;
+
+}
+
+/* MENU BAWAH */
+
+.bottom-menu{
+
+height:64px !important;
+
+}
+
+/* BUTTON MENU */
+
+.bottom-menu button{
+
+font-size:10px !important;
+
+gap:2px !important;
+
+}
+
+/* ICON */
+
+.bottom-menu span{
+
+font-size:16px !important;
+
+}
+
+}
