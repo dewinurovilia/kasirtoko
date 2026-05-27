@@ -2379,3 +2379,118 @@ font-size:14px !important;
 }
 
 }
+/* =========================================
+LIST PRODUK MINI 1 KOLOM
+========================================= */
+
+#productList{
+
+display:flex !important;
+
+flex-direction:column !important;
+
+gap:8px !important;
+
+padding:8px 8px 90px !important;
+
+}
+
+/* CARD */
+
+.product-card{
+
+min-height:72px !important;
+
+padding:10px 12px !important;
+
+border-radius:16px !important;
+
+display:flex !important;
+
+align-items:center !important;
+
+justify-content:space-between !important;
+
+gap:10px !important;
+
+}
+
+/* KIRI */
+
+.product-left{
+
+width:24% !important;
+
+font-size:11px !important;
+
+line-height:1.2 !important;
+
+}
+
+/* STOK */
+
+.product-left small{
+
+font-size:10px !important;
+
+}
+
+/* NAMA */
+
+.product-name{
+
+flex:1 !important;
+
+font-size:15px !important;
+
+font-weight:700 !important;
+
+line-height:1.2 !important;
+
+}
+
+/* HARGA */
+
+.product-price{
+
+font-size:15px !important;
+
+font-weight:800 !important;
+
+white-space:nowrap !important;
+
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.product-card{
+
+min-height:68px !important;
+
+padding:8px 10px !important;
+
+border-radius:14px !important;
+
+}
+
+.product-name{
+
+font-size:14px !important;
+
+}
+
+.product-price{
+
+font-size:14px !important;
+
+}
+
+.product-left{
+
+font-size:10px !important;
+
+}
+
+}
