@@ -752,3 +752,50 @@ Number(angka)
 .toLocaleString('id-ID');
 
 }
+/* =========================
+POPUP BAYAR
+========================= */
+
+window.bukaPopupBayar =
+function(){
+
+if(cart.length === 0){
+
+showToast(
+'Keranjang kosong'
+);
+
+return;
+
+}
+
+let total = 0;
+
+cart.forEach(item=>{
+
+const harga =
+Number(item.harga) || 0;
+
+const qty =
+Number(item.qty) || 0;
+
+total += harga * qty;
+
+});
+
+console.log(total);
+
+document.getElementById(
+'totalBayarText'
+).innerHTML =
+
+'Rp ' +
+total.toLocaleString(
+'id-ID'
+);
+
+document.getElementById(
+'popupBayar'
+).classList.add('active');
+
+}
