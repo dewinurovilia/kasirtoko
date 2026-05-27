@@ -8,6 +8,8 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
 getDatabase,
 ref,
+set,
+push,
 onValue
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
@@ -73,3 +75,6 @@ onAuthStateChanged;
 
 window.firebaseSignOut =
 signOut;
+window.firebaseSet = set;
+
+window.firebasePush = push;
