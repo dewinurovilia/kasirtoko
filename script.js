@@ -376,7 +376,11 @@ cart.push({
 
 ...selectedProduct,
 
-qty:qty
+harga:Number(
+selectedProduct.harga
+),
+
+qty:Number(qty)
 
 });
 
