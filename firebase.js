@@ -1,5 +1,7 @@
 import {
-initializeApp
+initializeApp,
+getApps,
+getApp
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -41,13 +43,6 @@ appId:
 "1:625104866445:web:129165fbc539edb36466c4"
 
 };
-
-import {
-initializeApp,
-getApps,
-getApp
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 const app =
 !getApps().length
