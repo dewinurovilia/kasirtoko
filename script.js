@@ -1344,3 +1344,68 @@ showToast(
 }
 
 }
+/* =========================
+KIRIM REKAP GOOGLE SHEET
+========================= */
+
+window.kirimRekap =
+async function(
+nama,
+pengiriman,
+pembayaran,
+total,
+items
+){
+
+const data = {
+
+nama:nama,
+
+pengiriman:pengiriman,
+
+pembayaran:pembayaran,
+
+total:total,
+
+items:items
+
+};
+
+try{
+
+await fetch(
+
+'https://script.google.com/macros/s/AKfycbxWfHVxDop4n8SqwP1vxGLj1D4jnTe7_iTrqGJ4bm9dDW0BiDDSxOPpy7X5Dcvb1dEa/exec',
+
+{
+
+method:'POST',
+
+mode:'no-cors',
+
+headers:{
+'Content-Type':'text/plain'
+},
+
+body:JSON.stringify(data)
+
+}
+
+);
+
+console.log(
+'Rekap berhasil dikirim'
+);
+
+}
+catch(error){
+
+console.log(error);
+
+alert(
+'Gagal kirim rekap'
+);
+
+}
+
+}
