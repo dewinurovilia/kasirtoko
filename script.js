@@ -1256,7 +1256,9 @@ printWindow.document.close();
 printWindow.focus();
 
 printWindow.print();
+/* KURANGI STOK */
 
+kurangiStockCheckout();
 /* RESET CART */
 
 cart = [];
@@ -1407,5 +1409,67 @@ alert(
 );
 
 }
+
+}
+/* =========================
+KURANGI STOK PRODUK
+========================= */
+
+window.kurangiStockCheckout =
+async function(){
+
+for(let i = 0; i < cart.length; i++){
+
+const itemCart =
+cart[i];
+
+const indexProduk =
+produk.findIndex(
+p => p.id == itemCart.id
+);
+
+if(indexProduk === -1)
+continue;
+
+const stokSekarang =
+Number(
+produk[indexProduk].stok || 0
+);
+
+const stokBaru =
+Math.max(
+stokSekarang - itemCart.qty,
+0
+);
+
+/* UPDATE FIREBASE */
+
+await firebaseSet(
+
+firebaseRef(
+
+firebaseDB,
+
+'produk/' +
+produk[indexProduk]
+.firebaseKey +
+'/stok'
+
+),
+
+stokBaru
+
+);
+
+/* UPDATE LOCAL */
+
+produk[indexProduk].stok =
+stokBaru;
+
+}
+
+console.log(
+'Stock berhasil dikurangi'
+);
 
 }
