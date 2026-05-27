@@ -185,24 +185,6 @@ id="namaPemesan"
 placeholder="👤 Nama Kasir">
 
 <select
-id="pengiriman"
-onchange="toggleMetode()">
-
-<option value="" disabled selected>
-🚚 Pilih Pengiriman
-</option>
-
-<option value="Ambil Sendiri">
-Ambil Sendiri
-</option>
-
-<option value="Diantar">
-Diantar
-</option>
-
-</select>
-
-<select
 id="pembayaran"
 onchange="toggleQR()">
 
@@ -260,19 +242,9 @@ class="mini-cart-btn">
 <!-- BUTTON -->
 
 <button
-id="btnWA"
-class="checkout-btn"
-onclick="checkoutWA()">
-
-📲 WhatsApp
-
-</button>
-
-<button
 id="btnStruk"
 class="checkout-btn"
 onclick="bukaPopupBayar()">
-
 🖨 Cetak Struk
 
 </button>
