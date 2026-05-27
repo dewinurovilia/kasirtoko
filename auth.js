@@ -102,7 +102,7 @@ console.log(
 "Admin Login:",
 user.email
 );
-
+  
 }
 
 }
@@ -139,3 +139,195 @@ loginAdminPopup;
 
 window.logoutAdmin =
 logoutAdmin;
+/* =========================================
+LOGIN KASIR
+========================================= */
+
+const loginOverlay =
+document.getElementById(
+"loginOverlay"
+);
+
+/* AUTO LOGIN */
+
+window.addEventListener(
+"load",
+()=>{
+
+const kasir =
+localStorage.getItem(
+"kasirNama"
+);
+
+if(kasir){
+
+loginOverlay.style.display =
+"none";
+
+isiNamaKasir(kasir);
+
+}
+
+}
+);
+
+/* LOGIN */
+
+async function loginKasir(){
+
+const nama =
+document.getElementById(
+"loginNama"
+).value.trim();
+
+const email =
+document.getElementById(
+"loginEmail"
+).value.trim();
+
+const password =
+document.getElementById(
+"loginPassword"
+).value.trim();
+
+if(
+nama === "" ||
+email === "" ||
+password === ""
+){
+
+showToast(
+"Lengkapi login"
+);
+
+return;
+
+}
+
+try{
+
+await window.firebaseSignIn(
+
+window.firebaseAuth,
+
+email,
+
+password
+
+);
+
+/* SIMPAN LOGIN */
+
+localStorage.setItem(
+"kasirNama",
+nama
+);
+
+localStorage.setItem(
+"kasirEmail",
+email
+);
+
+/* TUTUP LOGIN */
+
+loginOverlay.style.display =
+"none";
+
+/* ISI NAMA */
+
+isiNamaKasir(nama);
+
+showToast(
+"Login berhasil"
+);
+
+}
+catch(error){
+
+console.log(error);
+
+/* ERROR FIREBASE */
+
+if(
+error.code ===
+"auth/invalid-credential"
+){
+
+showToast(
+"Email atau password salah"
+);
+
+}
+else if(
+error.code ===
+"auth/user-not-found"
+){
+
+showToast(
+"Akun tidak ditemukan"
+);
+
+}
+else if(
+error.code ===
+"auth/wrong-password"
+){
+
+showToast(
+"Password salah"
+);
+
+}
+else{
+
+showToast(
+"Gagal login"
+);
+
+}
+
+}
+
+}
+
+/* ISI NAMA */
+
+function isiNamaKasir(nama){
+
+const namaPemesan =
+document.getElementById(
+"namaPemesan"
+);
+
+if(namaPemesan){
+
+namaPemesan.value =
+nama;
+
+}
+
+}
+
+/* LOGOUT */
+
+function logoutKasir(){
+
+localStorage.removeItem(
+"kasirNama"
+);
+
+localStorage.removeItem(
+"kasirEmail"
+);
+
+location.reload();
+
+}
+
+/* GLOBAL */
+
+window.loginKasir =
+loginKasir;
+
+window.logoutKasir =
+logoutKasir;
