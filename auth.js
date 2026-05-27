@@ -90,6 +90,15 @@ info.innerHTML =
 CEK LOGIN
 ========================= */
 
+window.addEventListener(
+"load",
+()=>{
+
+if(
+window.firebaseOnAuth &&
+window.firebaseAuth
+){
+
 window.firebaseOnAuth(
 
 window.firebaseAuth,
@@ -102,11 +111,16 @@ console.log(
 "Admin Login:",
 user.email
 );
-  
-}
 
 }
 
+}
+
+);
+
+}
+
+}
 );
 
 /* =========================
