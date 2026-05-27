@@ -828,12 +828,15 @@ document
 .classList.remove('active');
 
 }
+
 /* =========================
-PROSES CETAK STRUK
+PROSES CETAK STRUK FINAL
 ========================= */
 
 window.prosesCetakStruk =
 function(){
+
+/* HITUNG TOTAL */
 
 let total = 0;
 
@@ -849,6 +852,8 @@ total += harga * qty;
 
 });
 
+/* AMBIL INPUT BAYAR */
+
 const uangInput =
 document.getElementById(
 'uangBayar'
@@ -860,6 +865,8 @@ Number(
 .replace(/\./g,'')
 );
 
+/* VALIDASI */
+
 if(uang < total){
 
 showToast(
@@ -870,6 +877,8 @@ return;
 
 }
 
+/* HITUNG KEMBALI */
+
 const kembali =
 uang - total;
 
@@ -877,38 +886,83 @@ uang - total;
 
 tutupPopupBayar();
 
-/* CETAK */
+/* TANGGAL */
+
+const sekarang =
+new Date();
+
+const tanggal =
+sekarang.toLocaleDateString(
+'id-ID'
+);
+
+const jam =
+sekarang.toLocaleTimeString(
+'id-ID'
+);
+
+/* NAMA KASIR */
+
+const namaKasir =
+document.getElementById(
+'namaPemesan'
+).value || '-';
+
+/* KODE BELANJA */
+
+const kode =
+Date.now()
+.toString()
+.slice(-6);
+
+/* ITEM STRUK */
 
 let isi = '';
 
 cart.forEach(item=>{
 
 const subtotal =
-item.harga * item.qty;
+
+Number(item.harga)
+*
+Number(item.qty);
 
 isi += `
 
-<div style="
-margin-bottom:8px;
-">
+<div class="item">
+
+<div class="produk">
 
 ${item.nama}
 
-<br>
+</div>
 
-${item.qty} x Rp
-${Number(item.harga)
+<div class="row">
+
+<div>
+
+${item.qty} x
+Rp ${Number(item.harga)
 .toLocaleString('id-ID')}
 
-=
-Rp
-${subtotal.toLocaleString('id-ID')}
+</div>
+
+<div class="right">
+
+Rp ${subtotal
+.toLocaleString('id-ID')}
+
+</div>
+
+</div>
 
 </div>
 
 `;
 
 });
+
+/* BUKA WINDOW PRINT */
 
 const printWindow =
 window.open(
@@ -917,53 +971,227 @@ window.open(
 'width=400,height=700'
 );
 
+/* HTML STRUK */
+
 printWindow.document.write(`
 
 <html>
 
-<body style="
-font-family:monospace;
-padding:10px;
-width:58mm;
-font-size:11px;
-">
+<head>
 
-<center>
+<title>
+Cetak Struk
+</title>
+
+<style>
+
+body{
+
+font-family:monospace;
+
+width:58mm;
+
+padding:10px;
+
+font-size:11px;
+
+color:#000;
+
+}
+
+/* CENTER */
+
+.center{
+
+text-align:center;
+
+}
+
+/* GARIS */
+
+.line{
+
+border-top:1px dashed #000;
+
+margin:8px 0;
+
+}
+
+/* ITEM */
+
+.item{
+
+margin-bottom:10px;
+
+}
+
+/* ROW */
+
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:10px;
+
+}
+
+/* PRODUK */
+
+.produk{
+
+font-weight:bold;
+
+margin-bottom:2px;
+
+}
+
+/* RIGHT */
+
+.right{
+
+text-align:right;
+
+}
+
+/* TOTAL */
+
+.total{
+
+font-size:14px;
+
+font-weight:bold;
+
+}
+
+/* PRINT */
+
+@media print{
+
+body{
+
+width:58mm;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="center">
 
 <h3>
 TOKO DEFANA
 </h3>
 
 <div>
-Terima kasih
+Jln.Raya Kalitidu-Ngasem no.33
 </div>
 
-</center>
+<div>
+Ds. Dukohkidul Kec. Ngasem
+</div>
 
-<hr>
+</div>
+
+<div class="line"></div>
+
+<div>
+
+Tanggal :
+${tanggal}
+
+<br>
+
+Jam :
+${jam}
+
+<br>
+
+Kasir :
+${namaKasir}
+
+<br>
+
+Kode :
+${kode}
+
+</div>
+
+<div class="line"></div>
 
 ${isi}
 
-<hr>
+<div class="line"></div>
 
-<h3>
-
-TOTAL :
-Rp ${total.toLocaleString('id-ID')}
-
-</h3>
+<div class="row total">
 
 <div>
+TOTAL
+</div>
 
-Bayar :
-Rp ${uang.toLocaleString('id-ID')}
+<div class="right">
+
+Rp ${total
+.toLocaleString('id-ID')}
 
 </div>
 
-<div>
+</div>
 
-Kembali :
-Rp ${kembali.toLocaleString('id-ID')}
+<br>
+
+<div class="row">
+
+<div>
+BAYAR
+</div>
+
+<div class="right">
+
+Rp ${uang
+.toLocaleString('id-ID')}
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div>
+KEMBALI
+</div>
+
+<div class="right">
+
+Rp ${kembali
+.toLocaleString('id-ID')}
+
+</div>
+
+</div>
+
+<div class="line"></div>
+
+<div class="center">
+
+TERIMA KASIH
+
+<br>
+
+Sudah Berbelanja
+
+<br><br>
+
+Simpan struk ini
+sebagai bukti pembayaran
 
 </div>
 
@@ -973,14 +1201,24 @@ Rp ${kembali.toLocaleString('id-ID')}
 
 `);
 
+/* CLOSE */
+
 printWindow.document.close();
+
+/* PRINT */
+
+printWindow.focus();
 
 printWindow.print();
 
-/* RESET */
+/* RESET CART */
 
 cart = [];
 
 updateCart();
+
+showToast(
+'Struk berhasil dicetak'
+);
 
 }
