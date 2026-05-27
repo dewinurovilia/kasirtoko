@@ -7,7 +7,8 @@ window.firebaseDB;
 
 const firebaseRef =
 window.firebaseRef;
-
+const firebaseSet =
+window.firebaseSet;
 const firebaseOnValue =
 window.firebaseOnValue;
 
@@ -1265,5 +1266,81 @@ updateCart();
 showToast(
 'Struk berhasil dicetak'
 );
+
+}
+/* =========================
+SIMPAN PESANAN FIREBASE
+========================= */
+
+window.simpanPesanan =
+async function(
+nama,
+items,
+totalBelanja
+){
+
+const sekarang =
+new Date();
+
+const tanggal =
+sekarang.toLocaleDateString(
+'id-ID'
+);
+
+const jam =
+sekarang.toLocaleTimeString(
+'id-ID'
+);
+
+const dataPesanan = {
+
+nama:nama,
+
+produk:items,
+
+total:totalBelanja,
+
+tanggal:tanggal,
+
+jam:jam,
+
+waktu:
+tanggal + ' ' + jam,
+
+status:
+"Belum Dicetak"
+
+};
+
+try{
+
+const idPesanan =
+Date.now().toString();
+
+await firebaseSet(
+
+firebaseRef(
+firebaseDB,
+"pesanan/" + idPesanan
+),
+
+dataPesanan
+
+);
+
+console.log(
+"Pesanan berhasil disimpan"
+);
+
+}
+catch(error){
+
+console.log(error);
+
+showToast(
+"Gagal simpan pesanan"
+);
+
+}
 
 }
