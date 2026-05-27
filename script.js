@@ -49,32 +49,13 @@ const firebaseDB =
 getDatabase(app);
 
 const auth = getAuth(app);
-const firebaseConfigPesanan = {
 
-  apiKey: "AIzaSyAvbER9UML8e-FfwEsgnPvWdOVR2TE1zFY",
-  authDomain: "rekap-pesanan.firebaseapp.com",
-  databaseURL: "https://rekap-pesanan-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "rekap-pesanan",
-  storageBucket: "rekap-pesanan.firebasestorage.app",
-  messagingSenderId: "394281706606",
-  appId: "1:394281706606:web:b7f1de991819396f40b27f",
-
-};
-
-const appPesanan =
-initializeApp(
-firebaseConfigPesanan,
-"pesananApp"
-);
-
-const dbPesanan =
-getDatabase(appPesanan);
 // ==========================
 // TERIMA PESANAN REALTIME
 // ==========================
 
 const pesananRef =
-ref(dbPesanan, "pesanan")
+ref(firebaseDB, "pesanan")
 
 onValue(pesananRef, (snapshot)=>{
 
@@ -1832,7 +1813,7 @@ Date.now().toString();
 await set(
 
 ref(
-dbPesanan,
+firebaseDB,
 "pesanan/" + idPesanan
 ),
 
