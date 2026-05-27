@@ -828,3 +828,159 @@ document
 .classList.remove('active');
 
 }
+/* =========================
+PROSES CETAK STRUK
+========================= */
+
+window.prosesCetakStruk =
+function(){
+
+let total = 0;
+
+cart.forEach(item=>{
+
+const harga =
+Number(item.harga) || 0;
+
+const qty =
+Number(item.qty) || 0;
+
+total += harga * qty;
+
+});
+
+const uangInput =
+document.getElementById(
+'uangBayar'
+);
+
+const uang =
+Number(
+(uangInput.value || '0')
+.replace(/\./g,'')
+);
+
+if(uang < total){
+
+showToast(
+'Uang kurang'
+);
+
+return;
+
+}
+
+const kembali =
+uang - total;
+
+/* TUTUP POPUP */
+
+tutupPopupBayar();
+
+/* CETAK */
+
+let isi = '';
+
+cart.forEach(item=>{
+
+const subtotal =
+item.harga * item.qty;
+
+isi += `
+
+<div style="
+margin-bottom:8px;
+">
+
+${item.nama}
+
+<br>
+
+${item.qty} x Rp
+${Number(item.harga)
+.toLocaleString('id-ID')}
+
+=
+Rp
+${subtotal.toLocaleString('id-ID')}
+
+</div>
+
+`;
+
+});
+
+const printWindow =
+window.open(
+'',
+'',
+'width=400,height=700'
+);
+
+printWindow.document.write(`
+
+<html>
+
+<body style="
+font-family:monospace;
+padding:10px;
+width:58mm;
+font-size:11px;
+">
+
+<center>
+
+<h3>
+TOKO DEFANA
+</h3>
+
+<div>
+Terima kasih
+</div>
+
+</center>
+
+<hr>
+
+${isi}
+
+<hr>
+
+<h3>
+
+TOTAL :
+Rp ${total.toLocaleString('id-ID')}
+
+</h3>
+
+<div>
+
+Bayar :
+Rp ${uang.toLocaleString('id-ID')}
+
+</div>
+
+<div>
+
+Kembali :
+Rp ${kembali.toLocaleString('id-ID')}
+
+</div>
+
+</body>
+
+</html>
+
+`);
+
+printWindow.document.close();
+
+printWindow.print();
+
+/* RESET */
+
+cart = [];
+
+updateCart();
+
+}
