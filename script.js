@@ -799,3 +799,17 @@ document.getElementById(
 ).classList.add('active');
 
 }
+/* =========================
+TUTUP POPUP PRODUK
+========================= */
+
+window.closePopup =
+function(){
+
+document
+.getElementById(
+'popupBox'
+)
+.classList.remove('active');
+
+}
