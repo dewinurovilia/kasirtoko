@@ -45,7 +45,6 @@ toggleQR();
 
 updateCart();
 
-toggleMetode();
 
 }
 );
@@ -578,7 +577,6 @@ cart.splice(index,1);
 
 updateCart();
 
-toggleMetode();
 
 }
 
@@ -610,73 +608,9 @@ cart = [];
 
 updateCart();
 
-toggleMetode();
-
 showToast(
 'Keranjang dikosongkan'
 );
-
-}
-
-/* =========================
-TOGGLE METODE
-========================= */
-
-window.toggleMetode =
-function(){
-
-const pengiriman =
-document.getElementById(
-'pengiriman'
-);
-
-const btnWA =
-document.getElementById(
-'btnWA'
-);
-
-const btnStruk =
-document.getElementById(
-'btnStruk'
-);
-
-if(
-!pengiriman
-||
-!btnWA
-||
-!btnStruk
-) return;
-
-btnWA.style.display =
-'none';
-
-btnStruk.style.display =
-'none';
-
-if(cart.length===0){
-return;
-}
-
-if(
-pengiriman.value
-=== 'Diantar'
-){
-
-btnWA.style.display =
-'flex';
-
-}
-
-if(
-pengiriman.value
-=== 'Ambil Sendiri'
-){
-
-btnStruk.style.display =
-'flex';
-
-}
 
 }
 
