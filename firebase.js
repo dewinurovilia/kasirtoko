@@ -42,8 +42,17 @@ appId:
 
 };
 
+import {
+initializeApp,
+getApps,
+getApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 const app =
-initializeApp(firebaseConfig);
+!getApps().length
+? initializeApp(firebaseConfig)
+: getApp();
 
 const db =
 getDatabase(app);
