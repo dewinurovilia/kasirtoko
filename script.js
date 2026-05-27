@@ -752,6 +752,7 @@ Number(angka)
 .toLocaleString('id-ID');
 
 }
+
 /* =========================
 POPUP BAYAR
 ========================= */
@@ -783,8 +784,6 @@ total += harga * qty;
 
 });
 
-console.log(total);
-
 document.getElementById(
 'totalBayarText'
 ).innerHTML =
@@ -799,6 +798,7 @@ document.getElementById(
 ).classList.add('active');
 
 }
+
 /* =========================
 TUTUP POPUP PRODUK
 ========================= */
@@ -809,6 +809,21 @@ function(){
 document
 .getElementById(
 'popupBox'
+)
+.classList.remove('active');
+
+}
+
+/* =========================
+TUTUP POPUP BAYAR
+========================= */
+
+window.tutupPopupBayar =
+function(){
+
+document
+.getElementById(
+'popupBayar'
 )
 .classList.remove('active');
 
