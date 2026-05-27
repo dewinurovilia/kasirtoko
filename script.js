@@ -938,7 +938,7 @@ await simpanPesanan(
 
  /* TUNGGU FIREBASE */
 await new Promise(resolve =>
-setTimeout(resolve,500)
+setTimeout(resolve,700)
 );
  
   await kurangiStockCheckout();
@@ -1540,8 +1540,6 @@ showLoading(
 
 /* DELAY */
 
-setTimeout(async()=>{
-
 await cetakStruk();
 
 hideLoading();
@@ -1555,9 +1553,6 @@ showToast(
 kembalianGlobal.toLocaleString()
 );
 
-},1200);
-
-}
 window.formatInputUang = function(input){
 
 let angka =
@@ -1754,7 +1749,7 @@ document.getElementById(
 renderProduk();
 
 const produkDipilih = produk.find(
-p => p.barcode == decodedText
+p => p.id == decodedText
 );
 
 if(produkDipilih){
