@@ -920,129 +920,45 @@ Number(item.stok || 0)
 
 if(stokSedikit.length > 0){
 
-list.innerHTML += `
-
-<div class="section-title warning-title">
-⚠️ STOCK MENIPIS
-</div>
-
-<button onclick="downloadRekapExcel()" class="btn-excel">
-📥 Download Rekap Excel
-</button>
-
-<div class="produk-grid" id="stokSedikit"></div>
-
-`;
-
-const gridSedikit =
-document.getElementById("stokSedikit");
-
-stokSedikit.forEach((item)=>{
-
-const index = produk.indexOf(item);
-
 gridSedikit.innerHTML += `
 
-<div style="
-background:#fef2f2;
-padding:12px 15px;
-border-bottom:1px solid #fecaca;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-border-radius:12px;
-margin-bottom:10px;
-">
+<div class="product-card stok-tipis">
 
-<div style="
-flex:2;
-font-weight:bold;
-font-size:14px;
-color:#dc2626;
-">
-
+<div class="product-name">
 ${item.nama}
-
 </div>
 
-<div style="
-flex:1;
-font-weight:bold;
-text-align:center;
-font-size:14px;
-">
-
+<div class="product-price">
 ${rupiah(item.harga)}
-
 </div>
 
-<div style="
-width:70px;
-text-align:center;
-font-weight:bold;
-font-size:14px;
-color:#dc2626;
-">
-
+<div class="product-stock">
 ${item.stok}
-
 </div>
-
-<div style="
-display:flex;
-gap:5px;
-">
 
 <button
-class="tambah"
-onclick="tambahStock(${index})"
-style="
-width:32px;
-height:32px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-">
+class="qty-btn btn-plus"
+onclick="tambahStock(${index})">
 
 +
 
 </button>
 
 <button
-class="kurangi"
-onclick="kurangiStock(${index})"
-style="
-width:32px;
-height:32px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-">
+class="qty-btn btn-minus"
+onclick="kurangiStock(${index})">
 
--
+−
 
 </button>
 
 <button
-onclick="editProduk(${index})"
-style="
-background:#2563eb;
-color:white;
-border:none;
-width:32px;
-height:32px;
-border-radius:8px;
-cursor:pointer;
-">
+class="edit-btn"
+onclick="editProduk(${index})">
 
 ✏️
 
 </button>
-
-</div>
 
 </div>
 
@@ -1075,105 +991,43 @@ const index = produk.indexOf(item);
 
 gridNormal.innerHTML += `
 
-<div style="
-background:white;
-padding:12px 15px;
-border-bottom:1px solid #e2e8f0;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-border-radius:12px;
-margin-bottom:10px;
-">
+<div class="product-card">
 
-<div style="
-flex:2;
-font-weight:bold;
-font-size:14px;
-">
-
+<div class="product-name">
 ${item.nama}
-
 </div>
 
-<div style="
-flex:1;
-color:#16a34a;
-font-weight:bold;
-text-align:center;
-font-size:14px;
-">
-
+<div class="product-price">
 ${rupiah(item.harga)}
-
 </div>
 
-<div style="
-width:70px;
-text-align:center;
-font-weight:bold;
-font-size:14px;
-">
-
+<div class="product-stock">
 ${item.stok}
-
 </div>
-
-<div style="
-display:flex;
-gap:5px;
-">
 
 <button
-class="tambah"
-onclick="tambahStock(${index})"
-style="
-width:32px;
-height:32px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-">
+class="qty-btn btn-plus"
+onclick="tambahStock(${index})">
 
 +
 
 </button>
 
 <button
-class="kurangi"
-onclick="kurangiStock(${index})"
-style="
-width:32px;
-height:32px;
-border:none;
-border-radius:8px;
-color:white;
-cursor:pointer;
-">
+class="qty-btn btn-minus"
+onclick="kurangiStock(${index})">
 
--
+−
 
 </button>
 
 <button
-onclick="editProduk(${index})"
-style="
-background:#2563eb;
-color:white;
-border:none;
-width:32px;
-height:32px;
-border-radius:8px;
-cursor:pointer;
-">
+class="edit-btn"
+onclick="editProduk(${index})">
 
 ✏️
 
 </button>
-
-</div>
 
 </div>
 
@@ -1797,7 +1651,101 @@ alert("Kamera gagal dibuka");
 }
 
 }
+/* =========================================
+PRODUCT 1 BARIS
+========================================= */
 
+.product-card{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:8px;
+
+background:white;
+
+padding:10px 12px;
+
+border-radius:14px;
+
+margin-bottom:8px;
+
+box-shadow:
+0 2px 6px rgba(0,0,0,.05);
+
+}
+
+.product-name{
+
+flex:1;
+
+font-size:14px;
+
+font-weight:700;
+
+line-height:1.2;
+
+}
+
+.product-price{
+
+font-size:14px;
+
+font-weight:800;
+
+color:#16a34a;
+
+white-space:nowrap;
+
+}
+
+.product-stock{
+
+width:30px;
+
+text-align:center;
+
+font-size:14px;
+
+font-weight:700;
+
+}
+
+.qty-btn,
+.edit-btn{
+
+width:34px;
+
+height:34px;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.btn-plus{
+background:#16a34a;
+}
+
+.btn-minus{
+background:#dc2626;
+}
+
+.edit-btn{
+background:#2563eb;
+}
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
