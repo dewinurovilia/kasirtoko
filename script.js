@@ -930,7 +930,8 @@ simpanPesanan(
 
 namaKasir,
 items,
-total
+total,
+pengiriman
 
 );
 
@@ -1221,7 +1222,8 @@ window.simpanPesanan =
 async function(
 nama,
 items,
-totalBelanja
+totalBelanja,
+pengiriman
 ){
 
 const sekarang =
@@ -1240,6 +1242,8 @@ sekarang.toLocaleTimeString(
 const dataPesanan = {
 
 nama:nama,
+
+pengiriman:pengiriman,
 
 produk:items,
 
