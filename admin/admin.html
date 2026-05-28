@@ -199,60 +199,186 @@ opacity:0.9;
 color:#16a34a;
 }
 
+/* =========================================
+PRODUK MODERN 1 BARIS
+========================================= */
+
 .produk-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-gap:6px;
-}
-  
-.card{
-background:white;
-padding:10px;
-border-radius:14px;
-}
 
-.stok-tipis{
-border:2px solid #ef4444;
-}
-
-.card h2{
-font-size:20px;
-margin-bottom:10px;
-}
-
-.harga{
-color:#16a34a;
-font-size:18px;
-font-weight:bold;
-margin-bottom:10px;
-}
-
-.stock{
-margin-bottom:15px;
-font-size:15px;
-}
-
-.btn-group{
 display:flex;
+
+flex-direction:column;
+
 gap:10px;
+
 }
 
-.btn-group button{
+/* CARD */
+
+.product-card{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:white;
+
+padding:12px 14px;
+
+border-radius:16px;
+
+box-shadow:
+0 2px 8px rgba(0,0,0,.05);
+
+gap:10px;
+
+}
+
+/* KIRI */
+
+.produk-kiri{
+
 flex:1;
-padding:12px;
-border:none;
-border-radius:12px;
-color:white;
-cursor:pointer;
-font-weight:bold;
+
+display:flex;
+
+flex-direction:column;
+
+gap:4px;
+
 }
 
-.tambah{
+/* NAMA */
+
+.product-name{
+
+font-size:15px;
+
+font-weight:700;
+
+color:#111827;
+
+line-height:1.2;
+
+}
+
+/* HARGA */
+
+.product-price{
+
+font-size:14px;
+
+font-weight:800;
+
+color:#16a34a;
+
+}
+
+/* KANAN */
+
+.produk-kanan{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+/* STOK */
+
+.product-stock{
+
+min-width:28px;
+
+text-align:center;
+
+font-size:14px;
+
+font-weight:700;
+
+color:#dc2626;
+
+}
+
+/* BUTTON */
+
+.qty-btn,
+.edit-btn{
+
+width:34px;
+
+height:34px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:700;
+
+color:white;
+
+cursor:pointer;
+
+flex-shrink:0;
+
+}
+
+/* PLUS */
+
+.btn-plus{
 background:#16a34a;
 }
 
-.kurangi{
-background:#dc2626;
+/* MINUS */
+
+.btn-minus{
+background:#ef4444;
+}
+
+/* EDIT */
+
+.edit-btn{
+background:#2563eb;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.product-card{
+
+padding:10px;
+
+}
+
+.product-name{
+
+font-size:13px;
+
+}
+
+.product-price{
+
+font-size:12px;
+
+}
+
+.qty-btn,
+.edit-btn{
+
+width:30px;
+height:30px;
+
+font-size:14px;
+
+}
+
 }
 
 /* TOAST */
@@ -1226,15 +1352,24 @@ kategori: kategoriBaru
 
 };
 
-/* HAPUS DATA LAMA */
+/* UPDATE PRODUK */
 
-if(barcodeBaru !== item.firebaseKey){
+await set(
 
-await remove(
-ref(db,'produk/' + item.firebaseKey)
-);
+ref(
+db,
+'produk/' + item.firebaseKey
+),
+
+{
+
+...produkBaru,
+
+id: barcodeBaru
 
 }
+
+);
 
 /* SIMPAN DATA BARU */
 
@@ -1246,8 +1381,11 @@ produkBaru
 /* UPDATE ARRAY */
 
 produk[index] = {
-firebaseKey: barcodeBaru,
+
+firebaseKey:item.firebaseKey,
+
 ...produkBaru
+
 };
 
 /* REFRESH */
