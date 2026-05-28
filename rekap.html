@@ -199,7 +199,79 @@ font-size:11px;
 }
 
 }
+/* =========================================
+TOP REKAP
+========================================= */
 
+.top-rekap{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:18px;
+
+flex-wrap:wrap;
+
+}
+
+/* RIGHT */
+
+.rekap-right{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+/* TOTAL */
+
+.total-harian{
+
+background:#dcfce7;
+
+color:#16a34a;
+
+padding:10px 14px;
+
+border-radius:12px;
+
+font-size:14px;
+
+font-weight:800;
+
+}
+
+/* BUTTON EXCEL */
+
+.excel-btn{
+
+border:none;
+
+height:42px;
+
+padding:0 14px;
+
+border-radius:12px;
+
+background:#16a34a;
+
+color:white;
+
+font-size:13px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
 </style>
 </head>
 
@@ -208,7 +280,32 @@ font-size:11px;
 <h1 class="title">
 📋 Rekap Pesanan
 </h1>
+<div class="top-rekap">
 
+<h1 class="title">
+📋 Rekap Pesanan
+</h1>
+
+<div class="rekap-right">
+
+<div id="totalHarian"
+class="total-harian">
+
+Rp 0
+
+</div>
+
+<button
+class="excel-btn"
+onclick="downloadExcel()">
+
+⬇ Excel
+
+</button>
+
+</div>
+
+</div>
 <div id="rekapList" class="list"></div>
 
 <script type="module">
@@ -277,7 +374,7 @@ list.innerHTML = "";
 if(!data){
 
 list.innerHTML = `
-
+let totalHarian = 0;
 <div class="kosong">
 Belum ada pesanan
 </div>
@@ -310,7 +407,8 @@ if(tanggalPesanan !== hariIni){
 return;
 
 }
-
+totalHarian +=
+Number(pesanan.total || 0);
 const tanggal =
 pesanan.tanggal || '-';
 
@@ -325,7 +423,13 @@ groupTanggal[tanggal]
 
 id,
 ...pesanan
+document.getElementById(
+'totalHarian'
+).innerHTML =
 
+'Rp ' +
+totalHarian
+.toLocaleString('id-ID');
 });
 
 });
@@ -586,6 +690,60 @@ onlyOnce:true
 }
 
 );
+
+}
+/* =========================================
+DOWNLOAD EXCEL
+========================================= */
+
+window.downloadExcel =
+function(){
+
+let isi =
+
+'Nama,Total,Tanggal\n';
+
+document
+.querySelectorAll('.rekap-item')
+.forEach(item=>{
+
+const nama =
+item.querySelector(
+'.rekap-nama'
+).innerText;
+
+const total =
+item.querySelector(
+'.rekap-total'
+).innerText;
+
+isi +=
+`${nama},${total}\n`;
+
+});
+
+const blob =
+new Blob(
+[isi],
+{
+type:'text/csv'
+}
+);
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement('a');
+
+a.href = url;
+
+a.download =
+'rekap-harian.csv';
+
+a.click();
+
+URL.revokeObjectURL(url);
 
 }
 </script>
