@@ -374,7 +374,7 @@ list.innerHTML = "";
 if(!data){
 
 list.innerHTML = `
-let totalHarian = 0;
+
 <div class="kosong">
 Belum ada pesanan
 </div>
@@ -385,13 +385,15 @@ return;
 
 }
 
-/* GROUP TANGGAL */
-
-const groupTanggal = {};
-
 const hariIni =
 new Date()
 .toLocaleDateString('id-ID');
+
+let totalHarian = 0;
+
+/* GROUP */
+
+const groupTanggal = {};
 
 Object.entries(data)
 .reverse()
@@ -407,22 +409,32 @@ if(tanggalPesanan !== hariIni){
 return;
 
 }
+
+/* TOTAL */
+
 totalHarian +=
 Number(pesanan.total || 0);
-const tanggal =
-pesanan.tanggal || '-';
 
-if(!groupTanggal[tanggal]){
+/* GROUP */
 
-groupTanggal[tanggal] = [];
+if(!groupTanggal[tanggalPesanan]){
+
+groupTanggal[tanggalPesanan] = [];
 
 }
 
-groupTanggal[tanggal]
+groupTanggal[tanggalPesanan]
 .push({
 
 id,
 ...pesanan
+
+});
+
+});
+
+/* TOTAL HARIAN */
+
 document.getElementById(
 'totalHarian'
 ).innerHTML =
@@ -430,9 +442,6 @@ document.getElementById(
 'Rp ' +
 totalHarian
 .toLocaleString('id-ID');
-});
-
-});
 
 /* RENDER */
 
@@ -456,12 +465,24 @@ list.innerHTML += `
 <div class="rekap-item">
 
 <div class="rekap-nama">
+
 ${pesanan.nama}
+
+<span class="rekap-tag">
+
+${pesanan.pengiriman === 'Diantar'
+? 'WA'
+: 'TK'}
+
+</span>
+
 </div>
 
 <div class="rekap-total">
+
 Rp ${Number(pesanan.total)
 .toLocaleString('id-ID')}
+
 </div>
 
 <div class="rekap-action">
