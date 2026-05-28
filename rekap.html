@@ -292,9 +292,24 @@ return;
 
 const groupTanggal = {};
 
+const hariIni =
+new Date()
+.toLocaleDateString('id-ID');
+
 Object.entries(data)
 .reverse()
 .forEach(([id,pesanan])=>{
+
+const tanggalPesanan =
+pesanan.tanggal || '';
+
+/* HANYA HARI INI */
+
+if(tanggalPesanan !== hariIni){
+
+return;
+
+}
 
 const tanggal =
 pesanan.tanggal || '-';
