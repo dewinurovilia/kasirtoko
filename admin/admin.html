@@ -1370,25 +1370,26 @@ REKAP REALTIME
 
 function loadRekapRealtime(){
 
+const rekapList =
+document.getElementById(
+"rekapList"
+);
+
 onValue(
 ref(dbPesanan,"pesanan"),
 (snapshot)=>{
 
 const data = snapshot.val();
 
-const list =
-document.getElementById(
-"listRekap"
-);
-
-if(!list) return;
-
-list.innerHTML = "";
+rekapList.innerHTML = "";
 
 if(!data){
 
-list.innerHTML =
-"<h3>Belum ada transaksi</h3>";
+rekapList.innerHTML = `
+<div class="kosong">
+Belum ada pesanan
+</div>
+`;
 
 return;
 
@@ -1396,11 +1397,12 @@ return;
 
 const grupHari = {};
 
-Object.entries(data).forEach(
-([id,item])=>{
+Object.entries(data)
+.reverse()
+.forEach(([id,item])=>{
 
 const tanggal =
-item.tanggal || '-';
+item.tanggal || "Tanpa Tanggal";
 
 if(!grupHari[tanggal]){
 
@@ -1410,74 +1412,73 @@ grupHari[tanggal] = [];
 
 grupHari[tanggal].push({
 
-id:id,
+id,
 ...item
 
 });
 
 });
 
+/* RENDER */
+
 Object.entries(grupHari)
 .reverse()
 .forEach(([tanggal,items])=>{
 
-let totalHari = 0;
+rekapList.innerHTML += `
 
-items.forEach(item=>{
-
-totalHari +=
-Number(item.total || 0);
-
-});
-
-list.innerHTML += `
-
-<div class="finance-box">
-
-<h2>
+<div class="tanggal-group">
 📅 ${tanggal}
-</h2>
-
-<h1 style="
-color:#16a34a;
-margin:15px 0;
-">
-
-${rupiah(totalHari)}
-
-</h1>
-
-<div id="hari-${tanggal}">
-</div>
-
 </div>
 
 `;
 
-const box =
-document.getElementById(
-`hari-${tanggal}`
-);
+items.reverse().forEach((pesanan)=>{
 
-items.reverse().forEach(item=>{
+rekapList.innerHTML += `
 
-let rincian = '';
+<div class="rekap-item">
 
-(item.produk || [])
-.forEach(produk=>{
+<div class="rekap-nama">
 
-rincian += `
+${pesanan.nama}
 
-<div style="
-margin-bottom:10px;
-">
+<span class="rekap-tag">
 
-${produk.nama}
+${pesanan.pengiriman === 'Diantar'
+? 'WA'
+: 'TK'}
 
-<br>
+</span>
 
-${produk.qty} x
-${rupiah(produk.harga)}
+</div>
+
+<div class="rekap-total">
+
+Rp ${Number(pesanan.total || 0)
+.toLocaleString('id-ID')}
+
+</div>
+
+<div class="rekap-action">
+
+<button
+class="lihat-btn"
+onclick="toggleDetail('${pesanan.id}')">
+
+Lihat
+
+</button>
+
+<button
+class="cetak-btn"
+onclick="cetakStruk('${pesanan.id}')">
+
+Cetak
+
+</button>
+
+</div>
 
 </div>
 
@@ -1485,117 +1486,11 @@ ${rupiah(produk.harga)}
 
 });
 
-box.innerHTML += `
+});
 
-<div style="
-border-bottom:1px solid #e2e8f0;
-padding:10px 0;
-">
-
-<div
-onclick="toggleDetail('${item.id}')"
-style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-cursor:pointer;
-font-size:14px;
-">
-
-<div style="
-flex:1;
-">
-
-${item.waktu.split(',')[0]}
-
-</div>
-
-<div style="
-flex:2;
-font-weight:bold;
-">
-
-${item.nama}
-
-</div>
-
-<div style="
-flex:1;
-text-align:right;
-color:#16a34a;
-font-weight:bold;
-">
-
-${rupiah(item.total)}
-
-</div>
-
-</div>
-
-<div
-id="detail-${item.id}"
-style="
-display:none;
-margin-top:10px;
-padding:10px;
-background:#f8fafc;
-border-radius:10px;
-font-size:13px;
-">
-
-${rincian}
-
-<p>
-${item.pembayaran}
-</p>
-
-<p>
-${item.pengiriman}
-</p>
-
-${
-item.lokasi &&
-item.lokasi !== '-'
-?
-
-`
-
-<a
-href="${item.lokasi}"
-target="_blank"
-style="
-text-decoration:none;
-color:#2563eb;
-font-weight:bold;
-">
-
-📍 Lokasi
-
-</a>
-
-`
-
-:
-
-''
+});
 
 }
-
-</div>
-
-</div>
-
-`;
-
-});
-
-});
-
-});
-});
-}
-  
 window.toggleDetail = function(id){
 
 const detail =
