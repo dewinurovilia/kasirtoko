@@ -167,18 +167,37 @@ return;
 
 }
 
-let tanggalSekarang = "";
+/* GROUP TANGGAL */
+
+const groupTanggal = {};
 
 Object.entries(data)
 .reverse()
 .forEach(([id,pesanan])=>{
 
 const tanggal =
-pesanan.tanggal || pesanan.waktu;
+pesanan.tanggal || '-';
 
-if(tanggalSekarang !== tanggal){
+if(!groupTanggal[tanggal]){
 
-tanggalSekarang = tanggal;
+groupTanggal[tanggal] = [];
+
+}
+
+groupTanggal[tanggal]
+.push({
+
+id,
+...pesanan
+
+});
+
+});
+
+/* RENDER */
+
+Object.entries(groupTanggal)
+.forEach(([tanggal,pesananList])=>{
 
 list.innerHTML += `
 
@@ -188,12 +207,56 @@ list.innerHTML += `
 
 </div>
 
-<div class="rekap-row">
+`;
+
+pesananList.forEach(pesanan=>{
+
+list.innerHTML += `
+
+<div class="rekap-item">
+
+<div class="rekap-nama">
+
+${pesanan.nama}
+
+</div>
+
+<div class="rekap-total">
+
+Rp ${Number(pesanan.total)
+.toLocaleString('id-ID')}
+
+</div>
+
+<div class="rekap-action">
+
+<button
+class="lihat-btn"
+onclick="lihatPesanan('${pesanan.id}')">
+
+Lihat
+
+</button>
+
+<button
+class="cetak-btn"
+onclick="cetakStruk('${pesanan.id}')">
+
+Cetak
+
+</button>
+
+</div>
+
+</div>
 
 `;
 
-}
+});
 
+});
+
+});
 list.innerHTML += `
 
 <div class="rekap-card">
