@@ -257,42 +257,6 @@ Cetak
 });
 
 });
-list.innerHTML += `
-
-<div class="rekap-card">
-
-<div class="rekap-top">
-
-<div class="nama">
-
-${pesanan.nama}
-
-</div>
-
-<div class="total">
-
-Rp ${Number(pesanan.total)
-.toLocaleString("id-ID")}
-
-</div>
-
-</div>
-
-<button
-class="btn"
-onclick="cetakStruk('${id}')">
-
-🖨 Cetak
-
-</button>
-
-</div>
-
-`;
-
-});
-
-});
 
 window.cetakStruk = function(id){
 
