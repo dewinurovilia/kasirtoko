@@ -391,6 +391,71 @@ onlyOnce:true
 );
 
 }
+/* =========================================
+LIHAT DETAIL PESANAN
+========================================= */
+
+window.lihatPesanan = function(id){
+
+onValue(
+
+ref(db,"pesanan/" + id),
+
+(snapshot)=>{
+
+const data = snapshot.val();
+
+if(!data) return;
+
+const daftarProduk =
+data.items || data.produk || [];
+
+let detail = '';
+
+daftarProduk.forEach(item=>{
+
+const subtotal =
+
+item.subtotal ||
+(item.harga * item.qty);
+
+detail +=
+
+`${item.nama}
+
+${item.qty} x Rp ${Number(item.harga)
+.toLocaleString('id-ID')}
+
+= Rp ${Number(subtotal)
+.toLocaleString('id-ID')}
+
+\n`;
+
+});
+
+alert(
+
+'Nama : ' + data.nama +
+
+'\n\n' +
+
+detail +
+
+'\nTOTAL : Rp ' +
+
+Number(data.total)
+.toLocaleString('id-ID')
+
+);
+
+},
+{
+onlyOnce:true
+}
+
+);
+
+}
 </script>
 
 </body>
