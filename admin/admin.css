@@ -488,3 +488,124 @@ display:none;
 .tab-content.active{
 display:block;
 }
+/* =========================================
+PRODUK 1 BARIS
+========================================= */
+
+.produk-grid{
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+/* CARD */
+
+.product-card{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+background:white;
+
+padding:10px 12px;
+
+border-radius:14px;
+
+box-shadow:
+0 2px 6px rgba(0,0,0,.05);
+
+}
+
+/* NAMA */
+
+.product-name{
+
+flex:1;
+
+font-size:14px;
+
+font-weight:700;
+
+line-height:1.2;
+
+}
+
+/* HARGA */
+
+.product-price{
+
+font-size:14px;
+
+font-weight:800;
+
+color:#16a34a;
+
+min-width:90px;
+
+text-align:right;
+
+}
+
+/* STOK */
+
+.product-stock{
+
+width:30px;
+
+text-align:center;
+
+font-size:14px;
+
+font-weight:700;
+
+}
+
+/* BUTTON */
+
+.qty-btn,
+.edit-btn{
+
+width:34px;
+
+height:34px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:bold;
+
+color:white;
+
+cursor:pointer;
+
+flex-shrink:0;
+
+}
+
+/* PLUS */
+
+.btn-plus{
+background:#16a34a;
+}
+
+/* MINUS */
+
+.btn-minus{
+background:#dc2626;
+}
+
+/* EDIT */
+
+.edit-btn{
+background:#2563eb;
+}
