@@ -748,11 +748,6 @@ ${kategori}
 
 `;
 
-});
-
-});
-
-}
 
 /* =========================
 TAMBAH KATEGORI BARU
@@ -1014,6 +1009,23 @@ Number(item.stok || 0)
 
 if(stokSedikit.length > 0){
 
+list.innerHTML += `
+
+<div class="section-title warning-title">
+⚠ STOCK MENIPIS
+</div>
+
+<div class="produk-grid" id="stokSedikit"></div>
+
+`;
+
+const gridSedikit =
+document.getElementById("stokSedikit");
+
+stokSedikit.forEach((item)=>{
+
+const index = produk.indexOf(item);
+
 gridSedikit.innerHTML += `
 
 <div class="product-card stok-tipis">
@@ -1128,8 +1140,6 @@ onclick="editProduk(${index})">
 `;
 
 });
-
-}
 
 }
   
