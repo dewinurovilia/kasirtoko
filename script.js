@@ -391,7 +391,9 @@ updateCart();
 toggleMetode();
 
 closePopup();
-
+document.getElementById(
+'popupBox'
+).classList.remove('active');
 showToast(
 selectedProduct.nama +
 ' ditambahkan'
