@@ -1420,3 +1420,59 @@ console.log(
 );
 
 }
+window.scanCariProduk = async function(){
+
+const reader =
+document.getElementById("reader");
+
+reader.style.display = "block";
+
+const html5QrCode =
+new Html5Qrcode("reader");
+
+try{
+
+await html5QrCode.start(
+
+{
+facingMode:"environment"
+},
+
+{
+fps:10,
+qrbox:250
+},
+
+(decodedText)=>{
+
+document.getElementById(
+"searchInput"
+).value = decodedText;
+
+renderProduk();
+
+html5QrCode.stop();
+
+reader.style.display = "none";
+
+showToast(
+"Barcode ditemukan"
+);
+
+},
+
+(errorMessage)=>{}
+
+);
+
+}catch(err){
+
+console.log(err);
+
+showToast(
+"Gagal membuka kamera"
+);
+
+}
+
+}
