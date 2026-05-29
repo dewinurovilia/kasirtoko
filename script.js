@@ -388,8 +388,6 @@ qty:Number(qty)
 
 updateCart();
 
-toggleMetode();
-
 closePopup();
 document.getElementById(
 'popupBox'
