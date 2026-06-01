@@ -129,7 +129,15 @@ snapshot.val();
 if(data){
 
 produk =
-Object.values(data);
+Object.entries(data).map(
+([key,item]) => ({
+
+firebaseKey:key,
+
+...item
+
+})
+);
 
 renderProduk();
 
@@ -318,26 +326,27 @@ window.tambahStock = async function(id){
 const item =
 produk.find(p => p.id == id);
 
-if(!item.stok){
+if(!item) return;
 
-item.stok = 0;
-
-}
-
-item.stok++;
+const stokBaru =
+Number(item.stok || 0) + 1;
 
 await set(
 
 ref(
 db,
-'produk/' + id
+'produk/' + item.firebaseKey
 ),
 
-item
+{
+
+...item,
+
+stok:stokBaru
+
+}
 
 );
-
-renderProduk();
 
 };
 
@@ -350,29 +359,29 @@ window.kurangStock = async function(id){
 const item =
 produk.find(p => p.id == id);
 
-if(!item.stok){
+if(!item) return;
 
-item.stok = 0;
-
-}
-
-if(item.stok > 0){
-
-item.stok--;
-
-}
+const stokBaru =
+Math.max(
+Number(item.stok || 0) - 1,
+0
+);
 
 await set(
 
 ref(
 db,
-'produk/' + id
+'produk/' + item.firebaseKey
 ),
 
-item
+{
+
+...item,
+
+stok:stokBaru
+
+}
 
 );
-
-renderProduk();
 
 };
