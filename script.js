@@ -930,9 +930,7 @@ simpanPesanan(
 
 namaKasir,
 items,
-total,
-pengiriman
-
+total
 );
 
 /* GOOGLE SHEET */
@@ -1222,8 +1220,7 @@ window.simpanPesanan =
 async function(
 nama,
 items,
-totalBelanja,
-pengiriman
+totalBelanja
 ){
 
 const sekarang =
@@ -1242,8 +1239,6 @@ sekarang.toLocaleTimeString(
 const dataPesanan = {
 
 nama:nama,
-
-pengiriman:pengiriman,
 
 produk:items,
 
@@ -1309,8 +1304,6 @@ items
 const data = {
 
 nama:nama,
-
-pengiriman:pengiriman,
 
 pembayaran:pembayaran,
 
