@@ -19,17 +19,6 @@ html{
     scroll-behavior:smooth;
 }
 
-body{
-
-    font-family:'Poppins',sans-serif;
-
-    background:#edf4ff;
-
-    color:#0f172a;
-
-    overflow-x:hidden;
-}
-
 /* =========================================
 TOPBAR
 ========================================= */
