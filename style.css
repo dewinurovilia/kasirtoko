@@ -812,996 +812,281 @@ HAPUS YANG TIDAK DIPERLUKAN
 }
 
 /* =========================================
-FIX FINAL UI TOKO DEFANA
+TOKO DEFANA LIGHT MODERN FINAL
 ========================================= */
 
-/* BODY */
+html,
+:root{
+color-scheme:light;
+}
 
 body{
-    background:#f3f4f6;
-    color:#111827;
+background:#f3f4f6;
+color:#111827;
+font-family:'Poppins',sans-serif;
 }
-
-/* CLEAR SEARCH */
-
-.clear-search{
-
-    position:absolute;
-
-    right:26px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:52px;
-    height:52px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:white;
-
-    font-size:26px;
-
-    z-index:10;
-}
-
-/* CARD */
-
-.product-card{
-
-    background:#1e293b;
-
-    border-radius:28px;
-
-    min-height:110px;
-
-    box-shadow:none;
-}
-
-/* NAMA */
-
-.product-name{
-    color:white;
-}
-
-/* KATEGORI */
-
-.product-category,
-.product-stock{
-    color:#cbd5e1;
-}
-
-/* HARGA */
-
-.product-price{
-    color:#16a34a;
-}
-
-/* POPUP */
-
-.popup{
-
-    backdrop-filter:blur(10px);
-
-    background:rgba(0,0,0,.45);
-}
-
-/* POPUP BOX */
-
-.popup-content{
-
-    background:#111827;
-
-    border-radius:30px;
-
-    padding:28px 22px;
-
-    color:white;
-}
-
-/* INPUT POPUP */
-
-.popup-content input{
-
-    background:#1e293b;
-
-    color:white;
-
-    border:none;
-
-    height:60px;
-
-    border-radius:20px;
-}
-
-/* BUTTON PLUS MINUS */
-
-.popup-qty{
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:12px;
-
-    margin:18px 0;
-}
-
-.popup-qty button{
-
-    width:54px;
-    height:54px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:#2563eb;
-
-    color:white;
-
-    font-size:30px;
-
-    font-weight:700;
-}
-
-/* INPUT JUMLAH */
-
-.popup-qty input{
-
-    width:90px;
-    height:54px;
-
-    background:#1e293b;
-
-    color:white;
-
-    border:none;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    font-size:22px;
-}
-
-/* BUTTON */
-
-.popup-btn{
-
-    height:58px;
-
-    border-radius:20px;
-
-    font-size:20px;
-}
-
-.popup-close{
-
-    height:58px;
-
-    border-radius:20px;
-
-    font-size:20px;
-}
-
-/* CART */
-
-.cart-box{
-
-    background:#111827;
-}
-
-/* ITEM CART */
-
-.cart-row{
-
-    background:#1e293b;
-
-    border-radius:20px;
-
-    padding:14px;
-
-    margin-bottom:12px;
-}
-
-/* TOTAL */
-
-.total-text{
-
-    color:white;
-
-    font-size:24px;
-
-    font-weight:800;
-}
-
-/* BUTTON CHECKOUT */
-
-.checkout-btn{
-
-    height:60px;
-
-    border-radius:22px;
-
-    font-size:22px;
-}
-
-/* RESET */
-
-.reset-btn{
-
-    height:60px;
-
-    border-radius:22px;
-
-    font-size:22px;
-}
-
-/* MENU BAWAH */
-
-.bottom-menu{
-
-    background:#111827;
-
-    border-top:1px solid #1e293b;
-}
-
-.bottom-menu button{
-    color:white;
-}
-
-.product-card,
-.popup-content,
-.cart-row,
-button,
-input{
-    will-change:auto !important;
-    transform:none !important;
-    transition:.15s !important;
-}
-
-/* HILANGKAN EFEK BERAT */
-
-.product-card:hover,
-button:hover{
-    transform:none !important;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:480px){
-
-    .product-card{
-
-        min-height:100px;
-    }
-
-    .product-name{
-
-        font-size:18px;
-    }
-
-    .product-price{
-
-        font-size:18px;
-    }
-}
-/* =========================================
-CART MODERN FINAL
-========================================= */
-
-/* ITEM KERANJANG */
-
-.cart-item{
-
-    background:#1e293b;
-
-    border-radius:22px;
-
-    padding:16px;
-
-    margin-bottom:14px;
-}
-
-/* NAMA PRODUK */
-
-.cart-item h3{
-
-    font-size:22px;
-
-    color:white;
-
-    margin-bottom:6px;
-}
-
-/* DETAIL */
-
-.cart-item p{
-
-    color:#cbd5e1;
-
-    font-size:15px;
-
-    margin-bottom:4px;
-}
-
-/* SUBTOTAL */
-
-.cart-item .subtotal{
-
-    font-size:26px;
-
-    font-weight:800;
-
-    color:white;
-
-    margin-top:8px;
-}
-
-/* BUTTON HAPUS */
-
-.btn-hapus-modern{
-
-    margin-top:10px;
-
-    border:none;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ef4444,
-    #dc2626
-    );
-
-    color:white;
-
-    height:42px;
-
-    padding:0 18px;
-
-    border-radius:14px;
-
-    font-size:15px;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-/* TOTAL */
-
-.total-box{
-
-    background:#1e293b;
-
-    border-radius:22px;
-
-    padding:18px;
-
-    margin-top:14px;
-}
-
-.total-text{
-
-    color:white;
-
-    font-size:30px;
-
-    font-weight:800;
-
-    text-align:center;
-}
-
-/* TOMBOL CHECKOUT */
-
-.checkout-btn{
-
-    width:100%;
-
-    height:64px;
-
-    border:none;
-
-    border-radius:22px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #22c55e,
-    #16a34a
-    );
-
-    color:white;
-
-    font-size:24px;
-
-    font-weight:800;
-
-    margin-top:16px;
-
-    cursor:pointer;
-}
-
-/* RESET */
-
-.reset-btn{
-
-    width:100%;
-
-    height:64px;
-
-    border:none;
-
-    border-radius:22px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ef4444,
-    #dc2626
-    );
-
-    color:white;
-
-    font-size:24px;
-
-    font-weight:800;
-
-    margin-top:14px;
-
-    cursor:pointer;
-}
-
-/* WHATSAPP */
-
-.whatsapp-info{
-
-    background:#dcfce7;
-
-    color:#16a34a;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    border-radius:18px;
-
-    padding:18px;
-
-    text-align:center;
-
-    margin-top:14px;
-}
-
-
-.search-row{
-
-display:flex;
-
-gap:10px;
-
-margin-bottom:20px;
-
-}
-
-.search-row .search-box{
-
-flex:1;
-
-margin-bottom:0;
-
-}
-
-.scan-search-btn{
-
-width:60px;
-
-border:none;
-
-border-radius:14px;
-
-background:
-linear-gradient(
-135deg,
-#16a34a,
-#22c55e
-);
-
-color:white;
-
-font-size:24px;
-
-cursor:pointer;
-
-}
-#reader{
-
-display:none;
-
-width:100%;
-
-height:300px;
-
-background:black;
-
-border-radius:20px;
-
-margin-top:15px;
-
-overflow:hidden;
-
-}
-
-#reader video{
-
-width:100% !important;
-height:100% !important;
-
-object-fit:cover;
-
-}
-.popup-qty input{
-
-    color:#ffffff !important;
-
-    -webkit-text-fill-color:#ffffff !important;
-
-    opacity:1 !important;
-
-    caret-color:#ffffff !important;
-
-}
-.popup-qty input::placeholder{
-    color:#ffffff !important;
-}
-
-#popupQty{
-
-all:unset !important;
-
-width:76px !important;
-height:46px !important;
-
-display:flex !important;
-align-items:center !important;
-justify-content:center !important;
-
-background:#1e293b !important;
-
-color:#ffffff !important;
-
--webkit-text-fill-color:#ffffff !important;
-
-font-size:22px !important;
-
-font-weight:700 !important;
-
-text-align:center !important;
-
-border-radius:14px !important;
-
-border:none !important;
-
-opacity:1 !important;
-
-caret-color:#ffffff !important;
-
-}
-#popupQty::-webkit-inner-spin-button,
-#popupQty::-webkit-outer-spin-button{
--webkit-appearance:none;
-margin:0;
-}
-/* =========================================
-HP COMPACT MODE FINAL
-TARUH PALING BAWAH
-========================================= */
-
-@media(max-width:480px){
 
 /* TOPBAR */
 
 .topbar{
-    background:#16a34a;
-    padding:14px 16px;
+background:#16a34a;
+padding:14px 16px;
 }
 
 .topbar h1{
-    color:white;
-    font-size:18px;
-    font-weight:700;
+color:#fff;
+font-size:20px;
+font-weight:700;
 }
-/* MENU BUTTON */
+
+/* MENU */
 
 .menu-toggle{
-
-width:46px;
-height:46px;
-
-font-size:22px;
-
-border-radius:14px;
-
+background:#2563eb;
+border-radius:16px;
 }
 
 /* SEARCH */
 
 .search-box{
-
-padding:8px 12px;
-
+padding:12px;
 }
 
 .search-box input{
-    background:white;
-    color:#111827;
-    border-radius:20px;
-    height:56px;
+width:100%;
+height:54px;
+border:none;
+outline:none;
+border-radius:18px;
+background:#ffffff;
+padding:0 18px;
+font-size:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
-/* BUTTON SCAN */
+.search-box input::placeholder{
+color:#9ca3af;
+}
+
+/* TOMBOL SCAN */
 
 .scan-search-btn{
-
-width:48px !important;
-
-height:46px !important;
-
-font-size:18px !important;
-
-border-radius:14px !important;
-
+width:54px;
+height:54px;
+border:none;
+border-radius:16px;
+background:#16a34a;
+color:white;
+font-size:22px;
+cursor:pointer;
 }
 
-/* PRODUK */
+/* LIST PRODUK */
 
 #productList{
-
+display:flex;
+flex-direction:column;
 gap:10px;
-
 padding:0 12px 90px;
-
 }
 
-/* CARD */
+/* CARD PRODUK */
 
 .product-card{
-    background:white;
-    min-height:70px;
-    padding:12px 16px;
-    border-radius:20px;
+background:#ffffff;
+border-radius:18px;
+padding:12px 16px;
+min-height:72px;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+display:flex;
+align-items:center;
+justify-content:space-between;
 
-    box-shadow:none;
-}
-/* LEFT */
+gap:12px;
 
-.product-left{
-
-width:24% !important;
-
+box-shadow:
+0 2px 8px rgba(0,0,0,.05);
 }
 
-/* KATEGORI */
-
-.product-category{
-    color:#64748b;
-    font-size:14px;
-}
-
-.product-stock{
-    color:#64748b;
-    font-size:13px;
-}
-
-/* NAMA */
-
-.product-name{
-    font-size:18px;
-    font-weight:700;
-    color:#111827;
-}
-.product-price{
-    color:#16a34a;
-    font-size:18px;
-    font-weight:800;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-
-width:78%;
-
-padding:18px 14px;
-
-}
-
-/* BUTTON KATEGORI */
-
-.kategori-list button{
-
-padding:12px;
-
-font-size:14px;
-
-border-radius:14px;
-
-}
-
-/* CART */
-
-.cart-box{
-
-padding:14px !important;
-
-}
-
-/* ITEM CART */
-
-.cart-item{
-
-padding:10px !important;
-
-border-radius:14px !important;
-
-margin-bottom:8px !important;
-
-}
-
-/* NAMA CART */
-
-.cart-item h3{
-
-font-size:15px !important;
-
-}
-
-/* DETAIL */
-
-.cart-item p{
-
-font-size:11px !important;
-
-}
-
-/* SUBTOTAL */
-
-.cart-item .subtotal{
-
-font-size:16px !important;
-
-}
-
-/* BUTTON HAPUS */
-
-.btn-hapus-modern{
-
-height:32px !important;
-
-font-size:11px !important;
-
-padding:0 10px !important;
-
-border-radius:10px !important;
-
-}
-
-/* TOTAL */
-
-.total-text{
-
-font-size:16px !important;
-
-}
-
-/* BUTTON */
-
-.checkout-btn,
-.reset-btn{
-
-height:46px !important;
-
-font-size:15px !important;
-
-border-radius:14px !important;
-
-}
-
-/* POPUP */
-
-.popup-content{
-
-max-width:280px !important;
-
-padding:18px 14px !important;
-
-border-radius:20px !important;
-
-}
-
-/* TITLE */
-
-.popup-content h2{
-
-font-size:18px !important;
-
-}
-
-/* INPUT */
-
-.popup-content input{
-
-height:46px !important;
-
-font-size:14px !important;
-
-border-radius:14px !important;
-
-}
-
-/* QTY */
-
-.popup-qty{
-
-gap:8px !important;
-
-}
-
-/* BUTTON QTY */
-
-.popup-qty button{
-
-width:40px !important;
-height:40px !important;
-
-font-size:20px !important;
-
-border-radius:12px !important;
-
-}
-
-/* INPUT QTY */
-
-#popupQty{
-
-width:64px !important;
-height:40px !important;
-
-font-size:16px !important;
-
-border-radius:12px !important;
-
-}
-
-/* BUTTON POPUP */
-
-.popup-btn,
-.popup-close{
-
-height:46px !important;
-
-font-size:15px !important;
-
-border-radius:14px !important;
-
-}
-
-/* MENU BAWAH */
-
-.bottom-menu{
-
-height:64px !important;
-
-}
-
-/* BUTTON MENU */
-
-.bottom-menu button{
-
-font-size:10px !important;
-
-gap:2px !important;
-
-}
-
-/* ICON */
-
-.bottom-menu span{
-
-font-size:16px !important;
-
-}
-
-}
-
-/* =========================================
-LIST PRODUK MINI 1 KOLOM
-========================================= */
-
-#productList{
-
-display:flex !important;
-
-flex-direction:column !important;
-
-gap:8px !important;
-
-padding:8px 8px 90px !important;
-
-}
-
-/* CARD */
-
-.product-card{
-
-min-height:72px !important;
-
-padding:10px 12px !important;
-
-border-radius:16px !important;
-
-display:flex !important;
-
-align-items:center !important;
-
-justify-content:space-between !important;
-
-gap:10px !important;
-
+/* PRODUK HABIS */
+
+.product-card.habis{
+opacity:.7;
+background:#f1f5f9;
 }
 
 /* KIRI */
 
 .product-left{
+width:80px;
+}
 
-width:24% !important;
+/* TENGAH */
 
-font-size:11px !important;
+.product-center{
+flex:1;
+text-align:left;
+}
 
-line-height:1.2 !important;
+/* KANAN */
 
+.product-right{
+width:auto;
+text-align:right;
+}
+
+/* KATEGORI */
+
+.product-category{
+font-size:13px;
+font-weight:600;
+color:#64748b;
+margin-bottom:2px;
 }
 
 /* STOK */
 
-.product-left small{
-
-font-size:10px !important;
-
+.product-stock{
+font-size:12px;
+color:#64748b;
 }
 
 /* NAMA */
 
 .product-name{
-
-flex:1 !important;
-
-font-size:15px !important;
-
-font-weight:700 !important;
-
-line-height:1.2 !important;
-
+font-size:17px;
+font-weight:700;
+color:#111827;
+line-height:1.2;
 }
 
 /* HARGA */
 
 .product-price{
+font-size:18px;
+font-weight:800;
+color:#16a34a;
+white-space:nowrap;
+}
 
-font-size:15px !important;
+/* SIDEBAR */
 
-font-weight:800 !important;
+.sidebar{
+background:#ffffff;
+}
 
-white-space:nowrap !important;
+.kategori-list button{
+background:#f1f5f9;
+color:#111827;
+border-radius:999px;
+font-size:14px;
+padding:12px 16px;
+}
 
+.kategori-list button.active{
+background:#16a34a;
+color:white;
+}
+
+/* CART */
+
+.cart-box{
+background:#ffffff;
+}
+
+.cart-header h2{
+color:#111827;
+}
+
+.cart-item{
+background:#f8fafc;
+border-radius:16px;
+padding:12px;
+margin-bottom:10px;
+}
+
+.cart-item h3{
+color:#111827;
+}
+
+.cart-item p{
+color:#64748b;
+}
+
+/* POPUP */
+
+.popup-content{
+background:#ffffff;
+color:#111827;
+}
+
+.popup-content input{
+background:#f1f5f9;
+color:#111827;
+}
+
+/* QTY */
+
+.popup-qty button{
+background:#2563eb;
+color:white;
+}
+
+#popupQty{
+background:#f1f5f9 !important;
+color:#111827 !important;
+-webkit-text-fill-color:#111827 !important;
+}
+
+/* BUTTON */
+
+.popup-btn{
+background:linear-gradient(
+135deg,
+#16a34a,
+#22c55e
+);
+}
+
+.popup-close{
+background:linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
+}
+
+/* CHECKOUT */
+
+.checkout-btn{
+background:linear-gradient(
+135deg,
+#16a34a,
+#22c55e
+);
+}
+
+.reset-btn{
+background:linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
+}
+
+/* BOTTOM MENU */
+
+.bottom-menu{
+background:#ffffff;
+border-top:1px solid #e5e7eb;
+}
+
+.bottom-menu button{
+color:#374151;
+}
+
+.bottom-menu span{
+font-size:18px;
 }
 
 /* MOBILE */
@@ -1809,42 +1094,45 @@ white-space:nowrap !important;
 @media(max-width:480px){
 
 .product-card{
-
-min-height:68px !important;
-
-padding:8px 10px !important;
-
-border-radius:14px !important;
-
+padding:10px 12px;
+min-height:68px;
 }
 
 .product-name{
-
-font-size:14px !important;
-
+font-size:15px;
 }
 
 .product-price{
-
-font-size:14px !important;
-
+font-size:15px;
 }
 
-.product-left{
-
-font-size:10px !important;
-
+.product-category{
+font-size:11px;
 }
 
+.product-stock{
+font-size:11px;
 }
-/* INPUT UANG */
 
-#uangBayar{
+.search-box input{
+height:48px;
+}
 
-font-size:22px;
+.scan-search-btn{
+height:48px;
+width:48px;
+}
 
-font-weight:700;
+.bottom-menu{
+height:64px;
+}
 
-text-align:center;
+.bottom-menu button{
+font-size:10px;
+}
+
+.bottom-menu span{
+font-size:16px;
+}
 
 }
