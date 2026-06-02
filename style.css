@@ -1925,3 +1925,7 @@ font-weight:700;
 text-align:center;
 
 }
+html,
+:root{
+    color-scheme: light;
+}
