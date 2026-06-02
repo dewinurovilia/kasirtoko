@@ -19,27 +19,6 @@ html{
     scroll-behavior:smooth;
 }
 
-/* =========================================
-TOPBAR
-========================================= */
-
-.topbar{
-
-    position:sticky;
-    top:0;
-
-    z-index:999;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:10px;
-
-    padding:14px;
-
-    background:#edf4ff;
-}
 
 /* JUDUL */
 
@@ -705,7 +684,6 @@ color-scheme:light;
 
 body{
 background:#f3f4f6;
-color:#111827;
 font-family:'Poppins',sans-serif;
 }
 
@@ -713,12 +691,12 @@ font-family:'Poppins',sans-serif;
 
 .topbar{
 background:#16a34a;
-padding:14px 16px;
+padding:12px 16px;
 }
 
 .topbar h1{
-color:#fff;
-font-size:20px;
+color:white;
+font-size:18px;
 font-weight:700;
 }
 
@@ -732,18 +710,28 @@ border-radius:16px;
 .search-box{
 display:flex;
 gap:10px;
-padding:12px;
+padding:10px;
 }
 
 .search-box input{
 flex:1;
-height:54px;
+height:50px;
+border:none;
+outline:none;
+border-radius:14px;
+padding:0 15px;
+background:white;
+box-shadow:0 1px 4px rgba(0,0,0,.08);
 }
 
 .scan-search-btn{
-width:54px;
-height:54px;
-flex-shrink:0;
+width:50px;
+height:50px;
+border:none;
+border-radius:14px;
+background:#16a34a;
+color:white;
+font-size:20px;
 }
 
 /* TOMBOL SCAN */
@@ -759,74 +747,71 @@ font-size:22px;
 cursor:pointer;
 }
 
-/* LIST */
+/* ==========================
+PRODUK GAYA INDOMARET
+========================== */
 
 #productList{
+padding:10px;
 display:flex;
 flex-direction:column;
-gap:10px;
-padding:10px 15px 90px;
+gap:6px;
 }
-
-/* CARD */
 
 .product-card{
 background:#fff;
-border-radius:18px;
+border-radius:12px;
 padding:12px 15px;
 
 display:grid;
-grid-template-columns:80px 1fr 100px;
+grid-template-columns:70px 1fr auto;
 
 align-items:center;
 
-box-shadow:
-0 2px 8px rgba(0,0,0,.05);
-}
+border:1px solid #e5e7eb;
 
-/* KIRI */
+min-height:65px;
+
+box-shadow:none;
+}
 
 .product-left{
-width:auto !important;
+width:auto;
 }
-
-/* TENGAH */
 
 .product-center{
-text-align:left !important;
+text-align:left;
 }
-
-/* KANAN */
 
 .product-right{
-width:auto !important;
-text-align:right !important;
+text-align:right;
 }
 
-/* KATEGORI */
+/* kategori */
 
 .product-category{
 font-size:12px;
-color:#64748b;
 font-weight:600;
+color:#64748b;
+margin-bottom:2px;
 }
 
-/* STOK */
+/* stok */
 
 .product-stock{
-font-size:12px;
-color:#64748b;
+font-size:11px;
+color:#94a3b8;
 }
 
-/* NAMA */
+/* nama */
 
 .product-name{
-font-size:18px;
+font-size:16px;
 font-weight:700;
 color:#111827;
 }
 
-/* HARGA */
+/* harga */
 
 .product-price{
 font-size:18px;
@@ -834,6 +819,7 @@ font-weight:800;
 color:#16a34a;
 white-space:nowrap;
 }
+
 /* SIDEBAR */
 
 .sidebar{
