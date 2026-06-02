@@ -471,6 +471,11 @@ document.getElementById(
 'cartCount'
 );
 
+const bottomCount =
+document.getElementById(
+'bottomCartCount'
+);
+
 if(!cartBox) return;
 
 cartBox.innerHTML = '';
@@ -488,9 +493,9 @@ totalBox.innerHTML='';
 
 }
 
-if(countBox){
+if(bottomCount){
 
-countBox.innerHTML='0';
+bottomCount.innerHTML='0';
 
 }
 
@@ -560,6 +565,13 @@ total.toLocaleString();
 if(countBox){
 
 countBox.innerHTML =
+cart.length;
+
+}
+
+if(bottomCount){
+
+bottomCount.innerHTML =
 cart.length;
 
 }
