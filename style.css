@@ -683,23 +683,30 @@ color-scheme:light;
 }
 
 body{
-background:#f3f4f6;
-font-family:'Poppins',sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+    font-family:'Poppins',sans-serif;
 }
 
 /* TOPBAR */
 
 .topbar{
 background:#16a34a;
-padding:12px 16px;
+height:52px;
+padding:0 12px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .topbar h1{
 color:white;
-font-size:18px;
+font-size:17px;
 font-weight:700;
+margin:0;
+line-height:1;
 }
-
 /* MENU */
 
 .menu-toggle{
